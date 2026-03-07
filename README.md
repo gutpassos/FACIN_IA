@@ -1,40 +1,61 @@
 # FACIN_IA
 
-Projeto de maturidade de Governança Aplicada à Inteligência Artificial, estruturado a partir do FACIN, do Modelo de Responsabilidade Organizacional (MRO) e das diretrizes de Spec-Driven Development (SDD).
+Modelo de maturidade para Governança Aplicada à Inteligência Artificial em organizações públicas e ambientes de desenvolvimento intensivos em IA.
 
-Autor: Guttenberg Ferreira Passos
-Modelo LLM utilizado: GPT-5.4
+O projeto adapta FACIN, Modelo de Responsabilidade Organizacional (MRO) e Spec-Driven Development (SDD) para avaliar como estratégia, dados, operação, risco, transparência e valor público são governados ao longo do ciclo de vida da IA.
+
+Autor: Guttenberg Ferreira Passos  
+Modelo LLM utilizado: GPT-5.4  
 Ambiente validado: figmm
+
+## O que este repositório entrega
+
+- um modelo de avaliação de maturidade em seis dimensões de governança de IA;
+- uma versão executiva para apresentação institucional;
+- uma especificação de planilha com cálculo automático de pontuação;
+- artefatos prontos em HTML, PDF e XLSX para consulta e uso direto.
+
+## Leitura recomendada
+
+1. [docs/FACIN_IA_Versao_Executiva.html](docs/FACIN_IA_Versao_Executiva.html): visão rápida para apresentação e alinhamento institucional.
+2. [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
+3. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
 
 ## Estrutura do repositório
 
-- spec/: documentação-fonte em Markdown
-- docs/: artefatos gerados em HTML, PDF e planilha XLSX
-- scripts/: geradores dos artefatos
-- errors/: registro dos erros encontrados durante a geração
-- [Diretrizes FACIN_IA.txt](Diretrizes%20FACIN_IA.txt): diretrizes obrigatórias do projeto
-- [Prompt FACIN_IA.txt](Prompt%20FACIN_IA.txt): prompt-base do trabalho
-- [FACIN_IA_Projeto.md](FACIN_IA_Projeto.md): documento original consolidado
+- [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): documentação-fonte do modelo de avaliação.
+- [spec/FACIN_IA_Planilha_Avaliacao.md](spec/FACIN_IA_Planilha_Avaliacao.md): especificação funcional da planilha de avaliação.
+- [spec/FACIN_IA_Versao_Executiva.md](spec/FACIN_IA_Versao_Executiva.md): versão executiva em Markdown.
+- [docs/FACIN_IA_Modelo_Avaliacao.html](docs/FACIN_IA_Modelo_Avaliacao.html): versão navegável do modelo de avaliação.
+- [docs/FACIN_IA_Modelo_Avaliacao.pdf](docs/FACIN_IA_Modelo_Avaliacao.pdf): versão em PDF do modelo.
+- [docs/FACIN_IA_Planilha_Avaliacao.html](docs/FACIN_IA_Planilha_Avaliacao.html): versão navegável da especificação da planilha.
+- [docs/FACIN_IA_Planilha_Avaliacao.pdf](docs/FACIN_IA_Planilha_Avaliacao.pdf): versão em PDF da especificação da planilha.
+- [docs/FACIN_IA_Versao_Executiva.html](docs/FACIN_IA_Versao_Executiva.html): versão executiva em HTML.
+- [docs/FACIN_IA_Versao_Executiva.pdf](docs/FACIN_IA_Versao_Executiva.pdf): versão executiva em PDF.
+- [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para cálculo da maturidade.
+- [scripts/generate_artifacts.py](scripts/generate_artifacts.py): gerador dos artefatos HTML, PDF e XLSX.
+- [errors/erro_weasyprint_pdf.txt](errors/erro_weasyprint_pdf.txt): registro do erro inicial de geração de PDF com WeasyPrint no Windows.
+- [Diretrizes FACIN_IA.txt](Diretrizes%20FACIN_IA.txt): diretrizes obrigatórias do projeto.
+- [FACIN_IA_Projeto.md](FACIN_IA_Projeto.md): documento consolidado da elaboração do projeto.
 
-## Documentos principais
+## Escopo metodológico
 
-- [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): modelo de avaliação, pesos, fórmulas e faixas ajustadas
-- [spec/FACIN_IA_Planilha_Avaliacao.md](spec/FACIN_IA_Planilha_Avaliacao.md): especificação da planilha com pontuação automática
-- [spec/FACIN_IA_Versao_Executiva.md](spec/FACIN_IA_Versao_Executiva.md): versão executiva para apresentação institucional
+O modelo organiza a maturidade em seis dimensões obrigatórias:
 
-## Premissa adotada
+1. Estratégia e Governança de IA
+2. Dados e Infraestrutura
+3. Talento e Cultura
+4. Desenvolvimento e Operação de IA (DevOps/MLOps)
+5. Ética, Transparência e Gestão de Risco
+6. Impacto Social e Valor
 
-Para atender ao pedido de ajuste para um órgão público específico sem interromper o fluxo de trabalho, a parametrização foi feita para a PRODEMGE, considerando seu papel como empresa pública estadual de tecnologia, serviços digitais e sustentação de plataformas críticas de governo. Se necessário, os pesos e as faixas podem ser recalibrados para outro órgão com a mesma estrutura metodológica.
+Cada dimensão é avaliada por indicadores com fórmula, evidência mínima, periodicidade e regra de leitura em cinco níveis de maturidade.
 
-## Artefatos gerados
+## Contexto adotado
 
-Os artefatos gerados ficam em docs/:
+A parametrização foi ajustada para a PRODEMGE, considerando o contexto de empresa pública estadual de tecnologia que opera serviços digitais críticos, infraestrutura corporativa e plataformas de governo. O modelo pode ser recalibrado para outros órgãos, preservando a mesma estrutura metodológica.
 
-- HTML correspondente aos documentos de spec/
-- PDF correspondente aos documentos de spec/
-- planilha [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx)
-
-## Regra geral de maturidade
+## Escala de maturidade
 
 - Nível 1 - Inicial
 - Nível 2 - Em Desenvolvimento
@@ -42,10 +63,30 @@ Os artefatos gerados ficam em docs/:
 - Nível 4 - Consolidado
 - Nível 5 - Estabelecido
 
-## Observações de governança
+## Como regenerar os artefatos
 
-- A IA executa especificações governadas.
-- Prompt é contrato operacional.
+O gerador está em [scripts/generate_artifacts.py](scripts/generate_artifacts.py). Ele produz:
+
+- HTML a partir dos arquivos em spec/;
+- PDF a partir dos arquivos em spec/;
+- planilha XLSX de avaliação automática em docs/.
+
+Dependências Python utilizadas no script:
+
+- markdown
+- openpyxl
+- reportlab
+
+Execução:
+
+```bash
+python scripts/generate_artifacts.py
+```
+
+## Premissas de governança do projeto
+
+- IA executa especificações governadas.
 - Prompt, modelo, dado e decisão são artefatos rastreáveis.
 - Observabilidade e segregação entre ideação e produção são obrigatórias.
-- Instalações devem ocorrer somente no ambiente figmm.
+- Casos de maior risco exigem avaliação ética e controles formais.
+- Instalações, quando necessárias, devem ocorrer somente no ambiente figmm.
