@@ -83,11 +83,11 @@ Faixas sugeridas para o indice geral:
 
 | Dimensao FACIN_IA | Base no FACIN | Base no MRO | Adaptacao para o contexto de IA | Resultado esperado |
 | --- | --- | --- | --- | --- |
-| Estrategia e Governanca de IA | Estrategia, Negocios, Programas e Projetos | Estrutura organizacional, cadeia de valor, responsabilidade por resultados | Vincula casos de uso de IA aos objetivos estrategicos, define comites, patrocinadores, regras de priorizacao, portfolio de IA e ownership de decisoes | IA tratada como capacidade estrategica e nao como experimento isolado |
+| Estrategia e Governanca de IA | Estrategia, Negocios, Programas e Projetos | Estrutura organizacional, cadeia de valor, responsabilidade por resultados | Vincula casos de uso de IA aos objetivos estrategicos, define comites, patrocinadores, regras de priorizacao, portfolio de IA e responsabilizacao por decisoes | IA tratada como capacidade estrategica e nao como experimento isolado |
 | Dados e Infraestrutura | Dados, Infraestrutura, Seguranca | Conhecimento, qualificacao da demanda, suporte operacional | Governa fontes de dados, catalogos, linhagem, ambientes, observabilidade tecnica, seguranca da informacao e disponibilidade para treinamento e inferencia | Base confiavel, segura e rastreavel para operacao de IA |
 | Talento e Cultura | Negocios, Sociedade, Programas e Projetos | Papel, equipe, habilidade, ator, experiencia | Define papeis organizacionais de IA, trilhas de capacitacao, separacao entre ideacao e producao, e responsabilidades humanas sobre supervisao e decisao | Cultura institucional apta a operar IA com responsabilidade |
-| Desenvolvimento e Operacao de IA (DevOps/MLOps) | Aplicacoes, Infraestrutura, Programas e Projetos | Processos de trabalho, capacidade produtiva, qualificacao da demanda | Aplica SDD, versionamento de modelos e prompts, testes, validacoes, implantacao controlada, monitoramento, rollback e gestao de incidentes | Ciclo de vida de IA previsivel, auditavel e observavel |
-| Etica, Transparencia e Gestao de Risco | Seguranca, Dados, Sociedade | Responsabilidade, regras, conhecimento e papeis de controle | Introduz avaliacao de impacto algoritmico, conformidade legal, transparencia ativa, explicabilidade proporcional ao risco, mitigacao de vieses e supervisao humana | Risco reduzido e accountability demonstravel |
+| Desenvolvimento e Operacao de IA (DevOps/MLOps) | Aplicacoes, Infraestrutura, Programas e Projetos | Processos de trabalho, capacidade produtiva, qualificacao da demanda | Aplica SDD, versionamento de modelos e prompts, testes, validacoes, implantacao controlada, monitoramento, reversao controlada e gestao de incidentes | Ciclo de vida de IA previsivel, auditavel e observavel |
+| Etica, Transparencia e Gestao de Risco | Seguranca, Dados, Sociedade | Responsabilidade, regras, conhecimento e papeis de controle | Introduz avaliacao de impacto algoritmico, conformidade legal, transparencia ativa, explicabilidade proporcional ao risco, mitigacao de vieses e supervisao humana | Risco reduzido e responsabilizacao demonstravel |
 | Impacto Social e Valor | Sociedade, Estrategia, Negocios | Cadeia de valor, entrega de servicos, produtividade e resultado | Mede valor publico, inclusao, confianca, acessibilidade, melhoria do servico e retorno institucional da IA | Uso de IA legitimado por beneficio social e institucional mensuravel |
 
 ## 5. Indicadores Prioritarios de Maturidade
@@ -97,49 +97,49 @@ Faixas sugeridas para o indice geral:
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
 | EG1 | Cobertura de politica e estrategia de IA | Estrutural, leading, maior e melhor | (unidades ou processos com politica, objetivos e diretrizes de IA formalizados / total de unidades ou processos com uso de IA) x 100 | politica aprovada, mapa estrategico, normativos, plano de IA | semestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| EG2 | Governanca do portfolio de casos de uso de IA | Processo, leading, maior e melhor | (casos de uso com patrocinador, business case, classificacao de risco e prioridade formal / total de casos de uso de IA) x 100 | portfolio de IA, atas de comite, criterios de priorizacao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| EG3 | Rastreabilidade de decisoes e artefatos de IA | Processo, leading, maior e melhor | (decisoes relevantes com registro de prompt, modelo, versao, dados, responsavel e justificativa / total de decisoes relevantes de IA) x 100 | repositorio de prompts, model registry, log decisorio, changelog | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| EG2 | Governanca do portfolio de casos de uso de IA | Processo, antecipador, maior e melhor | (casos de uso com patrocinador, estudo de viabilidade, classificacao de risco e prioridade formal / total de casos de uso de IA) x 100 | portfolio de IA, atas de comite, criterios de priorizacao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| EG3 | Rastreabilidade de decisoes e artefatos de IA | Processo, antecipador, maior e melhor | (decisoes relevantes com registro de prompt, modelo, versao, dados, responsavel e justificativa / total de decisoes relevantes de IA) x 100 | repositorio de prompts, registro de modelos, registro decisorio, historico de mudancas | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
 
 ### 5.2 Dados e Infraestrutura
 
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
-| DI1 | Cobertura de catalogo e linhagem de dados e modelos | Estrutural, leading, maior e melhor | (datasets, features, modelos e endpoints catalogados com origem, base legal e linhagem / total de ativos de IA) x 100 | catalogo de dados, inventario de modelos, data lineage, dicionario de dados | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| DI2 | Conformidade de protecao de dados e acessos | Processo, leading, maior e melhor | (ativos de IA com controle de acesso, retencao, criptografia e revisao de privilegios aderentes / total de ativos de IA) x 100 | matriz de acesso, logs, politica de retencao, controles tecnicos | mensal | N1: <30%; N2: 30-49%; N3: 50-74%; N4: 75-89%; N5: >=90% |
-| DI3 | Disponibilidade da infraestrutura critica de IA | Resultado, lagging, maior e melhor | (tempo disponivel da infraestrutura critica de IA / tempo total observado) x 100 | dashboards, SLAs, logs de indisponibilidade, monitoramento | mensal | N1: <95,0%; N2: 95,0-96,9%; N3: 97,0-98,4%; N4: 98,5-99,4%; N5: >=99,5% |
+| DI1 | Cobertura de catalogo e linhagem de dados e modelos | Estrutural, antecipador, maior e melhor | (conjuntos de dados, atributos, modelos e interfaces de servico catalogados com origem, base legal e linhagem / total de ativos de IA) x 100 | catalogo de dados, inventario de modelos, linhagem de dados, dicionario de dados | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| DI2 | Conformidade de protecao de dados e acessos | Processo, antecipador, maior e melhor | (ativos de IA com controle de acesso, retencao, criptografia e revisao de privilegios aderentes / total de ativos de IA) x 100 | matriz de acesso, registros de eventos, politica de retencao, controles tecnicos | mensal | N1: <30%; N2: 30-49%; N3: 50-74%; N4: 75-89%; N5: >=90% |
+| DI3 | Disponibilidade da infraestrutura critica de IA | Resultado, retrospectivo, maior e melhor | (tempo disponivel da infraestrutura critica de IA / tempo total observado) x 100 | paineis, acordos de nivel de servico, registros de indisponibilidade, monitoramento | mensal | N1: <95,0%; N2: 95,0-96,9%; N3: 97,0-98,4%; N4: 98,5-99,4%; N5: >=99,5% |
 
 ### 5.3 Talento e Cultura
 
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
-| TC1 | Cobertura de papeis criticos de IA formalmente atribuidos | Estrutural, leading, maior e melhor | (papeis criticos ocupados e formalizados: dono do caso de uso, gestor de dados, risco, MLOps, revisor humano / total de papeis criticos previstos) x 100 | matriz RACI, organograma, designacoes formais | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| TC1 | Cobertura de papeis criticos de IA formalmente atribuidos | Estrutural, antecipador, maior e melhor | (papeis criticos ocupados e formalizados: dono do caso de uso, gestor de dados, risco, operacao de ML, revisor humano / total de papeis criticos previstos) x 100 | matriz RACI, organograma, designacoes formais | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
 | TC2 | Capacitacao aplicada em governanca e operacao de IA | Processo, leading, maior e melhor | media de horas anuais de capacitacao aplicada por colaborador-chave de IA | trilhas formativas, certificados, plano anual de capacitacao | semestral | N1: <4h; N2: 4-8h; N3: >8-16h; N4: >16-24h; N5: >24h |
-| TC3 | Aderencia a segregacao entre ideacao e producao | Processo, leading, maior e melhor | (implantacoes de IA em producao revisadas/aprovadas por ator distinto do autor da ideacao principal / total de implantacoes em producao) x 100 | workflow de aprovacao, pipeline, atas, registros de change | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| TC3 | Aderencia a segregacao entre ideacao e producao | Processo, antecipador, maior e melhor | (implantacoes de IA em producao revisadas/aprovadas por ator distinto do autor da ideacao principal / total de implantacoes em producao) x 100 | fluxo de aprovacao, esteira, atas, registros de mudanca | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
 
 ### 5.4 Desenvolvimento e Operacao de IA (DevOps/MLOps)
 
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
-| DO1 | Cobertura de especificacao antes de codigo ou ajuste de modelo | Processo, leading, maior e melhor | (iniciativas de IA com template completo de especificacao antes de desenvolvimento / total de iniciativas iniciadas) x 100 | backlog, especificacoes aprovadas, repositorio de requisitos | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| DO2 | Cobertura de testes e validacoes de IA no pipeline | Processo, leading, maior e melhor | (pipelines com testes funcionais, de seguranca, qualidade, vies, drift e fallback / total de pipelines de IA) x 100 | CI/CD, relatórios de testes, evidencias de aprovacao | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| DO3 | Cobertura de observabilidade obrigatoria | Processo, leading, maior e melhor | (servicos de IA com logs de entrada/saida, prompts, modelos, alertas, trilha de auditoria e monitoramento ativo / total de servicos de IA) x 100 | dashboards, traces, logs, alertas, runbooks | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| DO4 | Tempo medio de resposta a incidentes de IA (MTTR) | Resultado, lagging, menor e melhor | soma do tempo entre deteccao e mitigacao dos incidentes / total de incidentes no periodo | sistema de incidentes, post-mortems, logs operacionais | mensal | N1: >168h; N2: 72-168h; N3: >24-72h; N4: >8-24h; N5: <=8h |
+| DO1 | Cobertura de especificacao antes de codigo ou ajuste de modelo | Processo, antecipador, maior e melhor | (iniciativas de IA com modelo padrao completo de especificacao antes de desenvolvimento / total de iniciativas iniciadas) x 100 | backlog, especificacoes aprovadas, repositorio de requisitos | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| DO2 | Cobertura de testes e validacoes de IA na esteira | Processo, antecipador, maior e melhor | (esteiras com testes funcionais, de seguranca, qualidade, vies, deriva e contingencia / total de esteiras de IA) x 100 | integracao e entrega continuas, relatórios de testes, evidencias de aprovacao | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| DO3 | Cobertura de observabilidade obrigatoria | Processo, antecipador, maior e melhor | (servicos de IA com registros de entrada e saida, prompts, modelos, alertas, trilha de auditoria e monitoramento ativo / total de servicos de IA) x 100 | paineis, rastros, registros, alertas, roteiros operacionais | mensal | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| DO4 | Tempo medio de resposta a incidentes de IA (MTTR) | Resultado, retrospectivo, menor e melhor | soma do tempo entre deteccao e mitigacao dos incidentes / total de incidentes no periodo | sistema de incidentes, analises pos-incidente, registros operacionais | mensal | N1: >168h; N2: 72-168h; N3: >24-72h; N4: >8-24h; N5: <=8h |
 
 ### 5.5 Etica, Transparencia e Gestao de Risco
 
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
-| ER1 | Cobertura de avaliacao etica e de risco algoritmico | Processo, leading, maior e melhor | (casos de uso medio/alto risco com avaliacao de impacto, mitigacoes e aprovacao / total de casos medio/alto risco) x 100 | AIA, matriz de risco, pareceres, plano de mitigacao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| ER2 | Transparencia ao usuario e ao afetado pela IA | Resultado, leading, maior e melhor | (servicos com aviso de uso de IA, finalidade, canais de recurso e explicacao proporcional / total de servicos com IA voltados a usuarios) x 100 | telas, termos de uso, comunicados, manual do usuario | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| ER3 | Conformidade etica e regulatoria apos auditoria | Resultado, lagging, maior e melhor | (avaliacoes, auditorias ou revisoes sem nao conformidade critica / total de avaliacoes, auditorias ou revisoes) x 100 | auditorias, pareceres juridicos, planos de acao | semestral | N1: <50%; N2: 50-64%; N3: 65-79%; N4: 80-94%; N5: >=95% |
+| ER1 | Cobertura de avaliacao etica e de risco algoritmico | Processo, antecipador, maior e melhor | (casos de uso medio/alto risco com avaliacao de impacto, mitigacoes e aprovacao / total de casos medio/alto risco) x 100 | AIA, matriz de risco, pareceres, plano de mitigacao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| ER2 | Transparencia ao usuario e ao afetado pela IA | Resultado, antecipador, maior e melhor | (servicos com aviso de uso de IA, finalidade, canais de recurso e explicacao proporcional / total de servicos com IA voltados a usuarios) x 100 | telas, termos de uso, comunicados, manual do usuario | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| ER3 | Conformidade etica e regulatoria apos auditoria | Resultado, retrospectivo, maior e melhor | (avaliacoes, auditorias ou revisoes sem nao conformidade critica / total de avaliacoes, auditorias ou revisoes) x 100 | auditorias, pareceres juridicos, planos de acao | semestral | N1: <50%; N2: 50-64%; N3: 65-79%; N4: 80-94%; N5: >=95% |
 
 ### 5.6 Impacto Social e Valor
 
 | Codigo | Indicador | Qualificacao | Formula de medicao | Evidencias minimas | Periodicidade | Regra de leitura |
 | --- | --- | --- | --- | --- | --- | --- |
-| IV1 | Taxa de metas de valor atingidas por iniciativas de IA | Resultado, lagging, maior e melhor | (iniciativas de IA que atingiram metas pactuadas de eficiencia, qualidade ou alcance / total de iniciativas avaliadas) x 100 | business case, painel de beneficios, relatorios gerenciais | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| IV2 | Cobertura de acessibilidade e inclusao nos servicos com IA | Resultado, leading, maior e melhor | (servicos com IA aderentes a requisitos de acessibilidade, linguagem clara e canais alternativos / total de servicos com IA) x 100 | testes de acessibilidade, jornadas de usuario, evidencias de inclusao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
-| IV3 | Confianca e satisfacao do usuario com servicos apoiados por IA | Resultado, lagging, maior e melhor | media ponderada de satisfacao/confiança em escala de 1 a 5 | pesquisas, ouvidoria, analytics de experiencia, entrevistas | trimestral | N1: <2,5; N2: 2,5-2,9; N3: 3,0-3,7; N4: >3,7-4,3; N5: >4,3 |
+| IV1 | Taxa de metas de valor atingidas por iniciativas de IA | Resultado, retrospectivo, maior e melhor | (iniciativas de IA que atingiram metas pactuadas de eficiencia, qualidade ou alcance / total de iniciativas avaliadas) x 100 | estudo de viabilidade, painel de beneficios, relatorios gerenciais | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| IV2 | Cobertura de acessibilidade e inclusao nos servicos com IA | Resultado, antecipador, maior e melhor | (servicos com IA aderentes a requisitos de acessibilidade, linguagem clara e canais alternativos / total de servicos com IA) x 100 | testes de acessibilidade, jornadas de usuario, evidencias de inclusao | trimestral | N1: <20%; N2: 20-39%; N3: 40-69%; N4: 70-89%; N5: >=90% |
+| IV3 | Confianca e satisfacao do usuario com servicos apoiados por IA | Resultado, retrospectivo, maior e melhor | media ponderada de satisfacao/confiança em escala de 1 a 5 | pesquisas, ouvidoria, analises de experiencia, entrevistas | trimestral | N1: <2,5; N2: 2,5-2,9; N3: 3,0-3,7; N4: >3,7-4,3; N5: >4,3 |
 
 ## 6. Qualificacao Sintetica dos Indicadores
 
@@ -149,10 +149,10 @@ Os indicadores foram qualificados segundo tres camadas complementares:
 2. Processo: medem a disciplina operacional, a repetibilidade do ciclo de vida, a conformidade dos fluxos e a observabilidade obrigatoria.
 3. Resultado: mostram se a governanca efetivamente reduz risco, sustenta confiabilidade e gera valor publico mensuravel.
 
-Adicionalmente, o conjunto foi equilibrado entre indicadores leading e lagging:
+Adicionalmente, o conjunto foi equilibrado entre indicadores antecipadores e retrospectivos:
 
-1. Leading: antecipam maturidade e capacidade de controle antes da materializacao dos riscos.
-2. Lagging: mostram o desempenho real ja observado, inclusive incidentes, conformidade e percepcao de valor.
+1. Antecipadores: antecipam maturidade e capacidade de controle antes da materializacao dos riscos.
+2. Retrospectivos: mostram o desempenho real ja observado, inclusive incidentes, conformidade e percepcao de valor.
 
 Essa combinacao evita dois erros comuns:
 
@@ -161,11 +161,11 @@ Essa combinacao evita dois erros comuns:
 
 ## 7. Leitura Gerencial por Dimensao
 
-- Estrategia e Governanca de IA: verifica se a IA e tratada como capability institucional, com prioridade, ownership e rastreabilidade.
+- Estrategia e Governanca de IA: verifica se a IA e tratada como capacidade institucional, com prioridade, responsabilizacao e rastreabilidade.
 - Dados e Infraestrutura: verifica se o ecossistema de dados e plataformas sustenta IA de forma segura, estavel e auditavel.
 - Talento e Cultura: verifica se a responsabilidade humana esta distribuida por papeis, competencias e mecanismos de segregacao.
 - Desenvolvimento e Operacao de IA (DevOps/MLOps): verifica se a organizacao respeita o principio de especificacao primaria e mantem operacao observavel.
-- Etica, Transparencia e Gestao de Risco: verifica se a IA opera sob accountability, supervisao, proporcionalidade e mitigacao de dano.
+- Etica, Transparencia e Gestao de Risco: verifica se a IA opera sob responsabilizacao, supervisao, proporcionalidade e mitigacao de dano.
 - Impacto Social e Valor: verifica se a IA melhora servicos, preserva inclusao e gera legitimidade institucional.
 
 ## 8. Critérios de Aceitacao
@@ -194,7 +194,7 @@ O modelo sera considerado aderente as diretrizes do FACIN_IA quando:
 
 1. IA nunca inicia pelo codigo.
 2. Todo uso de IA deve partir de especificacao formal ou prompt contratual versionado.
-3. Prompts, modelos, datasets e decisoes devem ser rastreaveis.
+3. Prompts, modelos, conjuntos de dados e decisoes devem ser rastreaveis.
 4. Casos de medio e alto risco nao podem operar sem avaliacao etica e de risco.
 5. Ambientes de ideacao e producao devem permanecer segregados.
 6. Observabilidade e trilha de auditoria sao obrigatorias.

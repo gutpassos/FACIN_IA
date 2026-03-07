@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>FACIN IA Planilha Avaliacao</title>
+  <title>FACIN_IA - Planilha de Avaliação com Pontuação Automática</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
     h1, h2, h3 { color: #0b3a66; }
@@ -75,7 +75,7 @@
 <h3 id="aba-resumo">Aba Resumo</h3>
 <p>Apresenta:</p>
 <ol>
-<li>score por dimensão;</li>
+<li>pontuação por dimensão;</li>
 <li>índice geral ponderado;</li>
 <li>classificação de maturidade;</li>
 <li>situação da barreira institucional para os níveis 4 e 5.</li>
@@ -103,13 +103,13 @@ Nota =
 1, &amp; valor &gt; t2
 \end{cases}
 $$</p>
-<h2 id="formula-de-score-por-dimensao">Fórmula de score por dimensão</h2>
+<h2 id="formula-de-pontuacao-por-dimensao">Fórmula de pontuação por dimensão</h2>
 <p>$$
-Score_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
+Pontuacao_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
 $$</p>
 <h2 id="formula-do-indice-geral">Fórmula do índice geral</h2>
 <p>$$
-Índice\ Geral = \sum (Score_{dim} \times Peso_{dim})
+Índice\ Geral = \sum (Pontuacao_{dim} \times Peso_{dim})
 $$</p>
 <h2 id="faixas-de-classificacao-automatica">Faixas de classificação automática</h2>
 <table>

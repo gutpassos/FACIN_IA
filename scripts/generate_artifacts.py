@@ -24,25 +24,25 @@ DIMENSION_WEIGHTS = [
 ]
 
 INDICATORS = [
-    ("Estratégia e Governança de IA", "EG1", "Cobertura de política e estratégia de IA", "percentual", "high", 30, 30, 50, 75, 90, False),
-    ("Estratégia e Governança de IA", "EG2", "Governança do portfólio de casos de uso de IA", "percentual", "high", 30, 30, 50, 75, 90, False),
-    ("Estratégia e Governança de IA", "EG3", "Rastreabilidade de decisões e artefatos de IA", "percentual", "high", 40, 30, 50, 75, 90, False),
-    ("Dados e Infraestrutura", "DI1", "Cobertura de catálogo e linhagem de dados e modelos", "percentual", "high", 35, 35, 55, 75, 90, False),
-    ("Dados e Infraestrutura", "DI2", "Conformidade de proteção de dados e acessos", "percentual", "high", 40, 40, 60, 80, 95, True),
-    ("Dados e Infraestrutura", "DI3", "Disponibilidade da infraestrutura crítica de IA", "percentual", "high", 25, 97.0, 98.0, 99.0, 99.7, False),
-    ("Talento e Cultura", "TC1", "Cobertura de papéis críticos de IA formalmente atribuídos", "percentual", "high", 35, 30, 50, 75, 90, False),
-    ("Talento e Cultura", "TC2", "Capacitação aplicada em governança e operação de IA", "horas", "high", 25, 6, 12, 20, 32, False),
-    ("Talento e Cultura", "TC3", "Aderência à segregação entre ideação e produção", "percentual", "high", 40, 30, 50, 75, 90, False),
-    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO1", "Cobertura de especificação antes de código ou ajuste de modelo", "percentual", "high", 25, 35, 55, 80, 95, False),
-    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO2", "Cobertura de testes e validações de IA no pipeline", "percentual", "high", 30, 35, 55, 80, 95, True),
-    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO3", "Cobertura de observabilidade obrigatória", "percentual", "high", 25, 35, 55, 80, 95, True),
-    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO4", "Tempo médio de resposta a incidentes de IA (MTTR)", "horas", "low", 20, 72, 36, 12, 4, False),
-    ("Ética, Transparência e Gestão de Risco", "ER1", "Cobertura de avaliação ética e de risco algorítmico", "percentual", "high", 40, 35, 60, 80, 95, True),
-    ("Ética, Transparência e Gestão de Risco", "ER2", "Transparência ao usuário e ao afetado pela IA", "percentual", "high", 25, 35, 55, 80, 95, False),
-    ("Ética, Transparência e Gestão de Risco", "ER3", "Conformidade ética e regulatória após auditoria", "percentual", "high", 35, 60, 75, 90, 98, True),
-    ("Impacto Social e Valor", "IV1", "Taxa de metas de valor atingidas por iniciativas de IA", "percentual", "high", 40, 30, 50, 75, 90, False),
-    ("Impacto Social e Valor", "IV2", "Cobertura de acessibilidade e inclusão nos serviços com IA", "percentual", "high", 25, 35, 55, 80, 95, False),
-    ("Impacto Social e Valor", "IV3", "Confiança e satisfação do usuário com serviços apoiados por IA", "escala_1_5", "high", 35, 2.8, 3.4, 4.0, 4.5, False),
+    ("Estratégia e Governança de IA", "EG1", "Cobertura de política e estratégia de IA", "percentual", "maior_melhor", 30, 30, 50, 75, 90, False),
+    ("Estratégia e Governança de IA", "EG2", "Governança do portfólio de casos de uso de IA", "percentual", "maior_melhor", 30, 30, 50, 75, 90, False),
+    ("Estratégia e Governança de IA", "EG3", "Rastreabilidade de decisões e artefatos de IA", "percentual", "maior_melhor", 40, 30, 50, 75, 90, False),
+    ("Dados e Infraestrutura", "DI1", "Cobertura de catálogo e linhagem de dados e modelos", "percentual", "maior_melhor", 35, 35, 55, 75, 90, False),
+    ("Dados e Infraestrutura", "DI2", "Conformidade de proteção de dados e acessos", "percentual", "maior_melhor", 40, 40, 60, 80, 95, True),
+    ("Dados e Infraestrutura", "DI3", "Disponibilidade da infraestrutura crítica de IA", "percentual", "maior_melhor", 25, 97.0, 98.0, 99.0, 99.7, False),
+    ("Talento e Cultura", "TC1", "Cobertura de papéis críticos de IA formalmente atribuídos", "percentual", "maior_melhor", 35, 30, 50, 75, 90, False),
+    ("Talento e Cultura", "TC2", "Capacitação aplicada em governança e operação de IA", "horas", "maior_melhor", 25, 6, 12, 20, 32, False),
+    ("Talento e Cultura", "TC3", "Aderência à segregação entre ideação e produção", "percentual", "maior_melhor", 40, 30, 50, 75, 90, False),
+    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO1", "Cobertura de especificação antes de código ou ajuste de modelo", "percentual", "maior_melhor", 25, 35, 55, 80, 95, False),
+    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO2", "Cobertura de testes e validações de IA na esteira", "percentual", "maior_melhor", 30, 35, 55, 80, 95, True),
+    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO3", "Cobertura de observabilidade obrigatória", "percentual", "maior_melhor", 25, 35, 55, 80, 95, True),
+    ("Desenvolvimento e Operação de IA (DevOps/MLOps)", "DO4", "Tempo médio de resposta a incidentes de IA (MTTR)", "horas", "menor_melhor", 20, 72, 36, 12, 4, False),
+    ("Ética, Transparência e Gestão de Risco", "ER1", "Cobertura de avaliação ética e de risco algorítmico", "percentual", "maior_melhor", 40, 35, 60, 80, 95, True),
+    ("Ética, Transparência e Gestão de Risco", "ER2", "Transparência ao usuário e ao afetado pela IA", "percentual", "maior_melhor", 25, 35, 55, 80, 95, False),
+    ("Ética, Transparência e Gestão de Risco", "ER3", "Conformidade ética e regulatória após auditoria", "percentual", "maior_melhor", 35, 60, 75, 90, 98, True),
+    ("Impacto Social e Valor", "IV1", "Taxa de metas de valor atingidas por iniciativas de IA", "percentual", "maior_melhor", 40, 30, 50, 75, 90, False),
+    ("Impacto Social e Valor", "IV2", "Cobertura de acessibilidade e inclusão nos serviços com IA", "percentual", "maior_melhor", 25, 35, 55, 80, 95, False),
+    ("Impacto Social e Valor", "IV3", "Confiança e satisfação do usuário com serviços apoiados por IA", "escala_1_5", "maior_melhor", 35, 2.8, 3.4, 4.0, 4.5, False),
 ]
 
 
@@ -81,7 +81,7 @@ def build_workbook() -> None:
     instruction_lines = [
         "1. Preencha apenas as colunas 'Valor apurado', 'Evidência principal' e 'Observações' na aba Avaliação.",
         "2. A nota automática do indicador é calculada a partir dos limiares parametrizados.",
-        "3. O score da dimensão é ponderado pelos pesos internos dos indicadores.",
+        "3. A pontuação da dimensão é ponderada pelos pesos internos dos indicadores.",
         "4. O índice geral é ponderado pelos pesos das seis dimensões.",
         "5. A classificação final aplica as barreiras institucionais da PRODEMGE.",
     ]
@@ -133,7 +133,7 @@ def build_workbook() -> None:
     for row_idx, row in enumerate(INDICATORS, start=2):
         dim, code, name, unit, polarity, weight, t2, t3, t4, t5, critical = row
         ws_eval.append([dim, code, name, unit, polarity, weight, t2, t3, t4, t5, None, None, critical, "", ""])
-        if polarity == "high":
+        if polarity == "maior_melhor":
             formula = (
                 f'=IF(K{row_idx}="","",IF(K{row_idx}<G{row_idx},1,'
                 f'IF(K{row_idx}<H{row_idx},2,IF(K{row_idx}<I{row_idx},3,'
@@ -149,7 +149,7 @@ def build_workbook() -> None:
     style_sheet_header(ws_eval, 1)
     autosize(ws_eval)
 
-    ws_summary.append(["Dimensão", "Peso_dimensão", "Score_dimensão"])
+    ws_summary.append(["Dimensão", "Peso_dimensão", "Pontuação_dimensão"])
     for idx, (dimension, weight) in enumerate(DIMENSION_WEIGHTS, start=2):
         ws_summary[f"A{idx}"] = dimension
         ws_summary[f"B{idx}"] = weight
@@ -169,7 +169,7 @@ def build_workbook() -> None:
     )
     ws_summary["A12"] = "Barreira níveis críticos"
     ws_summary["C12"] = '=MIN(C3,C5,C6)'
-    ws_summary["A13"] = "Menor score geral"
+    ws_summary["A13"] = "Menor pontuação geral"
     ws_summary["C13"] = '=MIN(C2:C7)'
     ws_summary["A14"] = "Menor nota de indicador crítico"
     ws_summary["C14"] = '=MINIFS(\'Avaliação\'!L2:L20,\'Avaliação\'!M2:M20,TRUE)'
@@ -213,6 +213,13 @@ def markdown_to_html(title: str, md_text: str) -> str:
 </body>
 </html>
 """
+
+
+def extract_title(md_path: Path, md_text: str) -> str:
+    for raw_line in md_text.splitlines():
+        if raw_line.startswith("# "):
+            return raw_line[2:].strip()
+    return md_path.stem.replace("_", " ")
 
 
 def markdown_to_pdf(md_text: str, pdf_path: Path) -> None:
@@ -286,11 +293,13 @@ def markdown_to_pdf(md_text: str, pdf_path: Path) -> None:
 
 def convert_markdown_documents(paths: Iterable[Path]) -> None:
     for md_path in paths:
-        title = md_path.stem.replace("_", " ")
         md_text = md_path.read_text(encoding="utf-8")
+        title = extract_title(md_path, md_text)
+        md_output_path = DOCS_DIR / f"{md_path.stem}.md"
         html_text = markdown_to_html(title, md_text)
         html_path = DOCS_DIR / f"{md_path.stem}.html"
         pdf_path = DOCS_DIR / f"{md_path.stem}.pdf"
+        md_output_path.write_text(md_text, encoding="utf-8")
         html_path.write_text(html_text, encoding="utf-8")
         markdown_to_pdf(md_text, pdf_path)
 

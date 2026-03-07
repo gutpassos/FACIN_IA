@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
-  <title>FACIN IA Modelo Avaliacao</title>
+  <title>FACIN_IA - Modelo de Avaliação de Maturidade</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
     h1, h2, h3 { color: #0b3a66; }
@@ -38,7 +38,7 @@
 <tr>
 <td>Estratégia e Governança de IA</td>
 <td>carteira de casos de uso, patrocínio executivo, comitê de IA, regras de decisão e rastreabilidade</td>
-<td>alinhamento estratégico e accountability</td>
+<td>alinhamento estratégico e responsabilização</td>
 </tr>
 <tr>
 <td>Dados e Infraestrutura</td>
@@ -52,7 +52,7 @@
 </tr>
 <tr>
 <td>Desenvolvimento e Operação de IA</td>
-<td>SDD, testes, versionamento, observabilidade, resposta a incidentes e rollback</td>
+<td>SDD, testes, versionamento, observabilidade, resposta a incidentes e reversão controlada</td>
 <td>previsibilidade operacional</td>
 </tr>
 <tr>
@@ -105,11 +105,11 @@
 <h2 id="formula-de-pontuacao-ajustada">Fórmula de pontuação ajustada</h2>
 <p>Pontuação da dimensão:</p>
 <p>$$
-Score_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
+Pontuacao_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
 $$</p>
 <p>Índice geral:</p>
 <p>$$
-Índice\ Geral = \sum (Score_{dim} \times Peso_{dim})
+Índice\ Geral = \sum (Pontuacao_{dim} \times Peso_{dim})
 $$</p>
 <p>Regra de barreira institucional:</p>
 <ol>
@@ -340,6 +340,51 @@ $$</p>
 </tr>
 </tbody>
 </table>
+<h2 id="interpretacao-de-cada-indicador">Interpretação de cada indicador</h2>
+<h3 id="estrategia-e-governanca-de-ia_1">Estratégia e Governança de IA</h3>
+<p><strong>EG1 - Cobertura de política e estratégia de IA</strong></p>
+<p>Esse indicador mede o quanto o uso de IA já está formalmente reconhecido pela organização, com diretrizes, objetivos, prioridades e limites definidos. Na prática, ele mostra se a IA ainda depende de iniciativas isoladas ou se já existe orientação institucional clara para decidir onde usar, como usar e com quais critérios de controle. Quanto maior o percentual, menor a dependência de decisões casuísticas e maior a coerência entre iniciativas.</p>
+<p><strong>EG2 - Governança do portfólio de casos de uso de IA</strong></p>
+<p>Esse indicador mede a qualidade da gestão da carteira de iniciativas de IA. O foco não é apenas saber quantos casos existem, mas quantos deles possuem patrocinador, justificativa, classificação de risco e prioridade formal. A relevância dele está em evitar experimentação dispersa, projetos sem dono e iniciativas sem alinhamento estratégico. Um valor alto indica que a organização decide com método quais casos avançam, quais exigem mais controle e quais realmente geram valor institucional.</p>
+<p><strong>EG3 - Rastreabilidade de decisões e artefatos de IA</strong></p>
+<p>Esse indicador mede se decisões relevantes tomadas com apoio de IA podem ser reconstruídas posteriormente. Isso inclui saber qual prompt foi usado, qual modelo e versão estavam ativos, quais dados serviram de base, quem aprovou e qual foi a justificativa. É um dos indicadores mais importantes para auditoria, responsabilização e gestão de incidentes. Quanto maior a cobertura, maior a capacidade de investigar erros, revisar condutas e aprender institucionalmente.</p>
+<h3 id="dados-e-infraestrutura_1">Dados e Infraestrutura</h3>
+<p><strong>DI1 - Cobertura de catálogo e linhagem de dados e modelos</strong></p>
+<p>Esse indicador mede o grau de conhecimento formal sobre os ativos que sustentam a IA. Ele verifica se conjuntos de dados, atributos, modelos e interfaces de serviço estão identificados, catalogados e conectados à sua origem e ao seu uso. Sua relevância está em impedir a operação sobre ativos obscuros ou sem histórico confiável. Um resultado alto indica que a organização conhece o que usa, de onde veio, para que serve e quais dependências precisam ser controladas.</p>
+<p><strong>DI2 - Conformidade de proteção de dados e acessos</strong></p>
+<p>Esse indicador mede se os ativos de IA operam com controles adequados de acesso, retenção, criptografia e revisão de privilégios. Ele é crítico porque protege a organização contra uso indevido de dados, exposição indevida de informações e violações regulatórias. No contexto da PRODEMGE, ele tem peso alto porque falhas nessa camada podem gerar impacto jurídico, operacional e reputacional relevante. Um valor alto mostra que a infraestrutura de IA não está apenas funcionando, mas funcionando sob controle.</p>
+<p><strong>DI3 - Disponibilidade da infraestrutura crítica de IA</strong></p>
+<p>Esse indicador mede a continuidade operacional dos ambientes e serviços que sustentam a IA. O interesse aqui não é conceitual, mas operacional: saber se a organização consegue manter a IA disponível com estabilidade compatível com serviços críticos. Sua relevância é direta para confiança institucional e qualidade do serviço. Quanto maior a disponibilidade, maior a resiliência técnica da operação.</p>
+<h3 id="talento-e-cultura_1">Talento e Cultura</h3>
+<p><strong>TC1 - Cobertura de papéis críticos de IA formalmente atribuídos</strong></p>
+<p>Esse indicador mede se os papéis essenciais para governar IA foram explicitamente designados. Isso inclui, por exemplo, dono do caso de uso, gestor de dados, responsável por risco, operação e supervisão humana. A relevância dele está em transformar responsabilidade difusa em responsabilização verificável. A matriz RACI, o organograma e as designações formais servem como evidência justamente porque demonstram quem executa, quem responde, quem participa e quem deve ser informado. Um valor alto indica prontidão institucional, e não apenas disponibilidade técnica.</p>
+<p><strong>TC2 - Capacitação aplicada em governança e operação de IA</strong></p>
+<p>Esse indicador mede a intensidade da formação prática dos colaboradores-chave envolvidos com IA. O foco não é treinamento genérico, mas capacitação útil para governança, risco, operação, dados, segurança e supervisão. Sua relevância está em reduzir dependência de conhecimento tácito e aumentar a capacidade institucional de operar IA com consistência. Um resultado alto sinaliza que a organização está construindo competência, e não apenas usando ferramentas.</p>
+<p><strong>TC3 - Aderência à segregação entre ideação e produção</strong></p>
+<p>Esse indicador mede se quem concebe ou propõe a solução de IA é diferente de quem autoriza ou revisa sua entrada em produção. Ele existe para reduzir conflito de interesse, vieses de confirmação e decisões sem controle independente. É um indicador importante porque reforça uma das diretrizes operacionais do FACIN_IA: separar criação e liberação produtiva. Quanto maior o percentual, maior a maturidade de controle e revisão institucional.</p>
+<h3 id="desenvolvimento-e-operacao-de-ia-devopsmlops_1">Desenvolvimento e Operação de IA (DevOps/MLOps)</h3>
+<p><strong>DO1 - Cobertura de especificação antes de código ou ajuste de modelo</strong></p>
+<p>Esse indicador mede o grau de adesão ao princípio central do FACIN_IA de que a IA deve executar especificações governadas. Ele verifica se a iniciativa começou com requisitos, restrições, critérios de aceitação e definição de uso, antes da implementação técnica. Sua relevância está em reduzir improviso, retrabalho e soluções tecnicamente sofisticadas, mas mal governadas. Um valor alto mostra disciplina de entrada e melhor previsibilidade ao longo do ciclo de vida.</p>
+<p><strong>DO2 - Cobertura de testes e validações de IA no pipeline</strong></p>
+<p>Esse indicador mede quantas esteiras de IA incorporam testes funcionais, de segurança, de qualidade, de viés, de deriva e de contingência. Ele é central porque traduz governança em mecanismo automático de prevenção. Não basta confiar em revisão manual ou boa intenção; é preciso ter barreiras técnicas no processo de entrega. Um valor alto indica que a organização incorporou controles repetíveis e auditáveis no fluxo de operação.</p>
+<p><strong>DO3 - Cobertura de observabilidade obrigatória</strong></p>
+<p>Esse indicador mede se os serviços de IA registram e monitoram elementos essenciais da operação, como entradas, saídas, prompts, versões, alertas e trilhas de auditoria. Ele é decisivo para detectar desvios, investigar incidentes e entender comportamento em produção. Sua relevância aumenta em ambientes públicos e críticos, em que é necessário explicar decisões e recuperar contexto com rapidez. Quanto maior a cobertura, maior a capacidade de vigilância operacional e resposta informada.</p>
+<p><strong>DO4 - Tempo médio de resposta a incidentes de IA (MTTR)</strong></p>
+<p>Esse indicador mede a velocidade com que a organização consegue detectar, tratar e mitigar incidentes relacionados à IA. Diferentemente dos anteriores, ele observa efeito real já ocorrido. Sua relevância está em mostrar se a operação consegue reagir com agilidade quando algo falha, deriva ou produz comportamento inadequado. Como a polaridade é inversa, menor tempo significa melhor maturidade. Um valor baixo demonstra prontidão operacional e capacidade de contenção.</p>
+<h3 id="etica-transparencia-e-gestao-de-risco_1">Ética, Transparência e Gestão de Risco</h3>
+<p><strong>ER1 - Cobertura de avaliação ética e de risco algorítmico</strong></p>
+<p>Esse indicador mede quantos casos de médio e alto risco passam por avaliação estruturada de impacto, mitigação e aprovação antes ou durante a operação. Ele é um dos principais controles de legitimidade do modelo, porque impede que soluções sensíveis avancem sem exame proporcional de risco. Sua relevância é alta em serviços públicos, onde vieses, opacidade ou automatização inadequada podem afetar direitos e acesso a serviços. Um resultado alto mostra prudência institucional antes do dano.</p>
+<p><strong>ER2 - Transparência ao usuário e ao afetado pela IA</strong></p>
+<p>Esse indicador mede se os serviços informam de forma adequada que usam IA, para qual finalidade, quais limites existem e por quais canais o usuário pode buscar revisão ou recurso. Ele é importante porque governança de IA não termina dentro da organização; ela também precisa ser percebida por quem sofre seus efeitos. Quanto maior o percentual, maior a aderência a princípios de transparência, explicabilidade proporcional e respeito ao usuário.</p>
+<p><strong>ER3 - Conformidade ética e regulatória após auditoria</strong></p>
+<p>Esse indicador mede o resultado das avaliações, auditorias e revisões realizadas sobre as soluções de IA. Ele verifica a proporção de exames concluídos sem não conformidade crítica. Sua relevância está em mostrar se os controles anteriores realmente funcionam quando submetidos a verificação independente. Um valor alto indica robustez real; um valor baixo indica que a governança declarada não está se sustentando na prática.</p>
+<h3 id="impacto-social-e-valor_1">Impacto Social e Valor</h3>
+<p><strong>IV1 - Taxa de metas de valor atingidas por iniciativas de IA</strong></p>
+<p>Esse indicador mede quantas iniciativas realmente entregaram os benefícios pactuados, como eficiência, qualidade, alcance ou ganho institucional. Ele é importante porque impede que a maturidade seja confundida com sofisticação técnica ou volume de projetos. Em governança pública, IA precisa gerar valor verificável. Um resultado alto indica que a carteira de IA entrega resultado concreto, e não apenas atividade.</p>
+<p><strong>IV2 - Cobertura de acessibilidade e inclusão nos serviços com IA</strong></p>
+<p>Esse indicador mede se os serviços apoiados por IA atendem requisitos de acessibilidade, linguagem clara e canais alternativos. Sua relevância está em conectar maturidade técnica a equidade de acesso. Em contexto público, não basta que a solução funcione para a maioria; ela precisa ser utilizável por públicos diversos e não ampliar exclusões existentes. Quanto maior o percentual, maior a aderência da IA ao dever de inclusão e universalidade do serviço.</p>
+<p><strong>IV3 - Confiança e satisfação do usuário com serviços apoiados por IA</strong></p>
+<p>Esse indicador mede a percepção do usuário sobre a qualidade e a confiabilidade dos serviços que usam IA. Ele complementa os demais ao trazer a dimensão externa da governança: como a solução é percebida por quem a utiliza ou é afetado por ela. Sua relevância está em verificar se a combinação entre técnica, controle, transparência e valor está de fato sendo reconhecida na experiência concreta. Uma nota alta indica aceitação, confiança e legitimidade operacional.</p>
 <h2 id="indicadores-criticos-para-a-regra-de-barreira">Indicadores críticos para a regra de barreira</h2>
 <ul>
 <li>DI2 - Conformidade de proteção de dados e acessos</li>

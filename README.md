@@ -13,12 +13,12 @@ Ambiente validado: figmm
 - um modelo de avaliação de maturidade em seis dimensões de governança de IA;
 - uma versão executiva para apresentação institucional;
 - uma especificação de planilha com cálculo automático de pontuação;
-- artefatos prontos em HTML, PDF e XLSX para consulta e uso direto.
+- artefatos prontos em Markdown, HTML, PDF e XLSX para consulta e uso direto.
 
 ## Leitura recomendada
 
-1. [docs/FACIN_IA_Versao_Executiva.html](docs/FACIN_IA_Versao_Executiva.html): visão rápida para apresentação e alinhamento institucional.
-2. [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
+1. [docs/FACIN_IA_Versao_Executiva.md](docs/FACIN_IA_Versao_Executiva.md): visão rápida para apresentação e alinhamento institucional em Markdown.
+2. [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
 3. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
 
 ## Estrutura do repositório
@@ -26,14 +26,17 @@ Ambiente validado: figmm
 - [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): documentação-fonte do modelo de avaliação.
 - [spec/FACIN_IA_Planilha_Avaliacao.md](spec/FACIN_IA_Planilha_Avaliacao.md): especificação funcional da planilha de avaliação.
 - [spec/FACIN_IA_Versao_Executiva.md](spec/FACIN_IA_Versao_Executiva.md): versão executiva em Markdown.
+- [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): cópia publicada em Markdown do modelo de avaliação.
 - [docs/FACIN_IA_Modelo_Avaliacao.html](docs/FACIN_IA_Modelo_Avaliacao.html): versão navegável do modelo de avaliação.
 - [docs/FACIN_IA_Modelo_Avaliacao.pdf](docs/FACIN_IA_Modelo_Avaliacao.pdf): versão em PDF do modelo.
+- [docs/FACIN_IA_Planilha_Avaliacao.md](docs/FACIN_IA_Planilha_Avaliacao.md): cópia publicada em Markdown da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.html](docs/FACIN_IA_Planilha_Avaliacao.html): versão navegável da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.pdf](docs/FACIN_IA_Planilha_Avaliacao.pdf): versão em PDF da especificação da planilha.
+- [docs/FACIN_IA_Versao_Executiva.md](docs/FACIN_IA_Versao_Executiva.md): cópia publicada em Markdown da versão executiva.
 - [docs/FACIN_IA_Versao_Executiva.html](docs/FACIN_IA_Versao_Executiva.html): versão executiva em HTML.
 - [docs/FACIN_IA_Versao_Executiva.pdf](docs/FACIN_IA_Versao_Executiva.pdf): versão executiva em PDF.
 - [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para cálculo da maturidade.
-- [scripts/generate_artifacts.py](scripts/generate_artifacts.py): gerador dos artefatos HTML, PDF e XLSX.
+- [scripts/generate_artifacts.py](scripts/generate_artifacts.py): gerador dos artefatos Markdown, HTML, PDF e XLSX.
 - [errors/erro_weasyprint_pdf.txt](errors/erro_weasyprint_pdf.txt): registro do erro inicial de geração de PDF com WeasyPrint no Windows.
 - [Diretrizes FACIN_IA.txt](Diretrizes%20FACIN_IA.txt): diretrizes obrigatórias do projeto.
 - [FACIN_IA_Projeto.md](FACIN_IA_Projeto.md): documento consolidado da elaboração do projeto.
@@ -67,6 +70,7 @@ A parametrização foi ajustada para a PRODEMGE, considerando o contexto de empr
 
 O gerador está em [scripts/generate_artifacts.py](scripts/generate_artifacts.py). Ele produz:
 
+- cópias em Markdown dos arquivos em spec/ na pasta docs/;
 - HTML a partir dos arquivos em spec/;
 - PDF a partir dos arquivos em spec/;
 - planilha XLSX de avaliação automática em docs/.
