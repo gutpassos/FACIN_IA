@@ -2,7 +2,7 @@
 
 Modelo de maturidade para Governança Aplicada à Inteligência Artificial em organizações públicas e ambientes de desenvolvimento intensivos em IA.
 
-O projeto adapta FACIN, Modelo de Responsabilidade Organizacional (MRO) e Spec-Driven Development (SDD) para avaliar como estratégia, dados, operação, risco, transparência e valor público são governados ao longo do ciclo de vida da IA.
+O projeto adapta o Framework de Arquitetura Corporativa para Interoperabilidade no apoio à Governança (FACIN), Modelo de Responsabilidade Organizacional (MRO) e Spec-Driven Development (SDD) para avaliar como estratégia, dados, operação, risco, transparência e valor público são governados ao longo do ciclo de vida da IA.
 
 Autor: Guttenberg Ferreira Passos  
 Modelo LLM utilizado: GPT-5.4  
