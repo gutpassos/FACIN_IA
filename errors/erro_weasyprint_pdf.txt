@@ -1,0 +1,27 @@
+Erro registrado durante a primeira tentativa de geração dos PDFs a partir do script de artefatos.
+
+Data do registro: 7 de março de 2026
+Projeto: FACIN_IA
+Ambiente: figmm
+
+Resumo do erro:
+
+- A geração de HTML foi possível.
+- A geração de PDF com WeasyPrint falhou no Windows por dependência nativa ausente.
+- O processo foi refeito com ReportLab para viabilizar a geração de PDFs sem instalação adicional fora do ambiente permitido.
+
+Saída relevante:
+
+WeasyPrint could not import some external libraries.
+OSError: cannot load library 'libpango-1.0-0': error 0x7e.
+Additionally, ctypes.util.find_library() did not manage to locate a library called 'libpango-1.0-0'.
+
+Ação corretiva adotada:
+
+- Remoção da dependência operacional de WeasyPrint no gerador.
+- Substituição da geração de PDF por ReportLab em [scripts/generate_artifacts.py](scripts/generate_artifacts.py).
+- Regeneração bem-sucedida dos artefatos em docs/.
+
+Status final:
+
+- Corrigido no fluxo do projeto.

@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACIN IA Modelo Avaliacao</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
+    h1, h2, h3 { color: #0b3a66; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { border: 1px solid #c8d5e3; padding: 8px; vertical-align: top; }
+    th { background: #0b3a66; color: white; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    blockquote { border-left: 4px solid #0b3a66; padding-left: 12px; color: #385269; }
+    </style>
+</head>
+<body>
+<h1 id="facin_ia-modelo-de-avaliacao-de-maturidade">FACIN_IA - Modelo de Avaliação de Maturidade</h1>
+<h2 id="objetivo">Objetivo</h2>
+<p>Este documento consolida o modelo de avaliação de maturidade da Governança Aplicada à Inteligência Artificial para a PRODEMGE, com base nas diretrizes do FACIN_IA, no FACIN e no Modelo de Responsabilidade Organizacional (MRO).</p>
+<h2 id="contexto-institucional-adotado">Contexto institucional adotado</h2>
+<p>A parametrização foi ajustada para uma empresa pública de tecnologia que:</p>
+<ol>
+<li>opera serviços digitais críticos para o Estado;</li>
+<li>sustenta ambientes, integrações, dados e plataformas corporativas;</li>
+<li>precisa combinar continuidade operacional, conformidade, segurança e valor público.</li>
+</ol>
+<p>Por esse motivo, o modelo atribui maior peso a Dados e Infraestrutura, Desenvolvimento e Operação de IA e Ética, Transparência e Gestão de Risco.</p>
+<h2 id="adaptacao-das-dimensoes-do-facin-e-do-mro-para-ia">Adaptação das dimensões do FACIN e do MRO para IA</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensão FACIN_IA</th>
+<th>Adaptação para IA no contexto da PRODEMGE</th>
+<th>Ênfase de governança</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia e Governança de IA</td>
+<td>carteira de casos de uso, patrocínio executivo, comitê de IA, regras de decisão e rastreabilidade</td>
+<td>alinhamento estratégico e accountability</td>
+</tr>
+<tr>
+<td>Dados e Infraestrutura</td>
+<td>catálogo, linhagem, segurança, disponibilidade e confiabilidade dos ambientes de IA</td>
+<td>resiliência, confiabilidade e soberania informacional</td>
+</tr>
+<tr>
+<td>Talento e Cultura</td>
+<td>papéis formais, trilhas de capacitação, segregação entre ideação e produção, responsabilidade humana</td>
+<td>responsabilização e prontidão institucional</td>
+</tr>
+<tr>
+<td>Desenvolvimento e Operação de IA</td>
+<td>SDD, testes, versionamento, observabilidade, resposta a incidentes e rollback</td>
+<td>previsibilidade operacional</td>
+</tr>
+<tr>
+<td>Ética, Transparência e Gestão de Risco</td>
+<td>AIA, supervisão humana, transparência, mitigação de viés e conformidade</td>
+<td>legitimidade, segurança jurídica e controle</td>
+</tr>
+<tr>
+<td>Impacto Social e Valor</td>
+<td>eficiência, acessibilidade, satisfação, confiança e entrega de valor público</td>
+<td>resultado institucional e social</td>
+</tr>
+</tbody>
+</table>
+<h2 id="pesos-ajustados-por-dimensao">Pesos ajustados por dimensão</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia e Governança de IA</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Dados e Infraestrutura</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Talento e Cultura</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>Desenvolvimento e Operação de IA (DevOps/MLOps)</td>
+<td>25%</td>
+</tr>
+<tr>
+<td>Ética, Transparência e Gestão de Risco</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Impacto Social e Valor</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="formula-de-pontuacao-ajustada">Fórmula de pontuação ajustada</h2>
+<p>Pontuação da dimensão:</p>
+<p>$$
+Score_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
+$$</p>
+<p>Índice geral:</p>
+<p>$$
+Índice\ Geral = \sum (Score_{dim} \times Peso_{dim})
+$$</p>
+<p>Regra de barreira institucional:</p>
+<ol>
+<li>para atingir Nível 4, as dimensões Dados e Infraestrutura, Desenvolvimento e Operação de IA e Ética, Transparência e Gestão de Risco devem ter nota mínima 3,5;</li>
+<li>para atingir Nível 5, todas as dimensões devem ter nota mínima 4,0 e nenhum indicador crítico pode ficar abaixo de 3,0.</li>
+</ol>
+<h2 id="faixas-ajustadas-de-maturidade">Faixas ajustadas de maturidade</h2>
+<table>
+<thead>
+<tr>
+<th>Faixa do índice geral</th>
+<th>Nível</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,0 a 1,9</td>
+<td>Nível 1 - Inicial</td>
+</tr>
+<tr>
+<td>acima de 1,9 a 2,7</td>
+<td>Nível 2 - Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>acima de 2,7 a 3,5</td>
+<td>Nível 3 - Otimizado</td>
+</tr>
+<tr>
+<td>acima de 3,5 a 4,3</td>
+<td>Nível 4 - Consolidado</td>
+</tr>
+<tr>
+<td>acima de 4,3 a 5,0</td>
+<td>Nível 5 - Estabelecido</td>
+</tr>
+</tbody>
+</table>
+<h2 id="matriz-de-indicadores-e-pesos-internos">Matriz de indicadores e pesos internos</h2>
+<h3 id="estrategia-e-governanca-de-ia">Estratégia e Governança de IA</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EG1</td>
+<td>30</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+<tr>
+<td>EG2</td>
+<td>30</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+<tr>
+<td>EG3</td>
+<td>40</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+</tbody>
+</table>
+<h3 id="dados-e-infraestrutura">Dados e Infraestrutura</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DI1</td>
+<td>35</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+<tr>
+<td>DI2</td>
+<td>40</td>
+<td>percentual</td>
+<td>N1 &lt; 40; N2 &gt;= 40; N3 &gt;= 60; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>DI3</td>
+<td>25</td>
+<td>percentual</td>
+<td>N1 &lt; 97,0; N2 &gt;= 97,0; N3 &gt;= 98,0; N4 &gt;= 99,0; N5 &gt;= 99,7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="talento-e-cultura">Talento e Cultura</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TC1</td>
+<td>35</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>25</td>
+<td>horas por colaborador-chave/ano</td>
+<td>N1 &lt; 6; N2 &gt;= 6; N3 &gt;= 12; N4 &gt;= 20; N5 &gt;= 32</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>40</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+</tbody>
+</table>
+<h3 id="desenvolvimento-e-operacao-de-ia-devopsmlops">Desenvolvimento e Operação de IA (DevOps/MLOps)</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DO1</td>
+<td>25</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>DO2</td>
+<td>30</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>DO3</td>
+<td>25</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>DO4</td>
+<td>20</td>
+<td>horas</td>
+<td>N1 &gt; 72; N2 &lt;= 72; N3 &lt;= 36; N4 &lt;= 12; N5 &lt;= 4</td>
+</tr>
+</tbody>
+</table>
+<h3 id="etica-transparencia-e-gestao-de-risco">Ética, Transparência e Gestão de Risco</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ER1</td>
+<td>40</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 60; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>ER2</td>
+<td>25</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>ER3</td>
+<td>35</td>
+<td>percentual</td>
+<td>N1 &lt; 60; N2 &gt;= 60; N3 &gt;= 75; N4 &gt;= 90; N5 &gt;= 98</td>
+</tr>
+</tbody>
+</table>
+<h3 id="impacto-social-e-valor">Impacto Social e Valor</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Peso</th>
+<th>Entrada</th>
+<th>Escala automática</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IV1</td>
+<td>40</td>
+<td>percentual</td>
+<td>N1 &lt; 30; N2 &gt;= 30; N3 &gt;= 50; N4 &gt;= 75; N5 &gt;= 90</td>
+</tr>
+<tr>
+<td>IV2</td>
+<td>25</td>
+<td>percentual</td>
+<td>N1 &lt; 35; N2 &gt;= 35; N3 &gt;= 55; N4 &gt;= 80; N5 &gt;= 95</td>
+</tr>
+<tr>
+<td>IV3</td>
+<td>35</td>
+<td>escala de 1 a 5</td>
+<td>N1 &lt; 2,8; N2 &gt;= 2,8; N3 &gt;= 3,4; N4 &gt;= 4,0; N5 &gt;= 4,5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="indicadores-criticos-para-a-regra-de-barreira">Indicadores críticos para a regra de barreira</h2>
+<ul>
+<li>DI2 - Conformidade de proteção de dados e acessos</li>
+<li>DO2 - Cobertura de testes e validações de IA no pipeline</li>
+<li>DO3 - Cobertura de observabilidade obrigatória</li>
+<li>ER1 - Cobertura de avaliação ética e de risco algorítmico</li>
+<li>ER3 - Conformidade ética e regulatória após auditoria</li>
+</ul>
+<h2 id="leitura-executiva">Leitura executiva</h2>
+<p>O ajuste para a PRODEMGE desloca a maturidade de IA para um padrão mais rigoroso do que o modelo genérico. O racional é simples: em uma organização pública de tecnologia, falhas de dados, indisponibilidade, baixa observabilidade ou risco ético não afetam apenas um produto, mas uma cadeia de serviços estatais e a confiança institucional.</p>
+<p>Assim, o modelo mede maturidade não apenas pela existência de artefatos de governança, mas pela capacidade de operar IA de forma segura, sustentável, rastreável e útil ao setor público.</p>
+</body>
+</html>

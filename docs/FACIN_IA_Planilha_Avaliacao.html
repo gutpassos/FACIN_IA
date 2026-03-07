@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACIN IA Planilha Avaliacao</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
+    h1, h2, h3 { color: #0b3a66; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { border: 1px solid #c8d5e3; padding: 8px; vertical-align: top; }
+    th { background: #0b3a66; color: white; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    blockquote { border-left: 4px solid #0b3a66; padding-left: 12px; color: #385269; }
+    </style>
+</head>
+<body>
+<h1 id="facin_ia-planilha-de-avaliacao-com-pontuacao-automatica">FACIN_IA - Planilha de Avaliação com Pontuação Automática</h1>
+<h2 id="objetivo">Objetivo</h2>
+<p>Este documento descreve a planilha de avaliação automática do FACIN_IA, disponibilizada em <a href="../docs/FACIN_IA_Avaliacao_Automatica.xlsx">docs/FACIN_IA_Avaliacao_Automatica.xlsx</a>.</p>
+<h2 id="estrutura-da-planilha">Estrutura da planilha</h2>
+<h3 id="aba-instrucoes">Aba Instruções</h3>
+<p>Contém o escopo do instrumento, a regra de preenchimento e a leitura dos níveis de maturidade.</p>
+<h3 id="aba-parametros_dimensoes">Aba Parâmetros_Dimensões</h3>
+<p>Contém os pesos institucionais por dimensão:</p>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia e Governança de IA</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Dados e Infraestrutura</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Talento e Cultura</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Desenvolvimento e Operação de IA (DevOps/MLOps)</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Ética, Transparência e Gestão de Risco</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Impacto Social e Valor</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="aba-parametros_indicadores">Aba Parâmetros_Indicadores</h3>
+<p>Lista os indicadores, pesos internos, tipo de polaridade e limiares para conversão automática do valor apurado em nota de 1 a 5.</p>
+<h3 id="aba-avaliacao">Aba Avaliação</h3>
+<p>O avaliador preenche:</p>
+<ol>
+<li>valor apurado;</li>
+<li>evidência principal;</li>
+<li>observações.</li>
+</ol>
+<p>A planilha calcula automaticamente:</p>
+<ol>
+<li>nota do indicador;</li>
+<li>nota ponderada por dimensão;</li>
+<li>índice geral;</li>
+<li>classificação final.</li>
+</ol>
+<h3 id="aba-resumo">Aba Resumo</h3>
+<p>Apresenta:</p>
+<ol>
+<li>score por dimensão;</li>
+<li>índice geral ponderado;</li>
+<li>classificação de maturidade;</li>
+<li>situação da barreira institucional para os níveis 4 e 5.</li>
+</ol>
+<h2 id="formula-de-nota-automatica">Fórmula de nota automática</h2>
+<h3 id="indicadores-em-que-maior-valor-significa-melhor-desempenho">Indicadores em que maior valor significa melhor desempenho</h3>
+<p>$$
+Nota =
+\begin{cases}
+1, &amp; valor &lt; t2 \
+2, &amp; t2 \le valor &lt; t3 \
+3, &amp; t3 \le valor &lt; t4 \
+4, &amp; t4 \le valor &lt; t5 \
+5, &amp; valor \ge t5
+\end{cases}
+$$</p>
+<h3 id="indicadores-em-que-menor-valor-significa-melhor-desempenho">Indicadores em que menor valor significa melhor desempenho</h3>
+<p>$$
+Nota =
+\begin{cases}
+5, &amp; valor \le t5 \
+4, &amp; t5 &lt; valor \le t4 \
+3, &amp; t4 &lt; valor \le t3 \
+2, &amp; t3 &lt; valor \le t2 \
+1, &amp; valor &gt; t2
+\end{cases}
+$$</p>
+<h2 id="formula-de-score-por-dimensao">Fórmula de score por dimensão</h2>
+<p>$$
+Score_{dim} = \frac{\sum (Nota_{indicador} \times Peso_{indicador})}{\sum Peso_{indicador}}
+$$</p>
+<h2 id="formula-do-indice-geral">Fórmula do índice geral</h2>
+<p>$$
+Índice\ Geral = \sum (Score_{dim} \times Peso_{dim})
+$$</p>
+<h2 id="faixas-de-classificacao-automatica">Faixas de classificação automática</h2>
+<table>
+<thead>
+<tr>
+<th>Faixa</th>
+<th>Classificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1,0 a 1,9</td>
+<td>Nível 1 - Inicial</td>
+</tr>
+<tr>
+<td>acima de 1,9 a 2,7</td>
+<td>Nível 2 - Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>acima de 2,7 a 3,5</td>
+<td>Nível 3 - Otimizado</td>
+</tr>
+<tr>
+<td>acima de 3,5 a 4,3</td>
+<td>Nível 4 - Consolidado</td>
+</tr>
+<tr>
+<td>acima de 4,3 a 5,0</td>
+<td>Nível 5 - Estabelecido</td>
+</tr>
+</tbody>
+</table>
+<h2 id="regra-de-barreira-institucional">Regra de barreira institucional</h2>
+<p>Para classificação automática da PRODEMGE:</p>
+<ol>
+<li>se Dados e Infraestrutura, Desenvolvimento e Operação de IA ou Ética, Transparência e Gestão de Risco ficarem abaixo de 3,5, o resultado final não pode ser superior ao Nível 3;</li>
+<li>se qualquer dimensão ficar abaixo de 4,0, o resultado final não pode ser Nível 5;</li>
+<li>se qualquer indicador crítico ficar abaixo de 3,0, o resultado final não pode ser Nível 5.</li>
+</ol>
+<h2 id="uso-recomendado">Uso recomendado</h2>
+<ol>
+<li>preencher a planilha por unidade, produto ou programa de IA;</li>
+<li>consolidar os resultados trimestralmente;</li>
+<li>usar o resumo para comitês de governança e priorização de melhoria;</li>
+<li>associar cada nota a evidências verificáveis e não apenas declaratórias.</li>
+</ol>
+</body>
+</html>

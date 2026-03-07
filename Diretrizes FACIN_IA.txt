@@ -1,0 +1,79 @@
+FACIN_IA
+Diretrizes de Governança para Uso de Inteligência Artificial no Desenvolvimento de Software
+
+1. Introdução
+O FACIN_IA estabelece diretrizes formais para uso estruturado de Inteligência Artificial no desenvolvimento de software, integrando Spec-Driven Development (SDD), governança corporativa e arquitetura empresarial, baseando-se nos seguintes componentes:
+FACIN - Framework de Arquitetura Corporativa para Interoperabilidade no apoio à Governança
+MRO   - Modelo de Responsabilidade Organizacional
+SDD   - Spec-Driven Development
+
+Fontes dos componentes:
+"Modelo de Responsabilidade Organizacional - MRO": 
+https://www.academia.edu/5583008/Modelo_de_Responsabilidade_Organizacional
+https://ieeexplore.ieee.org/document/6722506
+
+FACIN: https://www.scitepress.org/Link.aspx?doi=10.5220/0006331904330439
+
+Melhores práticas de Spec-Driven Development (SDD): 
+https://arxiv.org/html/2602.00180v1
+
+FACIN e o "Modelo de Responsabilidade Organizacional - MRO":
+https://areasdeintegracao.blogspot.com/2016/05/facin-e-o-modelo-de-responsabilidade_19.html
+
+Estas diretrizes definem padrões obrigatórios para uso de assistentes de IA, garantindo previsibilidade, rastreabilidade e qualidade.
+
+2. Princípio Fundamental
+A Inteligência Artificial executa especificações governadas.
+O código é artefato derivado.
+A especificação é o contrato primário.
+
+3. Estrutura Conceitual do FACIN_IA
+Dimensão 1 - 'Estratégia e Governança de IA'
+Dimensão 2 - 'Dados e Infraestrutura'
+Dimensão 3 - 'Talento e Cultura'
+Dimensão 4 - 'Desenvolvimento e Operação de IA (DevOps/MLOps)'
+Dimensão 5 - 'Ética, Transparência e Gestão de Risco'
+Dimensão 6 - 'Impacto Social e Valor'
+
+
+4. Diretrizes Operacionais
+1. IA nunca inicia pelo código.
+2. Prompt é contrato operacional.
+3. Governança centrada na IA.
+4. Separação entre ideação e produção.
+5. Agentic AI com papéis definidos.
+6. Observabilidade obrigatória.
+
+5. Template Oficial de Especificação
+Identificação do Projeto
+- Projeto:
+- Domínio:
+- Responsável:
+
+Especificação Funcional
+Especificação Técnica
+Critérios de Aceitação
+Testes Derivados
+Restrições de IA
+Log de Interações com IA
+
+6. Maturidade FACIN_IA
+Nível 1 – Inicial
+Nível 2 – Em Desenvolvimento
+Nível 3 – Otimizado
+Nível 4 – Consolidado
+Nível 5 – Estabelecido
+
+7. Governança e Conformidade
+Todos os projetos que utilizarem IA devem:
+- Registrar prompts utilizados
+- Versionar modelos
+- Manter rastreabilidade de decisões
+- Garantir conformidade com políticas de dados
+
+8. Benefícios Corporativos
+- Redução de débito técnico
+- Aumento de previsibilidade
+- Segurança jurídica
+- Padronização organizacional
+- IA como capability estratégica
