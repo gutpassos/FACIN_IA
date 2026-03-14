@@ -12,19 +12,22 @@ Ambiente validado: figmm
 
 - um modelo de avaliação de maturidade em seis dimensões de governança de IA;
 - uma versão executiva para apresentação institucional;
+- uma síntese institucional do trabalho e de seus fundamentos conceituais;
 - uma especificação de planilha com cálculo automático de pontuação;
 - artefatos prontos em Markdown, HTML, PDF e XLSX para consulta e uso direto.
 
 ## Leitura recomendada
 
 1. [docs/FACIN_IA_Versao_Executiva.md](docs/FACIN_IA_Versao_Executiva.md): visão rápida para apresentação e alinhamento institucional em Markdown.
-2. [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
-3. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
+2. [docs/FACIN_IA_Sintese.md](docs/FACIN_IA_Sintese.md): síntese do trabalho, dos conceitos-base e da aplicação prática com IA assistida.
+3. [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
+4. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
 
 ## Estrutura do repositório
 
 - [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): documentação-fonte do modelo de avaliação.
 - [spec/FACIN_IA_Planilha_Avaliacao.md](spec/FACIN_IA_Planilha_Avaliacao.md): especificação funcional da planilha de avaliação.
+- [spec/FACIN_IA_Sintese.md](spec/FACIN_IA_Sintese.md): documentação-fonte da síntese institucional do trabalho.
 - [spec/FACIN_IA_Versao_Executiva.md](spec/FACIN_IA_Versao_Executiva.md): versão executiva em Markdown.
 - [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): cópia publicada em Markdown do modelo de avaliação.
 - [docs/FACIN_IA_Modelo_Avaliacao.html](docs/FACIN_IA_Modelo_Avaliacao.html): versão navegável do modelo de avaliação.
@@ -32,6 +35,9 @@ Ambiente validado: figmm
 - [docs/FACIN_IA_Planilha_Avaliacao.md](docs/FACIN_IA_Planilha_Avaliacao.md): cópia publicada em Markdown da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.html](docs/FACIN_IA_Planilha_Avaliacao.html): versão navegável da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.pdf](docs/FACIN_IA_Planilha_Avaliacao.pdf): versão em PDF da especificação da planilha.
+- [docs/FACIN_IA_Sintese.md](docs/FACIN_IA_Sintese.md): cópia publicada em Markdown da síntese institucional.
+- [docs/FACIN_IA_Sintese.html](docs/FACIN_IA_Sintese.html): versão navegável da síntese institucional.
+- [docs/FACIN_IA_Sintese.pdf](docs/FACIN_IA_Sintese.pdf): versão em PDF da síntese institucional.
 - [docs/FACIN_IA_Versao_Executiva.md](docs/FACIN_IA_Versao_Executiva.md): cópia publicada em Markdown da versão executiva.
 - [docs/FACIN_IA_Versao_Executiva.html](docs/FACIN_IA_Versao_Executiva.html): versão executiva em HTML.
 - [docs/FACIN_IA_Versao_Executiva.pdf](docs/FACIN_IA_Versao_Executiva.pdf): versão executiva em PDF.
