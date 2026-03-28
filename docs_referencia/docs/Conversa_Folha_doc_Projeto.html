@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conversa_Folha_doc_Projeto</title>
+    <style>
+        :root {
+            --bg: #f3efe4;
+            --panel: #fffdf8;
+            --ink: #17324d;
+            --muted: #556a7f;
+            --line: #d6c9ae;
+            --accent: #0a5a66;
+            --accent-2: #8c5f2a;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 32px 20px 48px; background: radial-gradient(circle at top, #fff7e4 0%, var(--bg) 50%, #ece7d8 100%); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+        main { max-width: 1080px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: 0 12px 40px rgba(23, 50, 77, 0.08); }
+        h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; }
+        h1 { font-size: 2.1rem; margin-top: 0; }
+        h2 { border-top: 1px solid var(--line); padding-top: 22px; margin-top: 28px; }
+        p, li { line-height: 1.6; }
+        a { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.95rem; }
+        th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; }
+        th { background: #efe3c8; text-align: left; }
+        code { background: #f2eadc; padding: 0.1rem 0.3rem; border-radius: 6px; }
+        pre { background: #f7f3ea; padding: 14px; border-radius: 14px; overflow-x: auto; border: 1px solid var(--line); }
+        blockquote { margin: 20px 0; padding: 12px 18px; border-left: 4px solid var(--accent-2); background: #fbf4e6; }
+        .mermaid { margin: 22px 0; overflow-x: auto; text-align: center; }
+        @media (max-width: 720px) {
+            body { padding: 12px; }
+            main { padding: 20px; border-radius: 18px; }
+            h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Conversa_Folha_doc - Projeto</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência: GPT-5.4<br />
+Ambiente validado: figmm<br />
+Data: 28 de março de 2026</p>
+<h2>1. Identificação do Projeto</h2>
+<ul>
+<li>Projeto: Conversa_Folha_doc</li>
+<li>Domínio: engenharia de software, inteligência artificial e políticas públicas</li>
+<li>Responsável: Guttenberg Ferreira Passos</li>
+<li>Base metodológica: FACIN, Modelo de Responsabilidade Organizacional e Spec-Driven Development</li>
+<li>Escopo desta entrega: documentação e avaliação de maturidade do sistema Conversa com a Folha, sem alteração do código original</li>
+</ul>
+<h2>2. Objetivo</h2>
+<p>Estruturar uma camada documental governada para o sistema Conversa com a Folha, produzindo artefatos rastreáveis em Markdown, HTML e PDF a partir dos fontes existentes na pasta Conversa_Folha e das referências já publicadas em docs.</p>
+<h2>3. Fontes Consultadas</h2>
+<ol>
+<li>Conversa_Folha/app.py.</li>
+<li>Conversa_Folha/cria_db.py.</li>
+<li>Conversa_Folha/criacao_banco.sql.</li>
+<li>Conversa_Folha/README.md e Conversa_Folha/LEIAME.txt.</li>
+<li>Artefatos de referência existentes na pasta docs.</li>
+<li>Configuração do agente FACIN_IA na pasta .github/agents.</li>
+</ol>
+<h2>4. Especificação Funcional</h2>
+<p>A documentação produzida nesta iniciativa deve:</p>
+<ol>
+<li>preservar integralmente os fontes originais da pasta Conversa_Folha apenas para consulta;</li>
+<li>descrever a arquitetura atual da aplicação Streamlit e de sua camada de dados SQLite;</li>
+<li>registrar integrações com modelos de linguagem, regras de negócio, tecnologia e fluxo operacional;</li>
+<li>aplicar o FACIN_IA à avaliação de maturidade institucional do projeto;</li>
+<li>explicitar riscos algorítmicos, premissas de LGPD e responsabilidades pelo ciclo documental;</li>
+<li>manter registro separado dos erros encontrados e resolvidos por via documental.</li>
+</ol>
+<h2>5. Especificação Técnica</h2>
+<h3>5.1 Escopo de análise estática</h3>
+<p>Foram analisados 2 módulos Python e 2 artefatos estruturais de banco de dados no diretório consultivo, sem modificação de conteúdo.</p>
+<h3>5.2 Estratégia de publicação</h3>
+<ol>
+<li>gerar arquivos Markdown como fonte principal de governança;</li>
+<li>converter cada artefato para HTML navegável;</li>
+<li>converter cada artefato para PDF institucional;</li>
+<li>publicar o registro de erros em pasta própria, na raiz do workspace.</li>
+</ol>
+<h3>5.3 Estrutura-alvo do workspace documental</h3>
+<div class="mermaid">flowchart TD
+    ROOT[Workspace raiz] --> SRC[Conversa_Folha - consulta apenas]
+    ROOT --> DOCS[docs - artefatos publicados]
+    ROOT --> ERR[errors - achados e resoluções]
+    ROOT --> SCR[scripts - automação documental]
+    ROOT --> AG[.github/agents - FACIN_IA contextualizado]
+</div>
+<h2>6. Critérios de Aceitação</h2>
+<ol>
+<li>o código original em Conversa_Folha permanece inalterado;</li>
+<li>todos os artefatos novos são publicados em Português do Brasil;</li>
+<li>a cobertura documental é, no mínimo, equivalente à malha já existente na pasta docs;</li>
+<li>a avaliação de maturidade inclui FACIN_IA, MRO_RACI, LGPD, Resolução CD/ANPD nº 19/2024 e risco algorítmico;</li>
+<li>existem documentos separados para manual de usuário, arquitetura da solução, tecnologias, integrações e regras de negócio;</li>
+<li>existe pasta errors com registro formal dos achados e encaminhamentos adotados;</li>
+<li>a automação documental executa no ambiente figmm.</li>
+</ol>
+<h2>7. Testes Derivados</h2>
+<ol>
+<li>verificar existência dos arquivos .md, .html e .pdf para cada artefato gerado;</li>
+<li>verificar que o índice executivo referencia todos os artefatos publicados;</li>
+<li>verificar que o relatório de maturidade contém as seis dimensões do FACIN_IA;</li>
+<li>verificar que o relatório de erros registra achado, impacto e resolução documental;</li>
+<li>verificar que a documentação do código cobre app.py e cria_db.py;</li>
+<li>verificar que o agente FACIN_IA contextualizado está presente no workspace.</li>
+</ol>
+<h2>8. Restrições de IA</h2>
+<ol>
+<li>nenhuma mudança é aplicada aos fontes em Conversa_Folha;</li>
+<li>o ambiente autorizado para execução e instalações é exclusivamente figmm;</li>
+<li>o modelo de referência do projeto é GPT-5.4;</li>
+<li>a documentação deve priorizar rastreabilidade, auditabilidade e clareza institucional;</li>
+<li>a aderência a plataformas corporativas específicas foi explicitamente desconsiderada nesta entrega.</li>
+</ol>
+<h2>9. Conclusão Executiva</h2>
+<p>Conversa_Folha_doc consolida uma camada documental governada sobre o sistema Conversa com a Folha, tratando documentação, maturidade e conformidade como artefatos primários. O resultado serve para leitura executiva, técnica e regulatória, preservando o legado e elevando a inteligibilidade do projeto.</p>
+    </main>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#dae8d8', primaryTextColor: '#17324d', primaryBorderColor: '#476548', lineColor: '#385269', secondaryColor: '#e8f0ef', tertiaryColor: '#ffffff' } });
+</script>
+
+</body>
+</html>

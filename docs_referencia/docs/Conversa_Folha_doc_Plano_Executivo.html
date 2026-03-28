@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conversa_Folha_doc_Plano_Executivo</title>
+    <style>
+        :root {
+            --bg: #f3efe4;
+            --panel: #fffdf8;
+            --ink: #17324d;
+            --muted: #556a7f;
+            --line: #d6c9ae;
+            --accent: #0a5a66;
+            --accent-2: #8c5f2a;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 32px 20px 48px; background: radial-gradient(circle at top, #fff7e4 0%, var(--bg) 50%, #ece7d8 100%); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+        main { max-width: 1080px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: 0 12px 40px rgba(23, 50, 77, 0.08); }
+        h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; }
+        h1 { font-size: 2.1rem; margin-top: 0; }
+        h2 { border-top: 1px solid var(--line); padding-top: 22px; margin-top: 28px; }
+        p, li { line-height: 1.6; }
+        a { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.95rem; }
+        th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; }
+        th { background: #efe3c8; text-align: left; }
+        code { background: #f2eadc; padding: 0.1rem 0.3rem; border-radius: 6px; }
+        pre { background: #f7f3ea; padding: 14px; border-radius: 14px; overflow-x: auto; border: 1px solid var(--line); }
+        blockquote { margin: 20px 0; padding: 12px 18px; border-left: 4px solid var(--accent-2); background: #fbf4e6; }
+        .mermaid { margin: 22px 0; overflow-x: auto; text-align: center; }
+        @media (max-width: 720px) {
+            body { padding: 12px; }
+            main { padding: 20px; border-radius: 18px; }
+            h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Conversa_Folha_doc - Plano Executivo</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência: GPT-5.4<br />
+Ambiente validado: figmm<br />
+Data: 28 de março de 2026</p>
+<h2>1. Objetivo Executivo</h2>
+<p>Traduzir a iniciativa documental em um plano governado por entregas, responsáveis, cronograma, marcos e indicadores, mantendo foco exclusivo na documentação e na avaliação de maturidade do sistema atual.</p>
+<h2>2. Escopo Executivo</h2>
+<p>O plano cobre levantamento, análise, formalização FACIN_IA, produção dos artefatos, registro de achados e publicação final em três formatos. Não cobre reengenharia da aplicação, migração de runtime ou adequação a plataforma corporativa específica.</p>
+<h2>3. Papéis do Plano</h2>
+<table>
+<thead>
+<tr>
+<th>Sigla</th>
+<th>Papel</th>
+<th>Responsabilidade principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAT</td>
+<td>Patrocinador</td>
+<td>valida escopo, prioridade e leitura executiva</td>
+</tr>
+<tr>
+<td>GP</td>
+<td>Gestão do Projeto</td>
+<td>coordena artefatos, cronograma e integração entre frentes</td>
+</tr>
+<tr>
+<td>ARQ</td>
+<td>Arquitetura e IA</td>
+<td>conduz análise técnica, leitura estrutural e coerência FACIN_IA</td>
+</tr>
+<tr>
+<td>DOC</td>
+<td>Documentação</td>
+<td>redige, revisa e publica os artefatos</td>
+</tr>
+<tr>
+<td>DADOS</td>
+<td>Dados</td>
+<td>valida schema, carga, qualidade e uso informacional</td>
+</tr>
+<tr>
+<td>PRIV</td>
+<td>Privacidade e Conformidade</td>
+<td>revisa LGPD, resolução ANPD e risco algorítmico</td>
+</tr>
+<tr>
+<td>NEG</td>
+<td>Negócio</td>
+<td>valida regras, exemplos de uso e aderência funcional</td>
+</tr>
+<tr>
+<td>OPS</td>
+<td>Operação</td>
+<td>valida executabilidade do gerador e publicação dos artefatos</td>
+</tr>
+</tbody>
+</table>
+<h2>4. Matriz RACI do Projeto Documental</h2>
+<table>
+<thead>
+<tr>
+<th>Entrega</th>
+<th>PAT</th>
+<th>GP</th>
+<th>ARQ</th>
+<th>DOC</th>
+<th>DADOS</th>
+<th>PRIV</th>
+<th>NEG</th>
+<th>OPS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definição do escopo documental</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Inventário dos fontes e schema</td>
+<td>I</td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Produção dos artefatos em md</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Conversão para html e pdf</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>A</td>
+</tr>
+<tr>
+<td>Avaliação de maturidade FACIN_IA</td>
+<td>I</td>
+<td>C</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Conformidade LGPD e risco algorítmico</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Registro de erros e resoluções</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Publicação do índice executivo final</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Cronograma Executivo</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Semanas</th>
+<th>Objetivo</th>
+<th>Saída esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 1 - Levantamento</td>
+<td>1 a 2</td>
+<td>mapear código, schema, docs e restrições</td>
+<td>baseline analítico fechado</td>
+</tr>
+<tr>
+<td>Fase 2 - Especificação</td>
+<td>3 a 4</td>
+<td>produzir projeto, plano, arquitetura e regras</td>
+<td>pacote técnico inicial publicado</td>
+</tr>
+<tr>
+<td>Fase 3 - Avaliação</td>
+<td>5 a 6</td>
+<td>consolidar maturidade, MRO_RACI, LGPD e riscos</td>
+<td>parecer de maturidade emitido</td>
+</tr>
+<tr>
+<td>Fase 4 - Publicação</td>
+<td>7 a 8</td>
+<td>converter, revisar e indexar artefatos</td>
+<td>pacote final em md, html e pdf</td>
+</tr>
+</tbody>
+</table>
+<div class="mermaid">gantt
+    title Conversa_Folha_doc - Cronograma Executivo
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d/%m
+    section Levantamento
+    Fase 1 :done, f1, 2026-03-02, 14d
+    section Especificação
+    Fase 2 :done, f2, 2026-03-16, 14d
+    section Avaliação
+    Fase 3 :active, f3, 2026-03-30, 14d
+    section Publicação
+    Fase 4 :f4, 2026-04-13, 14d
+</div>
+<h2>6. Indicadores Executivos</h2>
+<ol>
+<li>percentual de artefatos previstos já publicados;</li>
+<li>percentual de artefatos com versão md, html e pdf disponível;</li>
+<li>quantidade de achados documentais registrados e tratados;</li>
+<li>percentual de dimensões FACIN_IA avaliadas com evidência explícita;</li>
+<li>tempo médio de regeneração completa da documentação.</li>
+</ol>
+<h2>7. Marcos Executivos</h2>
+<table>
+<thead>
+<tr>
+<th>Marco</th>
+<th>Semana-alvo</th>
+<th>Critério</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1 - Escopo confirmado</td>
+<td>1</td>
+<td>fontes e restrições validados</td>
+</tr>
+<tr>
+<td>M2 - Inventário técnico concluído</td>
+<td>2</td>
+<td>código e schema mapeados</td>
+</tr>
+<tr>
+<td>M3 - Pacote documental principal</td>
+<td>4</td>
+<td>documentos centrais redigidos</td>
+</tr>
+<tr>
+<td>M4 - Parecer de maturidade</td>
+<td>6</td>
+<td>avaliação FACIN_IA publicada</td>
+</tr>
+<tr>
+<td>M5 - Publicação final</td>
+<td>8</td>
+<td>todos os formatos gerados e indexados</td>
+</tr>
+</tbody>
+</table>
+<h2>8. Decisões Recomendadas</h2>
+<ol>
+<li>manter o uso do gerador documental como mecanismo oficial de regeneração;</li>
+<li>tratar a pasta errors como trilha de auditoria dos achados sobre o legado;</li>
+<li>revisar periodicamente o agente FACIN_IA junto com a avaliação de maturidade;</li>
+<li>só avançar para mudanças de implementação após aprovação formal do pacote documental.</li>
+</ol>
+    </main>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#dae8d8', primaryTextColor: '#17324d', primaryBorderColor: '#476548', lineColor: '#385269', secondaryColor: '#e8f0ef', tertiaryColor: '#ffffff' } });
+</script>
+
+</body>
+</html>

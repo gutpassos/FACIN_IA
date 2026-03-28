@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conversa Folha doc Documentacao Tecnica</title>
+  <style>
+    :root {
+      --ink: #17324d;
+      --accent: #0f5d7a;
+      --line: #c9d7df;
+      --soft: #eef5f7;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 36px auto;
+      max-width: 980px;
+      color: var(--ink);
+      line-height: 1.6;
+      padding: 0 18px 24px;
+    }
+    h1, h2, h3 { color: var(--accent); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      vertical-align: top;
+    }
+    th {
+      background: var(--accent);
+      color: white;
+    }
+    code {
+      background: var(--soft);
+      padding: 2px 4px;
+    }
+    pre {
+      background: var(--soft);
+      padding: 12px;
+      overflow-x: auto;
+    }
+    blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+      color: #33556d;
+    }
+    </style>
+</head>
+<body>
+<h1 id="documentacao-tecnica-do-projeto-conversa_folha_doc">Documentação Técnica do Projeto Conversa_Folha_doc</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência: GPT-5.4<br />
+Ambiente Conda homologado: figmm</p>
+<h2 id="1-objetivo-tecnico">1. Objetivo técnico</h2>
+<p>O projeto Conversa_Folha_doc consolida a solução Conversa_Folha com uma estrutura documental inspirada no repositório FACIN_IA, resultando em um pacote técnico e executivo orientado à operação responsável de inteligência artificial aplicada à consulta de dados de folha de pagamento.</p>
+<p>O objetivo da solução é permitir que usuários autorizados formulem perguntas em linguagem natural e obtenham respostas estruturadas com apoio de agentes de IA, utilizando uma base relacional SQLite alimentada por dados tabulares previamente preparados.</p>
+<p>Além da capacidade funcional, o projeto foi expandido para incorporar controles mínimos de governança, rastreabilidade, transparência, observabilidade, conformidade com a LGPD e mitigação de risco algorítmico, alinhando-se ao contexto de governança do MRO da PRODEMGE.</p>
+<h2 id="2-escopo-da-solucao">2. Escopo da solução</h2>
+<p>O escopo funcional contempla:</p>
+<ul>
+<li>interface conversacional em Streamlit;</li>
+<li>orquestração de agentes com LangGraph;</li>
+<li>uso de modelos via Groq e OpenAI;</li>
+<li>acesso a banco SQLite local com dados de folha;</li>
+<li>documentação executiva, técnica, de maturidade e de governança;</li>
+<li>geração automatizada de artefatos em Markdown, HTML e PDF;</li>
+<li>testes automatizados para componentes críticos;</li>
+<li>trilhas locais de auditoria e observabilidade.</li>
+</ul>
+<p>Não faz parte do escopo atual:</p>
+<ul>
+<li>autenticação corporativa integrada;</li>
+<li>gestão centralizada de segredos;</li>
+<li>telemetria corporativa unificada;</li>
+<li>fluxo formal de aprovação institucional em ambiente produtivo;</li>
+<li>monitoramento contínuo por plataforma externa de observabilidade.</li>
+</ul>
+<h2 id="3-arquitetura-da-aplicacao">3. Arquitetura da aplicação</h2>
+<h3 id="31-visao-geral">3.1 Visão geral</h3>
+<p>A aplicação é composta pelos seguintes blocos:</p>
+<ol>
+<li>Interface Streamlit para captura da interação do usuário.</li>
+<li>Grafo de execução LangGraph para roteamento entre agentes.</li>
+<li>Agente Groq para interpretação inicial e apoio conversacional.</li>
+<li>Agente OpenAI configurado com GPT-5.4 para respostas e composição analítica.</li>
+<li>Camada de acesso ao banco SQLite com validação prévia de consultas.</li>
+<li>Módulo de governança para auditoria, observabilidade e controle de risco.</li>
+<li>Pipeline documental para geração de artefatos em múltiplos formatos.</li>
+</ol>
+<h3 id="32-estrutura-principal-de-arquivos">3.2 Estrutura principal de arquivos</h3>
+<ul>
+<li>app.py: aplicação principal em Streamlit.</li>
+<li>governance_controls.py: controles de acesso, auditoria, observabilidade e validação SQL.</li>
+<li>cria_db.py: criação e carga do banco SQLite.</li>
+<li>criacao_banco.sql: esquema do banco de dados.</li>
+<li>folha_pe_200linhas.csv: base tabular usada na carga inicial.</li>
+<li>scripts/generate_artifacts.py: gerador de documentação em Markdown, HTML e PDF.</li>
+<li>tests/: testes automatizados.</li>
+<li>spec/: documentação-fonte em Markdown.</li>
+<li>docs/: artefatos gerados.</li>
+<li>errors/: registros de problemas identificados e correções adotadas.</li>
+</ul>
+<h2 id="4-fluxo-de-execucao">4. Fluxo de execução</h2>
+<p>O fluxo operacional da aplicação ocorre da seguinte forma:</p>
+<ol>
+<li>O usuário informa nome, instituição e finalidade de uso.</li>
+<li>O usuário aceita o termo de ciência sobre uso assistido por IA.</li>
+<li>Opcionalmente, um código de acesso local pode ser exigido por variável de ambiente.</li>
+<li>A sessão é registrada com identificador próprio.</li>
+<li>As mensagens são encaminhadas ao fluxo orquestrado.</li>
+<li>Quando necessário, consultas SQL são validadas antes da execução.</li>
+<li>As respostas produzidas são registradas em trilha de auditoria.</li>
+<li>As chamadas de modelo são registradas em trilha de observabilidade, com estimativas de custo, latência e volume textual.</li>
+</ol>
+<h2 id="5-modelo-de-dados-e-acesso-ao-banco">5. Modelo de dados e acesso ao banco</h2>
+<p>O banco SQLite é criado a partir de <a href="criacao_banco.sql">criacao_banco.sql</a> e populado por <a href="cria_db.py">cria_db.py</a> com base no arquivo <a href="folha_pe_200linhas.csv">folha_pe_200linhas.csv</a>.</p>
+<p>O projeto adota uma abordagem restritiva para consultas SQL:</p>
+<ul>
+<li>apenas instruções SELECT são permitidas;</li>
+<li>consultas com múltiplas instruções são bloqueadas;</li>
+<li>comentários SQL são bloqueados;</li>
+<li>palavras-chave destrutivas ou de modificação são proibidas;</li>
+<li>apenas tabelas homologadas podem ser acessadas.</li>
+</ul>
+<p>Essa decisão reduz a superfície de risco associada à geração de consultas por modelos de linguagem.</p>
+<h2 id="6-governanca-implementada-no-codigo">6. Governança implementada no código</h2>
+<h3 id="61-controle-de-acesso-e-identificacao">6.1 Controle de acesso e identificação</h3>
+<p>A aplicação passou a exigir identificação mínima do usuário para uso consciente da solução. São coletados:</p>
+<ul>
+<li>nome;</li>
+<li>instituição;</li>
+<li>finalidade declarada.</li>
+</ul>
+<p>Também foi previsto suporte a código de acesso local por meio da variável de ambiente <code>CONVERSA_FOLHA_ACCESS_KEY</code>, útil para ambientes de demonstração controlada.</p>
+<h3 id="62-transparencia">6.2 Transparência</h3>
+<p>A interface informa explicitamente que:</p>
+<ul>
+<li>a resposta é apoiada por inteligência artificial;</li>
+<li>as saídas devem ser validadas antes de uso decisório;</li>
+<li>o sistema opera sobre base de dados estruturada local;</li>
+<li>há registro de eventos para fins de rastreabilidade e governança.</li>
+</ul>
+<h3 id="63-auditoria">6.3 Auditoria</h3>
+<p>O módulo <a href="governance_controls.py">governance_controls.py</a> registra:</p>
+<ul>
+<li>eventos de acesso;</li>
+<li>perguntas enviadas;</li>
+<li>respostas produzidas;</li>
+<li>identificadores de sessão;</li>
+<li>carimbos de data e hora;</li>
+<li>contexto mínimo do evento.</li>
+</ul>
+<p>Os registros são gravados localmente em logs estruturados no diretório <code>logs/</code>.</p>
+<h3 id="64-observabilidade">6.4 Observabilidade</h3>
+<p>Foi criada uma trilha específica para observabilidade de modelos, incluindo:</p>
+<ul>
+<li>nome do modelo utilizado;</li>
+<li>tipo de evento;</li>
+<li>duração estimada da chamada;</li>
+<li>tamanho de entrada e saída;</li>
+<li>estimativa de tokens;</li>
+<li>estimativa de custo;</li>
+<li>registro de falhas.</li>
+</ul>
+<p>Embora não substitua uma plataforma corporativa de AIOps ou observabilidade centralizada, esse mecanismo eleva a solução a um patamar operacional mais controlado.</p>
+<h2 id="7-conformidade-com-a-lgpd">7. Conformidade com a LGPD</h2>
+<p>Do ponto de vista documental e técnico, a solução passou a explicitar medidas alinhadas à Lei Geral de Proteção de Dados Pessoais.</p>
+<p>Elementos incorporados:</p>
+<ul>
+<li>identificação de finalidade de uso;</li>
+<li>minimização de dados de identificação coletados na interface;</li>
+<li>orientação de uso responsável e validação humana;</li>
+<li>rastreabilidade de eventos relevantes;</li>
+<li>delimitação do ambiente como contexto controlado e local;</li>
+<li>recomendação de evolução para controles institucionais de retenção, perfil de acesso e base legal em implantação produtiva.</li>
+</ul>
+<p>O projeto não afirma conformidade institucional plena de produção. Em vez disso, documenta salvaguardas implementadas e lacunas remanescentes para futura institucionalização.</p>
+<h2 id="8-risco-algoritmico">8. Risco algorítmico</h2>
+<p>O projeto reconhece explicitamente os seguintes riscos:</p>
+<ul>
+<li>geração de respostas incorretas ou imprecisas;</li>
+<li>interpretação inadequada de consultas em linguagem natural;</li>
+<li>simplificação excessiva de contextos administrativos;</li>
+<li>confiança indevida em resposta automatizada;</li>
+<li>uso além do escopo inicialmente previsto.</li>
+</ul>
+<p>Medidas mitigadoras introduzidas:</p>
+<ul>
+<li>aviso de validação humana obrigatória;</li>
+<li>restrição do escopo de consulta ao banco homologado;</li>
+<li>trilhas de auditoria e observabilidade;</li>
+<li>documentação executiva e técnica com limites de uso;</li>
+<li>reforço do papel humano na decisão final.</li>
+</ul>
+<h2 id="9-testes-automatizados">9. Testes automatizados</h2>
+<p>Foram adicionados testes com pytest cobrindo componentes essenciais:</p>
+<ul>
+<li>validação e execução controlada de SQL;</li>
+<li>criação da base SQLite;</li>
+<li>geração de artefatos documentais.</li>
+</ul>
+<p>Arquivos principais:</p>
+<ul>
+<li><a href="tests/test_governance_controls.py">tests/test_governance_controls.py</a></li>
+<li><a href="tests/test_cria_db.py">tests/test_cria_db.py</a></li>
+<li><a href="tests/test_generate_artifacts.py">tests/test_generate_artifacts.py</a></li>
+<li><a href="tests/conftest.py">tests/conftest.py</a></li>
+</ul>
+<p>Esses testes não esgotam a validação da solução, mas corrigem a ausência anterior de verificação automatizada mínima.</p>
+<h2 id="10-integracao-continua">10. Integração contínua</h2>
+<p>Foi criado o pipeline <a href=".github/workflows/ci.yml">ci.yml</a> no GitHub Actions para:</p>
+<ul>
+<li>instalar dependências;</li>
+<li>validar a sintaxe dos arquivos Python;</li>
+<li>executar a suíte de testes automatizados.</li>
+</ul>
+<p>Essa medida reduz risco de regressão e eleva a reprodutibilidade técnica do projeto.</p>
+<h2 id="11-geracao-da-documentacao">11. Geração da documentação</h2>
+<p>O script <a href="scripts/generate_artifacts.py">scripts/generate_artifacts.py</a> converte os arquivos-fonte de <code>spec/</code> em artefatos publicados no diretório <code>docs/</code> nos formatos:</p>
+<ul>
+<li>Markdown;</li>
+<li>HTML;</li>
+<li>PDF.</li>
+</ul>
+<p>A geração de PDF utiliza ReportLab como alternativa estável ao uso de renderização HTML dependente de bibliotecas nativas mais complexas.</p>
+<h2 id="12-limitacoes-atuais">12. Limitações atuais</h2>
+<p>Apesar da evolução do projeto, ainda permanecem limitações relevantes:</p>
+<ul>
+<li>autenticação ainda não integrada a diretório corporativo;</li>
+<li>logs locais ainda não enviados a barramento central de observabilidade;</li>
+<li>ausência de gestão corporativa de ciclo de vida de prompts;</li>
+<li>ausência de catálogo formal de riscos com aceite institucional;</li>
+<li>ausência de segregação de ambientes com política de promoção formal;</li>
+<li>ausência de avaliação jurídica e de privacidade formalmente registrada.</li>
+</ul>
+<p>Esses pontos impedem classificar a solução como plenamente institucionalizada em produção regulada, embora ela já se posicione em nível mais avançado de controle operacional.</p>
+<h2 id="13-conclusao-tecnica">13. Conclusão técnica</h2>
+<p>O Conversa_Folha_doc evoluiu de um protótipo conversacional com documentação básica para uma solução tecnicamente mais robusta, com testes, pipeline, trilhas de auditoria, observabilidade local, controles mínimos de acesso e documentação alinhada a governança pública.</p>
+<p>Sob a ótica técnica, o projeto atende a um patamar de maturidade compatível com iniciativas otimizadas em ambiente controlado, mantendo clareza sobre suas limitações e sobre os passos necessários para futura adoção institucional ampliada.</p>
+</body>
+</html>

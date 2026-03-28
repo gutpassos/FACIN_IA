@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conversa_Folha_doc_Erros_Encontrados_e_Resolvidos</title>
+    <style>
+        :root {
+            --bg: #f3efe4;
+            --panel: #fffdf8;
+            --ink: #17324d;
+            --muted: #556a7f;
+            --line: #d6c9ae;
+            --accent: #0a5a66;
+            --accent-2: #8c5f2a;
+        }
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 32px 20px 48px; background: radial-gradient(circle at top, #fff7e4 0%, var(--bg) 50%, #ece7d8 100%); color: var(--ink); font-family: Georgia, 'Times New Roman', serif; }
+        main { max-width: 1080px; margin: 0 auto; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 32px; box-shadow: 0 12px 40px rgba(23, 50, 77, 0.08); }
+        h1, h2, h3, h4 { color: var(--ink); line-height: 1.2; }
+        h1 { font-size: 2.1rem; margin-top: 0; }
+        h2 { border-top: 1px solid var(--line); padding-top: 22px; margin-top: 28px; }
+        p, li { line-height: 1.6; }
+        a { color: var(--accent); }
+        table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 0.95rem; }
+        th, td { border: 1px solid var(--line); padding: 10px; vertical-align: top; }
+        th { background: #efe3c8; text-align: left; }
+        code { background: #f2eadc; padding: 0.1rem 0.3rem; border-radius: 6px; }
+        pre { background: #f7f3ea; padding: 14px; border-radius: 14px; overflow-x: auto; border: 1px solid var(--line); }
+        blockquote { margin: 20px 0; padding: 12px 18px; border-left: 4px solid var(--accent-2); background: #fbf4e6; }
+        .mermaid { margin: 22px 0; overflow-x: auto; text-align: center; }
+        @media (max-width: 720px) {
+            body { padding: 12px; }
+            main { padding: 20px; border-radius: 18px; }
+            h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Conversa_Folha_doc - Erros Encontrados e Resolvidos</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência: GPT-5.4<br />
+Ambiente validado: figmm<br />
+Data: 28 de março de 2026</p>
+<h2>1. Objetivo</h2>
+<p>Registrar achados relevantes identificados durante a documentação do projeto e a resolução adotada nesta etapa, sempre sem alterar o código original.</p>
+<h2>2. Registro de Achados</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Achado</th>
+<th>Impacto</th>
+<th>Resolução adotada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERR-01</td>
+<td>app.py orienta executar create_folha_db.py, mas o arquivo existente é cria_db.py</td>
+<td>confunde operação inicial e leitura técnica</td>
+<td>erro documentado no manual, na arquitetura e neste registro; nenhum patch aplicado ao legado</td>
+</tr>
+<tr>
+<td>ERR-02</td>
+<td>prompt do agente OpenAI menciona colunas que não existem no schema real</td>
+<td>eleva risco de resposta incorreta e desalinhamento semântico</td>
+<td>divergência registrada na avaliação de maturidade, integrações e risco algorítmico</td>
+</tr>
+<tr>
+<td>ERR-03</td>
+<td>app.py usa gpt-3.5-turbo, embora a referência do projeto documental seja GPT-5.4</td>
+<td>diferença entre legado e governança declarada</td>
+<td>mantido o legado intacto e explicitado que GPT-5.4 é referência documental do projeto, não alteração do código</td>
+</tr>
+<tr>
+<td>ERR-04</td>
+<td>a interface exige simultaneamente chaves Groq e OpenAI</td>
+<td>reduz flexibilidade operacional e dificulta uso controlado</td>
+<td>limitação registrada em manual, integrações e avaliação de maturidade</td>
+</tr>
+<tr>
+<td>ERR-05</td>
+<td>cria_db.py reabre conexão SQLite em popula_tabelas e ignora a conexão recebida</td>
+<td>desenho técnico redundante e potencial de confusão</td>
+<td>comportamento descrito na documentação do código; nenhuma alteração no fonte</td>
+</tr>
+<tr>
+<td>ERR-06</td>
+<td>não há política explícita de retenção, mascaramento e trilha de auditoria</td>
+<td>lacuna de conformidade e governança</td>
+<td>tratamento feito por recomendação formal na avaliação LGPD e no roadmap de maturidade</td>
+</tr>
+</tbody>
+</table>
+<h2>3. Leitura de Resolução</h2>
+<p>Nesta etapa, resolver significa registrar, enquadrar, rastrear e orientar o tratamento futuro do achado, respeitando a restrição de não modificar a pasta Conversa_Folha.</p>
+    </main>
+
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#dae8d8', primaryTextColor: '#17324d', primaryBorderColor: '#476548', lineColor: '#385269', secondaryColor: '#e8f0ef', tertiaryColor: '#ffffff' } });
+</script>
+
+</body>
+</html>
