@@ -6,6 +6,8 @@ argument-hint: Informe o contexto do projeto, orgao ou iniciativa de IA e o arte
 
 # FACIN_IA Skill
 
+Autor: Guttenberg Ferreira Passos
+
 Use esta skill quando a tarefa envolver governanca de IA, maturidade institucional, especificacao orientada por artefatos ou adaptacao do metodo FACIN_IA a um novo contexto.
 
 ## Objetivo

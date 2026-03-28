@@ -1,6 +1,8 @@
 FACIN_IA
 Diretrizes de Governança para Uso de Inteligência Artificial no Desenvolvimento de Software
 
+Autor: Guttenberg Ferreira Passos
+
 1. Introdução
 O FACIN_IA estabelece diretrizes formais para uso estruturado de Inteligência Artificial no desenvolvimento de software, integrando Spec-Driven Development (SDD), governança corporativa e arquitetura empresarial, baseando-se nos seguintes componentes:
 FACIN - Framework de Arquitetura Corporativa para Interoperabilidade no apoio à Governança

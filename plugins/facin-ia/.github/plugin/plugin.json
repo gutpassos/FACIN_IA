@@ -1,0 +1,27 @@
+{
+  "name": "facin-ia",
+  "description": "Plugin do metodo FACIN_IA para GitHub Copilot com agente especializado, skill metodologica e comando de diagnostico baseado em evidencias.",
+  "version": "1.0.0",
+  "keywords": [
+    "governanca-ia",
+    "maturidade",
+    "facin-ia",
+    "copilot",
+    "setor-publico"
+  ],
+  "author": {
+    "name": "Guttenberg Ferreira Passos",
+    "email": "gut.passos@gmail.com"
+  },
+  "repository": "https://github.com/gutpassos/FACIN_IA",
+  "license": "MIT",
+  "agents": [
+    "./agents/facin-ia.md"
+  ],
+  "commands": [
+    "./commands/facin-ia-diagnostico.md"
+  ],
+  "skills": [
+    "./skills/facin-ia/"
+  ]
+}

@@ -1,5 +1,7 @@
 # FACIN_IA - Versão Executiva para Apresentação Institucional
 
+Autor: Guttenberg Ferreira Passos
+
 ## Mensagem central
 
 O FACIN_IA propõe um modelo institucional para governar o uso de Inteligência Artificial com previsibilidade, responsabilização, rastreabilidade e foco em valor público.

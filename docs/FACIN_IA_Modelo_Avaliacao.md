@@ -1,5 +1,7 @@
 # FACIN_IA - Modelo de Avaliação de Maturidade
 
+Autor: Guttenberg Ferreira Passos
+
 ## Objetivo
 
 Este documento consolida o modelo de avaliação de maturidade da Governança Aplicada à Inteligência Artificial para a PRODEMGE, com base nas diretrizes do FACIN_IA, no FACIN e no Modelo de Responsabilidade Organizacional (MRO).

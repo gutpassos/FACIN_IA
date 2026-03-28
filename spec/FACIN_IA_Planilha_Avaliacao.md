@@ -1,5 +1,7 @@
 # FACIN_IA - Planilha de Avaliação com Pontuação Automática
 
+Autor: Guttenberg Ferreira Passos
+
 ## Objetivo
 
 Este documento descreve a planilha de avaliação automática do FACIN_IA, disponibilizada em [docs/FACIN_IA_Avaliacao_Automatica.xlsx](../docs/FACIN_IA_Avaliacao_Automatica.xlsx).

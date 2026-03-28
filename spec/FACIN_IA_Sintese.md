@@ -1,5 +1,7 @@
 # FACIN_IA
 
+Autor: Guttenberg Ferreira Passos
+
 ## Síntese do Trabalho
 
 O FACIN_IA consolida uma proposta de governança aplicada ao uso de Inteligência Artificial no desenvolvimento de software e em ambientes organizacionais orientados a serviços públicos. O trabalho integra arquitetura corporativa, responsabilidade organizacional e desenvolvimento orientado por especificação para criar um modelo disciplinado, rastreável e auditável de adoção de IA.

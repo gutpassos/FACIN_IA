@@ -7,6 +7,8 @@ agent: FACIN_IA
 
 # Diagnostico FACIN_IA por evidencias
 
+Autor: Guttenberg Ferreira Passos
+
 Execute um diagnostico de maturidade FACIN_IA para o contexto informado pelo usuario.
 
 ## Entradas esperadas

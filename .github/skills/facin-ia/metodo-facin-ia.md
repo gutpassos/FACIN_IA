@@ -1,5 +1,7 @@
 # Metodo FACIN_IA
 
+Autor: Guttenberg Ferreira Passos
+
 O FACIN_IA adapta FACIN, MRO e Spec-Driven Development para governanca aplicada a inteligencia artificial.
 
 ## Principios

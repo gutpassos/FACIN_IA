@@ -1,5 +1,7 @@
 # FACIN_IA - Customização para GitHub Copilot
 
+Autor: Guttenberg Ferreira Passos
+
 Especificação da customização reutilizável do FACIN_IA para uso no GitHub Copilot em projetos que precisam estruturar governança de IA, maturidade institucional, especificação antes de código e diagnósticos baseados em evidências.
 
 ## 1. Objetivo

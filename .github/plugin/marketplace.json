@@ -1,0 +1,20 @@
+{
+  "name": "facin-ia-marketplace",
+  "metadata": {
+    "description": "Marketplace do FACIN_IA para distribuicao de plugin de governanca de IA no GitHub Copilot.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "owner": {
+    "name": "Guttenberg Ferreira Passos",
+    "email": "gut.passos@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "facin-ia",
+      "source": "facin-ia",
+      "description": "Plugin do metodo FACIN_IA com agente, skill e comando de diagnostico para governanca de IA.",
+      "version": "1.0.0"
+    }
+  ]
+}

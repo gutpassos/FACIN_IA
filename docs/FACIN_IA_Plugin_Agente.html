@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACIN_IA - Plugin de Agente para Distribuicao entre Equipes</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
+    h1, h2, h3 { color: #0b3a66; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { border: 1px solid #c8d5e3; padding: 8px; vertical-align: top; }
+    th { background: #0b3a66; color: white; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    blockquote { border-left: 4px solid #0b3a66; padding-left: 12px; color: #385269; }
+    </style>
+</head>
+<body>
+<h1 id="facin_ia-plugin-de-agente-para-distribuicao-entre-equipes">FACIN_IA - Plugin de Agente para Distribuicao entre Equipes</h1>
+<p>Autor: Guttenberg Ferreira Passos</p>
+<p>Especificacao do empacotamento do FACIN_IA como plugin de agente para GitHub Copilot, com foco em distribuicao mais simples entre equipes por plugin local ou marketplace Git.</p>
+<h2 id="1-objetivo">1. Objetivo</h2>
+<p>Empacotar o FACIN_IA como plugin para que equipes possam instalar, habilitar e usar o metodo sem copiar manualmente as pastas de customizacao para cada repositorio.</p>
+<h2 id="2-estrutura-do-plugin">2. Estrutura do plugin</h2>
+<p>O plugin foi materializado em:</p>
+<ul>
+<li><code>plugins/facin-ia/.github/plugin/plugin.json</code></li>
+<li><code>plugins/facin-ia/agents/facin-ia.md</code></li>
+<li><code>plugins/facin-ia/commands/facin-ia-diagnostico.md</code></li>
+<li><code>plugins/facin-ia/skills/facin-ia/</code></li>
+<li><code>plugins/facin-ia/README.md</code></li>
+</ul>
+<p>O repositório tambem publica um marketplace em:</p>
+<ul>
+<li><code>.github/plugin/marketplace.json</code></li>
+</ul>
+<h2 id="3-componentes-entregues">3. Componentes entregues</h2>
+<h3 id="31-agente">3.1 Agente</h3>
+<p>O plugin inclui o agente <code>FACIN_IA</code>, especializado em governanca de IA, maturidade, especificacao antes de codigo e adaptacao metodologica.</p>
+<h3 id="32-skill">3.2 Skill</h3>
+<p>O plugin inclui a skill <code>facin-ia</code>, contendo metodo resumido, template de especificacao e checklist de avaliacao.</p>
+<h3 id="33-comando">3.3 Comando</h3>
+<p>O plugin inclui o comando <code>facin-ia-diagnostico</code>, voltado a diagnosticos FACIN_IA baseados em evidencias.</p>
+<h2 id="4-formas-de-instalacao">4. Formas de instalacao</h2>
+<h3 id="41-plugin-local">4.1 Plugin local</h3>
+<p>Quando a equipe possui o repositorio clonado localmente, o plugin pode ser registrado por caminho usando <code>chat.pluginLocations</code>.</p>
+<p>Exemplo:</p>
+<pre><code class="language-json">{
+  &quot;chat.plugins.enabled&quot;: true,
+  &quot;chat.pluginLocations&quot;: {
+    &quot;C:/Programas/Prodemge/FACIN_IA/plugins/facin-ia&quot;: true
+  }
+}
+</code></pre>
+<h3 id="42-marketplace-git">4.2 Marketplace Git</h3>
+<p>Quando a equipe deseja distribuicao centralizada, o repositório pode ser usado como marketplace por meio de <code>chat.plugins.marketplaces</code>.</p>
+<p>Exemplo:</p>
+<pre><code class="language-json">{
+  &quot;chat.plugins.enabled&quot;: true,
+  &quot;chat.plugins.marketplaces&quot;: [
+    &quot;https://github.com/gutpassos/FACIN_IA.git&quot;
+  ]
+}
+</code></pre>
+<p>Depois disso, o plugin <code>facin-ia</code> pode ser instalado e habilitado na interface de plugins do VS Code.</p>
+<h2 id="5-instrucoes-de-uso">5. Instrucoes de uso</h2>
+<p>Depois de instalado e habilitado, a equipe pode usar:</p>
+<ol>
+<li>o agente <code>FACIN_IA</code> no seletor de agentes do chat;</li>
+<li>a skill <code>/facin-ia</code> para carregar a base metodologica;</li>
+<li>o comando <code>/facin-ia:facin-ia-diagnostico</code> para diagnostico padronizado.</li>
+</ol>
+<h2 id="6-exemplo-de-uso">6. Exemplo de uso</h2>
+<pre><code class="language-text">/facin-ia:facin-ia-diagnostico Avaliar a maturidade de governanca de IA de um orgao com base em politica institucional, atas de comite, catalogo de dados, logs operacionais e relatorios de auditoria.
+</code></pre>
+<h2 id="7-beneficios-do-empacotamento">7. Beneficios do empacotamento</h2>
+<ol>
+<li>padronizacao entre equipes;</li>
+<li>reducao de copia manual de arquivos;</li>
+<li>distribuicao por marketplace ou caminho local;</li>
+<li>evolucao versionada do agente, da skill e do comando;</li>
+<li>menor friccao para adocao institucional do FACIN_IA.</li>
+</ol>
+<h2 id="8-limites-atuais">8. Limites atuais</h2>
+<ol>
+<li>o suporte a agent plugins no VS Code esta em preview;</li>
+<li>a equipe precisa habilitar <code>chat.plugins.enabled</code>;</li>
+<li>a instalacao por marketplace depende da descoberta do repositorio como catalogo de plugins.</li>
+</ol>
+<h2 id="9-criterios-de-aceitacao">9. Criterios de aceitacao</h2>
+<p>O empacotamento sera considerado concluido quando:</p>
+<ol>
+<li>o diretorio <code>plugins/facin-ia/</code> estiver autocontido;</li>
+<li>o manifesto <code>plugin.json</code> declarar agente, comando e skill validos;</li>
+<li>o marketplace do repositorio listar o plugin <code>facin-ia</code>;</li>
+<li>houver instrucoes claras de instalacao e uso no plugin;</li>
+<li>a documentacao publicada existir em Markdown, HTML e PDF.</li>
+</ol>
+</body>
+</html>
