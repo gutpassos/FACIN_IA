@@ -8,6 +8,29 @@ Autor: Guttenberg Ferreira Passos
 Modelo LLM utilizado: GPT-5.4  
 Ambiente validado: figmm
 
+## Uso como agente
+
+Este repositório agora inclui uma customização reutilizável do GitHub Copilot para uso do método FACIN_IA em outros projetos.
+
+Estrutura adicionada:
+
+- `.github/agents/FACIN_IA.agent.md`: agente especializado em governança de IA.
+- `.github/skills/facin-ia/SKILL.md`: skill portátil com a metodologia FACIN_IA.
+- `.github/prompts/facin-ia-diagnostico.prompt.md`: prompt reutilizável para diagnóstico baseado em evidências.
+- `.github/skills/facin-ia/template-especificacao.md`: template oficial de especificação.
+- `.github/skills/facin-ia/metodo-facin-ia.md`: resumo operacional do método.
+- `.github/skills/facin-ia/checklist-avaliacao.md`: checklist de avaliação e aderência.
+
+Para reutilizar em outro projeto:
+
+1. Copie a pasta `.github/agents/` e a pasta `.github/skills/facin-ia/` para o repositório de destino.
+2. Abra o repositório no VS Code com GitHub Copilot habilitado.
+3. Selecione o agente `FACIN_IA` na lista de agentes do chat.
+4. Opcionalmente, invoque a skill `/facin-ia` para carregar diretamente o método.
+5. Para diagnósticos padronizados, invoque o prompt `/facin-ia-diagnostico` e informe o contexto e as evidências.
+
+O agente foi desenhado para apoiar diagnóstico de maturidade, desenho de governança, especificação antes de código, definição de indicadores e adaptação metodológica para outros contextos institucionais.
+
 ## O que este repositório entrega
 
 - um modelo de avaliação de maturidade em seis dimensões de governança de IA;
@@ -21,10 +44,18 @@ Ambiente validado: figmm
 1. [docs/FACIN_IA_Versao_Executiva.md](docs/FACIN_IA_Versao_Executiva.md): visão rápida para apresentação e alinhamento institucional em Markdown.
 2. [docs/FACIN_IA_Sintese.md](docs/FACIN_IA_Sintese.md): síntese do trabalho, dos conceitos-base e da aplicação prática com IA assistida.
 3. [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): modelo completo de avaliação, pesos, fórmulas e faixas de maturidade.
-4. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
+4. [docs/FACIN_IA_Customizacao_Copilot.md](docs/FACIN_IA_Customizacao_Copilot.md): documentação da customização reutilizável do FACIN_IA para GitHub Copilot.
+5. [docs/FACIN_IA_Avaliacao_Automatica.xlsx](docs/FACIN_IA_Avaliacao_Automatica.xlsx): planilha automatizada para aplicação prática do modelo.
 
 ## Estrutura do repositório
 
+- `.github/agents/FACIN_IA.agent.md`: definição do agente customizado FACIN_IA.
+- `.github/skills/facin-ia/SKILL.md`: skill portátil do método FACIN_IA.
+- `.github/prompts/facin-ia-diagnostico.prompt.md`: prompt reutilizável para diagnóstico FACIN_IA baseado em evidências.
+- `.github/skills/facin-ia/metodo-facin-ia.md`: resumo das regras, dimensões e escala de maturidade.
+- `.github/skills/facin-ia/template-especificacao.md`: template oficial de especificação orientada por governança.
+- `.github/skills/facin-ia/checklist-avaliacao.md`: checklist rápido de aderência metodológica.
+- [spec/FACIN_IA_Customizacao_Copilot.md](spec/FACIN_IA_Customizacao_Copilot.md): documentação-fonte da customização FACIN_IA para GitHub Copilot.
 - [spec/FACIN_IA_Modelo_Avaliacao.md](spec/FACIN_IA_Modelo_Avaliacao.md): documentação-fonte do modelo de avaliação.
 - [spec/FACIN_IA_Planilha_Avaliacao.md](spec/FACIN_IA_Planilha_Avaliacao.md): especificação funcional da planilha de avaliação.
 - [spec/FACIN_IA_Sintese.md](spec/FACIN_IA_Sintese.md): documentação-fonte da síntese institucional do trabalho.
@@ -32,6 +63,9 @@ Ambiente validado: figmm
 - [docs/FACIN_IA_Modelo_Avaliacao.md](docs/FACIN_IA_Modelo_Avaliacao.md): cópia publicada em Markdown do modelo de avaliação.
 - [docs/FACIN_IA_Modelo_Avaliacao.html](docs/FACIN_IA_Modelo_Avaliacao.html): versão navegável do modelo de avaliação.
 - [docs/FACIN_IA_Modelo_Avaliacao.pdf](docs/FACIN_IA_Modelo_Avaliacao.pdf): versão em PDF do modelo.
+- [docs/FACIN_IA_Customizacao_Copilot.md](docs/FACIN_IA_Customizacao_Copilot.md): cópia publicada em Markdown da customização FACIN_IA para GitHub Copilot.
+- [docs/FACIN_IA_Customizacao_Copilot.html](docs/FACIN_IA_Customizacao_Copilot.html): versão navegável da customização FACIN_IA para GitHub Copilot.
+- [docs/FACIN_IA_Customizacao_Copilot.pdf](docs/FACIN_IA_Customizacao_Copilot.pdf): versão em PDF da customização FACIN_IA para GitHub Copilot.
 - [docs/FACIN_IA_Planilha_Avaliacao.md](docs/FACIN_IA_Planilha_Avaliacao.md): cópia publicada em Markdown da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.html](docs/FACIN_IA_Planilha_Avaliacao.html): versão navegável da especificação da planilha.
 - [docs/FACIN_IA_Planilha_Avaliacao.pdf](docs/FACIN_IA_Planilha_Avaliacao.pdf): versão em PDF da especificação da planilha.

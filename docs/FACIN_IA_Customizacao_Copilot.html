@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACIN_IA - Customização para GitHub Copilot</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
+    h1, h2, h3 { color: #0b3a66; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { border: 1px solid #c8d5e3; padding: 8px; vertical-align: top; }
+    th { background: #0b3a66; color: white; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    blockquote { border-left: 4px solid #0b3a66; padding-left: 12px; color: #385269; }
+    </style>
+</head>
+<body>
+<h1 id="facin_ia-customizacao-para-github-copilot">FACIN_IA - Customização para GitHub Copilot</h1>
+<p>Especificação da customização reutilizável do FACIN_IA para uso no GitHub Copilot em projetos que precisam estruturar governança de IA, maturidade institucional, especificação antes de código e diagnósticos baseados em evidências.</p>
+<h2 id="1-objetivo">1. Objetivo</h2>
+<p>Esta customização transforma o método FACIN_IA em artefatos diretamente utilizáveis no VS Code com GitHub Copilot, permitindo que equipes reutilizem a metodologia sem repetir o mesmo contexto em cada conversa.</p>
+<p>O objetivo é disponibilizar uma base operacional para:</p>
+<ol>
+<li>estruturar diagnósticos de maturidade em governança de IA;</li>
+<li>orientar a criação de especificações antes de código;</li>
+<li>padronizar a avaliação de evidências, riscos, controles e rastreabilidade;</li>
+<li>apoiar a adaptação do método para diferentes órgãos, produtos, serviços ou projetos.</li>
+</ol>
+<h2 id="2-componentes-da-customizacao">2. Componentes da customização</h2>
+<p>O pacote atual da customização FACIN_IA é composto por três tipos principais de artefatos.</p>
+<h3 id="21-agente-customizado">2.1 Agente customizado</h3>
+<p>Arquivo:</p>
+<ul>
+<li><code>.github/agents/FACIN_IA.agent.md</code></li>
+</ul>
+<p>Função:</p>
+<ul>
+<li>definir a persona especializada do FACIN_IA;</li>
+<li>orientar a análise nas seis dimensões obrigatórias do método;</li>
+<li>exigir especificação, evidência e rastreabilidade antes de qualquer recomendação técnica mais profunda;</li>
+<li>padronizar o comportamento do Copilot para tarefas de governança aplicada à IA.</li>
+</ul>
+<h3 id="22-skill-metodologica">2.2 Skill metodológica</h3>
+<p>Arquivos:</p>
+<ul>
+<li><code>.github/skills/facin-ia/SKILL.md</code></li>
+<li><code>.github/skills/facin-ia/metodo-facin-ia.md</code></li>
+<li><code>.github/skills/facin-ia/template-especificacao.md</code></li>
+<li><code>.github/skills/facin-ia/checklist-avaliacao.md</code></li>
+</ul>
+<p>Função:</p>
+<ul>
+<li>encapsular o método FACIN_IA como capacidade reutilizável;</li>
+<li>disponibilizar regras, princípios, checklist e template de especificação;</li>
+<li>reduzir repetição de instruções em múltiplos projetos;</li>
+<li>servir como base normativa para análises, diagnósticos e planos de adequação.</li>
+</ul>
+<h3 id="23-prompt-reutilizavel-de-diagnostico">2.3 Prompt reutilizável de diagnóstico</h3>
+<p>Arquivo:</p>
+<ul>
+<li><code>.github/prompts/facin-ia-diagnostico.prompt.md</code></li>
+</ul>
+<p>Função:</p>
+<ul>
+<li>permitir execução padronizada de diagnósticos FACIN_IA por slash command;</li>
+<li>guiar a avaliação com base em evidências;</li>
+<li>exigir saída estruturada com resumo executivo, maturidade por dimensão, recomendações e evidências adicionais requeridas.</li>
+</ul>
+<h2 id="3-estrutura-conceitual-aplicada">3. Estrutura conceitual aplicada</h2>
+<p>A customização preserva integralmente a estrutura metodológica do FACIN_IA, incluindo as seis dimensões obrigatórias:</p>
+<ol>
+<li>Estratégia e Governança de IA</li>
+<li>Dados e Infraestrutura</li>
+<li>Talento e Cultura</li>
+<li>Desenvolvimento e Operação de IA (DevOps/MLOps)</li>
+<li>Ética, Transparência e Gestão de Risco</li>
+<li>Impacto Social e Valor</li>
+</ol>
+<p>Também preserva os princípios centrais do método:</p>
+<ol>
+<li>a IA executa especificações governadas;</li>
+<li>o código é artefato derivado;</li>
+<li>prompt, modelo, dado e decisão são artefatos rastreáveis;</li>
+<li>ideação e produção devem permanecer segregadas;</li>
+<li>observabilidade e trilha de auditoria são obrigatórias.</li>
+</ol>
+<h2 id="4-casos-de-uso-suportados">4. Casos de uso suportados</h2>
+<p>A customização foi desenhada para apoiar tarefas como:</p>
+<ol>
+<li>diagnóstico de maturidade de governança de IA em órgãos públicos;</li>
+<li>avaliação de projetos ou produtos intensivos em IA a partir de evidências;</li>
+<li>elaboração de especificação funcional e técnica antes de desenvolvimento;</li>
+<li>revisão de controles de risco, ética, transparência e responsabilização;</li>
+<li>adaptação do método FACIN_IA para outros contextos institucionais.</li>
+</ol>
+<h2 id="5-instalacao-em-outros-projetos">5. Instalação em outros projetos</h2>
+<p>Na forma atual, a reutilização ocorre por cópia dos artefatos de customização para o repositório de destino.</p>
+<p>Passos:</p>
+<ol>
+<li>copiar <code>.github/agents/</code> para o novo repositório;</li>
+<li>copiar <code>.github/skills/facin-ia/</code> para o novo repositório;</li>
+<li>copiar <code>.github/prompts/</code> caso o time queira usar também o diagnóstico padronizado;</li>
+<li>abrir o projeto no VS Code com GitHub Copilot habilitado;</li>
+<li>selecionar o agente <code>FACIN_IA</code> no chat;</li>
+<li>opcionalmente invocar <code>/facin-ia</code> para carregar a skill;</li>
+<li>para avaliação orientada por evidências, invocar <code>/facin-ia-diagnostico</code>.</li>
+</ol>
+<h2 id="6-forma-de-uso-recomendada">6. Forma de uso recomendada</h2>
+<h3 id="61-uso-do-agente-facin_ia">6.1 Uso do agente FACIN_IA</h3>
+<p>Recomendado quando a demanda envolver:</p>
+<ul>
+<li>desenho de governança;</li>
+<li>avaliação de maturidade;</li>
+<li>criação de especificação antes de código;</li>
+<li>definição de indicadores, critérios e evidências;</li>
+<li>análise de riscos e controles de IA.</li>
+</ul>
+<h3 id="62-uso-da-skill-facin_ia">6.2 Uso da skill FACIN_IA</h3>
+<p>Recomendado quando o modelo precisar carregar explicitamente:</p>
+<ul>
+<li>o método resumido;</li>
+<li>o template de especificação;</li>
+<li>o checklist de avaliação.</li>
+</ul>
+<h3 id="63-uso-do-prompt-facin-ia-diagnostico">6.3 Uso do prompt facin-ia-diagnostico</h3>
+<p>Recomendado quando a tarefa for um diagnóstico padronizado e rastreável, com foco em evidências fornecidas pelo usuário.</p>
+<h2 id="7-saida-esperada-do-diagnostico">7. Saída esperada do diagnóstico</h2>
+<p>O diagnóstico conduzido pela customização FACIN_IA deve, quando aplicável, incluir:</p>
+<ol>
+<li>resumo executivo;</li>
+<li>evidências consideradas;</li>
+<li>maturidade por dimensão;</li>
+<li>nível consolidado ou avaliação inconclusiva;</li>
+<li>recomendações priorizadas;</li>
+<li>evidências adicionais requeridas;</li>
+<li>próximos artefatos recomendados.</li>
+</ol>
+<h2 id="8-beneficios-para-equipes">8. Benefícios para equipes</h2>
+<p>O uso da customização traz os seguintes ganhos práticos:</p>
+<ol>
+<li>redução de repetição de contexto em diferentes chats e projetos;</li>
+<li>maior consistência nas análises de maturidade e governança;</li>
+<li>padronização de linguagem, critérios e artefatos;</li>
+<li>melhoria da rastreabilidade metodológica;</li>
+<li>aceleração da adoção do FACIN_IA em múltiplos times.</li>
+</ol>
+<h2 id="9-limites-da-implementacao-atual">9. Limites da implementação atual</h2>
+<p>Na versão atual, a distribuição é feita como customização local de repositório e não como plugin instalável centralmente.</p>
+<p>Isso significa que:</p>
+<ol>
+<li>a instalação ainda depende de copiar as pastas de customização;</li>
+<li>a atualização entre múltiplos projetos exige replicação controlada das mudanças;</li>
+<li>um empacotamento futuro como plugin de agente pode simplificar a distribuição organizacional.</li>
+</ol>
+<h2 id="10-criterios-de-aceitacao">10. Critérios de aceitação</h2>
+<p>Esta customização será considerada aderente ao objetivo proposto quando:</p>
+<ol>
+<li>o agente FACIN_IA estiver disponível para seleção no VS Code;</li>
+<li>a skill facin-ia puder ser carregada como capacidade reutilizável;</li>
+<li>o prompt <code>/facin-ia-diagnostico</code> puder ser executado como slash command;</li>
+<li>a análise produzida preservar as seis dimensões e os princípios do método;</li>
+<li>a documentação permitir instalação e uso em outros projetos;</li>
+<li>os artefatos publicados estiverem disponíveis em Markdown, HTML e PDF.</li>
+</ol>
+<h2 id="11-conclusao">11. Conclusão</h2>
+<p>A customização FACIN_IA converte o método em um conjunto operacional de agente, skill e prompt reutilizável, permitindo levar a governança aplicada à IA para o uso cotidiano do GitHub Copilot sem perder rigor metodológico, rastreabilidade nem padronização institucional.</p>
+</body>
+</html>
