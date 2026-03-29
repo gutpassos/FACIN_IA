@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Conversa_Folha_doc - Dashboard Executivo</title>
+<style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; --green: #27ae60; --yellow: #f39c12; --red: #e74c3c; --blue: #2980b9; --gray: #95a5a6; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--ink); }
+.header { background: linear-gradient(135deg, var(--ink) 0%, var(--accent) 100%); color: #fff; padding: 28px 32px; }
+.header h1 { font-size: 28px; margin-bottom: 4px; }
+.header .subtitle { opacity: 0.85; font-size: 14px; }
+.header .meta { margin-top: 10px; font-size: 12px; opacity: 0.7; }
+.container { max-width: 1200px; margin: 0 auto; padding: 24px 16px; }
+.kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.kpi-card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(23,50,77,0.06); }
+.kpi-card .kpi-value { font-size: 36px; font-weight: 700; margin: 8px 0; }
+.kpi-card .kpi-label { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+.kpi-card .kpi-detail { font-size: 12px; color: #999; margin-top: 4px; }
+.kpi-green .kpi-value { color: var(--green); }
+.kpi-yellow .kpi-value { color: var(--yellow); }
+.kpi-red .kpi-value { color: var(--red); }
+.kpi-blue .kpi-value { color: var(--blue); }
+.kpi-accent .kpi-value { color: var(--accent); }
+.section { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 24px; margin-bottom: 24px; box-shadow: 0 8px 24px rgba(23,50,77,0.06); }
+.section h2 { font-size: 20px; color: #0b3a66; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid var(--line); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #eadfc6; font-weight: 600; }
+tr:nth-child(even) { background: rgba(212,199,173,0.1); }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
+.mermaid { margin: 20px 0; text-align: center; overflow-x: auto; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+.quick-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 24px; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 8px 24px rgba(23,50,77,0.06); }
+.card h3 { margin: 0 0 8px; font-size: 15px; color: #0b3a66; }
+.card p { margin: 0 0 10px; color: #5c7185; font-size: 13px; line-height: 1.45; }
+.pill { display: inline-block; margin-top: 6px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+.pill.ok { background: #e8f4de; color: var(--green); }
+.pill.warn { background: #fff1cf; color: var(--yellow); }
+.pill.danger { background: #fde2e2; color: var(--red); }
+.pill.info { background: #dbeafe; color: var(--blue); }
+.bar-container { display: flex; align-items: center; gap: 10px; margin: 6px 0; }
+.bar-label { font-size: 12px; min-width: 90px; color: #555; }
+.bar-track { flex: 1; height: 20px; background: #e8e1d3; border-radius: 10px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 10px; display: flex; align-items: center; justify-content: flex-end; padding-right: 6px; font-size: 11px; font-weight: 600; color: #fff; }
+@media (max-width: 900px) { .quick-links { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .quick-links { grid-template-columns: 1fr; } }
+.footer { text-align: center; padding: 20px; font-size: 12px; color: #999; border-top: 1px solid var(--line); margin-top: 32px; }
+.risk-critical { background: var(--red); color: #fff; padding: 2px 8px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+.risk-high { background: #e67e22; color: #fff; padding: 2px 8px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+.risk-medium { background: var(--yellow); color: #fff; padding: 2px 8px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+.risk-low { background: var(--green); color: #fff; padding: 2px 8px; border-radius: 8px; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>Conversa_Folha_doc — Dashboard Executivo</h1>
+    <div class="subtitle">Sistema Multiagente de Consulta à Folha de Pagamento — V4</div>
+    <div class="meta">Autor: Guttenberg Ferreira Passos &nbsp;|&nbsp; Modelo: Claude Opus 4.6 &nbsp;|&nbsp; Ambiente: figmm &nbsp;|&nbsp; Data: 29 de março de 2026</div>
+</div>
+<div class="container">
+
+<!-- Quick Links -->
+<section class="quick-links">
+    <article class="card">
+        <h3>Índice Executivo</h3>
+        <p>Ponto único de navegação documental do projeto.</p>
+        <a href="Conversa_Folha_Indice_Executivo.html">Abrir índice completo</a>
+        <div class="pill ok">Base documental pronta</div>
+    </article>
+    <article class="card">
+        <h3>Avaliação de Maturidade</h3>
+        <p>FACIN_IA com MRO_RACI, LGPD, ANPD e risco algorítmico.</p>
+        <a href="Conversa_Folha_Avaliacao_Maturidade.html">Abrir avaliação</a>
+        <div class="pill warn">Nível 1 — Inicial</div>
+    </article>
+    <article class="card">
+        <h3>Arquitetura da Solução</h3>
+        <p>5 camadas, grafo LangGraph, diagramas Mermaid.</p>
+        <a href="Conversa_Folha_Arquitetura_Solucao.html">Abrir arquitetura</a>
+        <div class="pill ok">Documentação completa</div>
+    </article>
+    <article class="card">
+        <h3>Plano Executivo</h3>
+        <p>RACI, cronograma, marcos, riscos e indicadores.</p>
+        <a href="Conversa_Folha_Plano_Executivo.html">Abrir plano</a>
+        <div class="pill ok">Documentação completa</div>
+    </article>
+</section>
+
+<!-- KPIs -->
+<div class="kpi-row">
+    <div class="kpi-card kpi-green">
+        <div class="kpi-label">Documentos Entregues</div>
+        <div class="kpi-value">15</div>
+        <div class="kpi-detail">de 15 previstos</div>
+    </div>
+    <div class="kpi-card kpi-red">
+        <div class="kpi-label">Índice de Maturidade</div>
+        <div class="kpi-value">1,32</div>
+        <div class="kpi-detail">Meta: ≥ 2,50</div>
+    </div>
+    <div class="kpi-card kpi-blue">
+        <div class="kpi-label">Regras de Negócio</div>
+        <div class="kpi-value">29</div>
+        <div class="kpi-detail">Formalizadas</div>
+    </div>
+    <div class="kpi-card kpi-yellow">
+        <div class="kpi-label">Riscos Algorítmicos</div>
+        <div class="kpi-value">10</div>
+        <div class="kpi-detail">1 crítico · 1 alto</div>
+    </div>
+    <div class="kpi-card kpi-accent">
+        <div class="kpi-label">Erros Documentados</div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-detail">Código preservado</div>
+    </div>
+    <div class="kpi-card kpi-green">
+        <div class="kpi-label">Bloqueios Ativos</div>
+        <div class="kpi-value">0</div>
+        <div class="kpi-detail">Nenhum impedimento</div>
+    </div>
+</div>
+
+<!-- Maturidade por Dimensão -->
+<div class="section">
+    <h2>Maturidade FACIN_IA por Dimensão</h2>
+    <div class="bar-container">
+        <span class="bar-label">EG — Estratégia</span>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
+    </div>
+    <div class="bar-container">
+        <span class="bar-label">DI — Dados</span>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
+    </div>
+    <div class="bar-container">
+        <span class="bar-label">TC — Talento</span>
+        <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--red);">1,00</div></div>
+    </div>
+    <div class="bar-container">
+        <span class="bar-label">DO — DevOps</span>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--yellow);">1,50</div></div>
+    </div>
+    <div class="bar-container">
+        <span class="bar-label">ER — Ética</span>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
+    </div>
+    <div class="bar-container">
+        <span class="bar-label">IV — Valor</span>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
+    </div>
+    <p style="margin-top:14px;font-size:13px;color:#666;">Escala: 1 (Inicial) a 5 (Estabelecido) · Índice geral: <strong>1,32 — Nível 1 (Inicial)</strong></p>
+</div>
+
+<div class="grid-2">
+
+<!-- Leitura Recomendada -->
+<div class="section">
+    <h2>Leitura Recomendada</h2>
+    <table>
+    <thead><tr><th>#</th><th>Documento</th><th>Público</th></tr></thead>
+    <tbody>
+    <tr><td>1</td><td><a href="Conversa_Folha_Projeto.html">Projeto Consolidado</a></td><td>Gestão e técnico</td></tr>
+    <tr><td>2</td><td><a href="Conversa_Folha_Manual_Usuario.html">Manual de Usuário</a></td><td>Operadores</td></tr>
+    <tr><td>3</td><td><a href="Conversa_Folha_Arquitetura_Solucao.html">Arquitetura da Solução</a></td><td>Arquitetos e devs</td></tr>
+    <tr><td>4</td><td><a href="Conversa_Folha_Tecnologias.html">Tecnologias</a></td><td>Equipe técnica</td></tr>
+    <tr><td>5</td><td><a href="Conversa_Folha_Integracoes.html">Integrações</a></td><td>Técnico e operações</td></tr>
+    <tr><td>6</td><td><a href="Conversa_Folha_Regras_Negocio.html">Regras de Negócio</a></td><td>Negócio e conformidade</td></tr>
+    <tr><td>7</td><td><a href="Conversa_Folha_Documentacao_Codigo.html">Documentação do Código</a></td><td>Desenvolvedores</td></tr>
+    <tr><td>8</td><td><a href="Conversa_Folha_Plano_Executivo.html">Plano Executivo</a></td><td>Gestão</td></tr>
+    <tr><td>9</td><td><a href="Conversa_Folha_Kanban_Executivo.html">Kanban Executivo</a></td><td>Gestão</td></tr>
+    <tr><td>10</td><td><a href="Conversa_Folha_Backlog_Sprints.html">Backlog de Sprints</a></td><td>Gestão</td></tr>
+    <tr><td>11</td><td><a href="Conversa_Folha_Backlog_Kanban.html">Backlog Kanban</a></td><td>Gestão</td></tr>
+    <tr><td>12</td><td><a href="Conversa_Folha_Avaliacao_Maturidade.html">Avaliação de Maturidade</a></td><td>Governança</td></tr>
+    <tr><td>13</td><td><a href="Conversa_Folha_Plano_Acao_Nivel3.html">Plano de Ação Nível 3</a></td><td>Governança e gestão</td></tr>
+    <tr><td>14</td><td><a href="../erros/Conversa_Folha_Erros_Resolvidos.html">Erros Resolvidos</a></td><td>Todos</td></tr>
+    </tbody>
+    </table>
+</div>
+
+<!-- Avaliação por Indicador -->
+<div class="section">
+    <h2>Indicadores FACIN_IA</h2>
+    <table>
+    <thead><tr><th>Indicador</th><th>Nota</th><th>Nível</th></tr></thead>
+    <tbody>
+    <tr><td>EG1 — Política e estratégia de IA</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>EG2 — Portfólio de casos de uso</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>EG3 — Rastreabilidade de decisões</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DI1 — Catálogo e linhagem</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DI2 — Proteção de dados</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DI3 — Disponibilidade infra</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC1 — Papéis críticos</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC2 — Capacitação</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC3 — Segregação ideação/produção</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DO1 — Especificação antes de código</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DO2 — Testes e validações</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DO3 — Observabilidade</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DO4 — MTTR</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>ER1 — Risco algorítmico</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>ER2 — Transparência</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>ER3 — Conformidade regulatória</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>IV1 — Metas de valor</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>IV2 — Acessibilidade</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>IV3 — Satisfação do usuário</td><td>1</td><td>Inicial</td></tr>
+    </tbody>
+    </table>
+</div>
+
+</div>
+
+<!-- Riscos Algorítmicos -->
+<div class="section">
+    <h2>Riscos Algorítmicos — Top 5</h2>
+    <table>
+    <thead><tr><th>ID</th><th>Risco</th><th>Prob.</th><th>Impacto</th><th>Nível</th><th>Ação Prioritária</th></tr></thead>
+    <tbody>
+    <tr>
+        <td>RA-04</td>
+        <td>Transferência de dados pessoais a APIs externas (Groq/OpenAI)</td>
+        <td>Alta</td>
+        <td>Alto</td>
+        <td><span class="risk-critical">Crítico</span></td>
+        <td>Anonimizar dados ou migrar para LLM local</td>
+    </tr>
+    <tr>
+        <td>RA-02</td>
+        <td>Exposição indevida de dados pessoais (CPF, remuneração)</td>
+        <td>Alta</td>
+        <td>Alto</td>
+        <td><span class="risk-high">Alto</span></td>
+        <td>Implementar mascaramento de CPF</td>
+    </tr>
+    <tr>
+        <td>RA-01</td>
+        <td>Alucinação do LLM na geração de SQL</td>
+        <td>Média</td>
+        <td>Médio</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Validação de schema antes da execução</td>
+    </tr>
+    <tr>
+        <td>RA-05</td>
+        <td>Prompt injection via mensagem do usuário</td>
+        <td>Média</td>
+        <td>Médio</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Sanitização de entrada e guardrails</td>
+    </tr>
+    <tr>
+        <td>RA-09</td>
+        <td>Falta de auditoria persistente de consultas SQL</td>
+        <td>Alta</td>
+        <td>Médio</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Implementar logging persistente</td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+<div class="grid-2">
+
+<!-- Conformidade LGPD -->
+<div class="section">
+    <h2>Conformidade LGPD — Resumo</h2>
+    <table>
+    <thead><tr><th>Aspecto</th><th>Nota</th><th>Status</th></tr></thead>
+    <tbody>
+    <tr><td>Base legal definida</td><td>3</td><td>⚠️ Implícita</td></tr>
+    <tr><td>Finalidade e adequação</td><td>3</td><td>⚠️ Clara, não formal</td></tr>
+    <tr><td>Necessidade e minimização</td><td>1</td><td>❌ CPF sem máscara</td></tr>
+    <tr><td>Transparência ao titular</td><td>1</td><td>❌ Não implementada</td></tr>
+    <tr><td>Segurança técnica</td><td>2</td><td>⚠️ Proteção SQL</td></tr>
+    <tr><td>DPO / Encarregado</td><td>1</td><td>❌ Não designado</td></tr>
+    <tr><td>DPIA / RIPD</td><td>1</td><td>❌ Não realizado</td></tr>
+    <tr><td>Registro de tratamento</td><td>1</td><td>❌ Não documentado</td></tr>
+    </tbody>
+    <tfoot><tr><th>Média</th><th>1,63</th><th>Inicial</th></tr></tfoot>
+    </table>
+</div>
+
+<!-- Matriz MRO_RACI -->
+<div class="section">
+    <h2>Matriz MRO_RACI — Papéis</h2>
+    <table>
+    <thead><tr><th>Código</th><th>Papel</th><th>Status</th></tr></thead>
+    <tbody>
+    <tr><td>PAT</td><td>Patrocinador Executivo</td><td><span class="pill danger">Não designado</span></td></tr>
+    <tr><td>GPR</td><td>Gestor do Projeto</td><td><span class="pill info">Implícito</span></td></tr>
+    <tr><td>ARQ</td><td>Arquiteto de IA</td><td><span class="pill info">Implícito</span></td></tr>
+    <tr><td>GOV</td><td>Analista de Governança</td><td><span class="pill ok">Ativo (FACIN_IA)</span></td></tr>
+    <tr><td>DEV</td><td>Desenvolvedor</td><td><span class="pill ok">Ativo</span></td></tr>
+    <tr><td>AUD</td><td>Auditor</td><td><span class="pill danger">Não ativado</span></td></tr>
+    <tr><td>DPO</td><td>Encarregado de Dados</td><td><span class="pill danger">Não designado</span></td></tr>
+    <tr><td>USR</td><td>Usuário Final</td><td><span class="pill warn">Sem feedback</span></td></tr>
+    </tbody>
+    </table>
+</div>
+
+</div>
+
+<!-- Roadmap -->
+<div class="section">
+    <h2>Roadmap de Adequação</h2>
+    <table>
+    <thead><tr><th>Fase</th><th>Prazo</th><th>Ações Prioritárias</th><th>Riscos Mitigados</th></tr></thead>
+    <tbody>
+    <tr>
+        <td><strong>Fase 1</strong></td>
+        <td>Curto prazo</td>
+        <td>Mascarar CPF · Anonimizar envio às APIs · Logging persistente · Disclaimer de IA</td>
+        <td>RA-02, RA-04, RA-09, ER2</td>
+    </tr>
+    <tr>
+        <td><strong>Fase 2</strong></td>
+        <td>Médio prazo</td>
+        <td>Designar DPO e PAT · Autenticação · Testes pytest · DPIA · Validar schema SQL</td>
+        <td>DI2, DO2, LGPD, RA-01</td>
+    </tr>
+    <tr>
+        <td><strong>Fase 3</strong></td>
+        <td>Longo prazo</td>
+        <td>Migrar para LLM local · Monitoramento · Auditoria · Pesquisa de satisfação · Política de IA</td>
+        <td>RA-04, RA-07, DI3, DO4, ER3, IV3, EG1</td>
+    </tr>
+    </tbody>
+    </table>
+</div>
+
+<!-- Arquitetura -->
+<div class="section">
+    <h2>Arquitetura do Sistema</h2>
+    <div class="mermaid">
+flowchart TB
+    subgraph Apresentacao[Camada de Apresentação]
+        WEB[Interface Web - Streamlit]
+        SIDEBAR[Barra Lateral - Chaves + Memória]
+    end
+    subgraph Orquestracao[Camada de Orquestração]
+        GRAPH[Grafo LangGraph - StateGraph]
+        ROUTER[Roteador - router_logic]
+    end
+    subgraph Agentes[Camada de Agentes]
+        GROQ[Agente Groq - Llama 3.1]
+        OPENAI[Agente OpenAI - GPT-3.5]
+    end
+    subgraph Ferramentas[Camada de Ferramentas]
+        TOOL[query_folha_database]
+    end
+    subgraph Dados[Camada de Dados]
+        DB[(SQLite - folha_pagamento.db)]
+    end
+    WEB --> GRAPH
+    SIDEBAR --> WEB
+    GRAPH --> ROUTER
+    ROUTER --> GROQ
+    ROUTER --> OPENAI
+    GROQ --> TOOL
+    OPENAI --> TOOL
+    TOOL --> DB
+    </div>
+</div>
+
+<!-- Erros -->
+<div class="section">
+    <h2>Erros Identificados</h2>
+    <table>
+    <thead><tr><th>ID</th><th>Achado</th><th>Impacto</th><th>Status</th></tr></thead>
+    <tbody>
+    <tr><td>ERR-001</td><td>CPF armazenado em texto claro</td><td>Risco LGPD</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-002</td><td>Dados pessoais enviados a APIs externas</td><td>Transferência internacional</td><td><span class="pill danger">Ação prioritária</span></td></tr>
+    <tr><td>ERR-003</td><td>Sem autenticação na interface</td><td>Acesso não autorizado</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-004</td><td>Sem testes automatizados</td><td>Risco de regressão</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-005</td><td>Referência a "CRM" no código (inconsistência)</td><td>Nomenclatura</td><td><span class="pill info">Código preservado</span></td></tr>
+    <tr><td>ERR-006</td><td>Logs via print() sem persistência</td><td>Sem auditoria</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-007</td><td>Prompt OpenAI referencia colunas inexistentes</td><td>SQL com erro</td><td><span class="pill info">Código preservado</span></td></tr>
+    </tbody>
+    </table>
+</div>
+
+</div>
+
+<div class="footer">
+    Conversa_Folha_doc — Dashboard Executivo &nbsp;|&nbsp; Template FACIN_IA &nbsp;|&nbsp; Claude Opus 4.6 &nbsp;|&nbsp; 29 de março de 2026<br/>
+    Gerado pelo agente FACIN_IA · <code>generate_project_docs.py</code>
+</div>
+
+<script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+</script>
+</body>
+</html>

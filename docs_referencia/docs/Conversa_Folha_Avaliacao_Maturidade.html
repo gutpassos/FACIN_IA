@@ -1,0 +1,2103 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Avaliação de Maturidade FACIN_IA</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-avaliacao-de-maturidade-facin_ia">Conversa_Folha_doc - Avaliação de Maturidade FACIN_IA</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM utilizado: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-identificacao-da-avaliacao">1. Identificação da Avaliação</h2>
+<ul>
+<li><strong>Projeto avaliado</strong>: Conversa com a Folha de Pagamento — V4</li>
+<li><strong>Metodologia</strong>: FACIN_IA — Indicadores de Maturidade de Governança Aplicada à Inteligência Artificial</li>
+<li><strong>Avaliador</strong>: Guttenberg Ferreira Passos</li>
+<li><strong>Modelo LLM de referência</strong>: Claude Opus 4.6</li>
+<li><strong>Data da avaliação</strong>: 29 de março de 2026</li>
+</ul>
+<hr />
+<h2 id="2-objetivo">2. Objetivo</h2>
+<p>Avaliar o nível de maturidade do projeto Conversa com a Folha segundo os 18 indicadores prioritários definidos pelo modelo FACIN_IA, distribuídos em 6 dimensões obrigatórias, gerando um índice consolidado de governança de IA. Esta avaliação inclui:</p>
+<ul>
+<li><strong>Matriz MRO_RACI</strong> — Modelo de Responsabilidade Organizacional</li>
+<li><strong>Conformidade LGPD</strong> — Lei Geral de Proteção de Dados (Lei 13.709/2018)</li>
+<li><strong>Resolução CD/ANPD Nº 19/2024</strong> — Regulamento de Comunicação de Incidente de Segurança</li>
+<li><strong>Avaliação de Risco Algorítmico</strong> — Riscos de IA aplicada à consulta de dados de folha de pagamento</li>
+</ul>
+<p>O sistema compreende uma aplicação Streamlit com dois agentes de IA (Groq/Llama 3.1 e OpenAI/GPT-3.5-turbo), orquestrados por LangGraph, com ferramenta SQL para consulta a banco SQLite de folha de pagamento.</p>
+<hr />
+<h2 id="3-escala-de-maturidade">3. Escala de Maturidade</h2>
+<table>
+<thead>
+<tr>
+<th>Nível</th>
+<th>Classificação</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Inicial</td>
+<td>Inexistente, ad hoc ou informal</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Em Desenvolvimento</td>
+<td>Parcial, piloto ou dependente de indivíduos</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Otimizado</td>
+<td>Formalizado, repetível e aplicado nas iniciativas principais</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Consolidado</td>
+<td>Integrado à governança, monitorado por métricas e com responsabilização</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Estabelecido</td>
+<td>Otimizado continuamente, auditável, interoperável</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-pesos-das-dimensoes">4. Pesos das Dimensões</h2>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia e Governança de IA</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Dados e Infraestrutura</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Talento e Cultura</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Desenvolvimento e Operação de IA (DevOps/MLOps)</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Ética, Transparência e Gestão de Risco</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Impacto Social e Valor</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-avaliacao-por-dimensao">5. Avaliação por Dimensão</h2>
+<h3 id="51-estrategia-e-governanca-de-ia">5.1 Estratégia e Governança de IA</h3>
+<h4 id="eg1-cobertura-de-politica-e-estrategia-de-ia">EG1 — Cobertura de política e estratégia de IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O projeto possui README.md e LEIAME.txt com instruções básicas, mas não há política formal de IA, estratégia documentada ou plano de IA institucional. O sistema é uma prova de conceito sem governança formal.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Não existe estratégia de IA formalizada, normativa institucional ou mapa estratégico. O projeto é experimental.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="eg2-governanca-do-portfolio-de-casos-de-uso-de-ia">EG2 — Governança do portfólio de casos de uso de IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema implementa um único caso de uso (consulta conversacional à folha de pagamento) sem portfólio formal, sem estudo de viabilidade, sem patrocinador designado e sem classificação de risco por caso de uso.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Caso de uso único sem gestão de portfólio. Não há comitê, priorização ou patrocínio formal.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="eg3-rastreabilidade-de-decisoes-e-artefatos-de-ia">EG3 — Rastreabilidade de decisões e artefatos de IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema registra o histórico de mensagens em <code>st.session_state.chat_history</code>. Os prompts dos agentes estão definidos em código (system_prompt). A lógica de roteamento é explícita no código. Porém, não há log persistido, versionamento de prompts formal ou registro decisório.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Rastreabilidade parcial: histórico de sessão e prompts em código. Falta persistência, versionamento e auditoria formal.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão EG: (1 + 1 + 2) / 3 = 1,33</strong></p>
+<hr />
+<h3 id="52-dados-e-infraestrutura">5.2 Dados e Infraestrutura</h3>
+<h4 id="di1-cobertura-de-catalogo-e-linhagem-de-dados-e-modelos">DI1 — Cobertura de catálogo e linhagem de dados e modelos</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Os modelos de IA (Llama 3.1-8b-instant e GPT-3.5-turbo) estão referenciados no código. As tabelas do banco SQLite estão documentadas no SQL de criação. O CSV de origem está identificado. Porém, não há catálogo formal de dados, dicionário de dados ou linhagem documentada.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Modelos e fontes identificáveis no código, mas sem catálogo formal ou linhagem documentada.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="di2-conformidade-de-protecao-de-dados-e-acessos">DI2 — Conformidade de proteção de dados e acessos</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema processa dados pessoais (CPF, nome) de um CSV de exemplo. Não há controle de acesso à interface Streamlit. Não há criptografia do banco de dados. As chaves de API são informadas manualmente sem armazenamento seguro. Os dados de consulta são enviados às APIs externas (Groq/OpenAI).</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Proteção de dados mínima. Dados pessoais expostos sem controles formais.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="di3-disponibilidade-da-infraestrutura-critica-de-ia">DI3 — Disponibilidade da infraestrutura crítica de IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema depende de duas APIs externas (Groq e OpenAI) sem monitoramento de disponibilidade, SLAs ou fallbacks entre agentes em caso de falha. Os erros de API são tratados mas não há resiliência proativa.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem monitoramento, SLAs ou failover entre APIs. Dependência total de serviços externos.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão DI: (2 + 1 + 1) / 3 = 1,33</strong></p>
+<hr />
+<h3 id="53-talento-e-cultura">5.3 Talento e Cultura</h3>
+<h4 id="tc1-cobertura-de-papeis-criticos-de-ia-formalmente-atribuidos">TC1 — Cobertura de papéis críticos de IA formalmente atribuídos</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há documentação de papéis formais (dono do caso de uso, gestor de dados, gestor de risco, revisor). O código foi desenvolvido sem matriz RACI ou organograma documentado.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Papéis críticos não documentados e dependentes de indivíduos.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tc2-capacitacao-aplicada-em-governanca-e-operacao-de-ia">TC2 — Capacitação aplicada em governança e operação de IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há registro de trilhas formativas, certificações ou plano de capacitação. O LEIAME.txt contém instruções básicas de execução, mas não constitui material de capacitação formal.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem programa formal de capacitação em governança de IA.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="tc3-aderencia-a-segregacao-entre-ideacao-e-producao">TC3 — Aderência à segregação entre ideação e produção</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há separação formal entre ambientes de desenvolvimento, homologação e produção. O mesmo código é executado localmente e publicado no Streamlit Cloud sem fluxo de aprovação.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem segregação de ambientes ou fluxo formal de aprovação para produção.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão TC: (1 + 1 + 1) / 3 = 1,00</strong></p>
+<hr />
+<h3 id="54-desenvolvimento-e-operacao-de-ia-devopsmlops">5.4 Desenvolvimento e Operação de IA (DevOps/MLOps)</h3>
+<h4 id="do1-cobertura-de-especificacao-antes-de-codigo">DO1 — Cobertura de especificação antes de código</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema possui contrato tipado (<code>AgentState</code> com <code>TypedDict</code>), prompts estruturados para cada agente, schema da ferramenta SQL documentado na docstring e configuração centralizada do banco de dados. O README descreve arquitetura básica.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Especificação técnica parcial: contratos tipados e prompts estruturados. Falta especificação funcional formal anterior ao desenvolvimento.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="do2-cobertura-de-testes-e-validacoes">DO2 — Cobertura de testes e validações</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há módulos de teste automatizados no repositório. A validação é feita manualmente via interface Streamlit. A proteção SQL é a única validação automatizada no código.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem testes automatizados. Validação puramente manual.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="do3-cobertura-de-observabilidade-obrigatoria">DO3 — Cobertura de observabilidade obrigatória</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema implementa <code>print()</code> extensivo para debug no console: tipo de mensagem, conteúdo, decisões de roteamento e chamadas de ferramentas. O histórico de chat é visível na sidebar. Porém, não há logging estruturado, painéis de monitoramento ou alertas.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Observabilidade via print e histórico de sessão. Falta logging formal, métricas e alertas.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="do4-tempo-medio-de-resposta-a-incidentes-mttr">DO4 — Tempo médio de resposta a incidentes (MTTR)</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há sistema de incidentes, registro de ocorrências ou análises pós-incidente documentados.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem gestão formal de incidentes de IA.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão DO: (2 + 1 + 2 + 1) / 4 = 1,50</strong></p>
+<hr />
+<h3 id="55-etica-transparencia-e-gestao-de-risco">5.5 Ética, Transparência e Gestão de Risco</h3>
+<h4 id="er1-cobertura-de-avaliacao-etica-e-de-risco-algoritmico">ER1 — Cobertura de avaliação ética e de risco algorítmico</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema implementa proteção contra SQL não-SELECT como controle de segurança. Porém, não há avaliação formal de impacto algorítmico, matriz de risco, pareceres éticos ou análise de viés nos agentes.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Controle de segurança SQL existe, mas sem avaliação formal de risco algorítmico ou ética.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="er2-transparencia-ao-usuario-e-ao-afetado-pela-ia">ER2 — Transparência ao usuário e ao afetado pela IA</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema identifica qual agente está respondendo (Groq ou OpenAI). O histórico é visível na sidebar. Os resultados SQL são apresentados de forma tabular. Porém, não há aviso explícito de que respostas são geradas por IA, disclaimer de precisão ou canal de recurso.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Transparência parcial: agente identificado e dados formatados. Falta disclosure de IA e disclaimers.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="er3-conformidade-etica-e-regulatoria-apos-auditoria">ER3 — Conformidade ética e regulatória após auditoria</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há registros de auditorias, pareceres jurídicos ou revisões de conformidade realizadas sobre o sistema.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem histórico de auditoria ou revisão de conformidade.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão ER: (1 + 2 + 1) / 3 = 1,33</strong></p>
+<hr />
+<h3 id="56-impacto-social-e-valor">5.6 Impacto Social e Valor</h3>
+<h4 id="iv1-taxa-de-metas-de-valor-atingidas">IV1 — Taxa de metas de valor atingidas</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Em Desenvolvimento</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema demonstra valor funcional como prova de conceito: interface conversacional operacional, dois agentes funcionando, consultas SQL executadas corretamente. Deploy no Streamlit Cloud realizado. Porém, não há metas formais de eficiência, qualidade ou alcance.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Valor técnico demonstrável (POC funcional), mas sem metas formais ou métricas de impacto.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="iv2-cobertura-de-acessibilidade-e-inclusao">IV2 — Cobertura de acessibilidade e inclusão</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>O sistema oferece apenas interface web (Streamlit). Não há testes de acessibilidade, linguagem simplificada ou suporte a tecnologias assistivas. A interface é responsiva por padrão do Streamlit.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Acessibilidade mínima (responsividade do framework), sem testes ou adaptações formais.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="iv3-confianca-e-satisfacao-do-usuario">IV3 — Confiança e satisfação do usuário</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nota</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Nível</td>
+<td>Inicial</td>
+</tr>
+<tr>
+<td>Evidência</td>
+<td>Não há pesquisas de satisfação, registros de ouvidoria ou análises de experiência do usuário documentados.</td>
+</tr>
+<tr>
+<td>Justificativa</td>
+<td>Sem dados de confiança ou satisfação do usuário.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Média da dimensão IV: (2 + 1 + 1) / 3 = 1,33</strong></p>
+<hr />
+<h2 id="6-consolidacao-dos-resultados">6. Consolidação dos Resultados</h2>
+<h3 id="61-notas-por-dimensao">6.1 Notas por Dimensão</h3>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Indicadores</th>
+<th>Média</th>
+<th>Peso</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Estratégia e Governança de IA</td>
+<td>EG1=1, EG2=1, EG3=2</td>
+<td>1,33</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Dados e Infraestrutura</td>
+<td>DI1=2, DI2=1, DI3=1</td>
+<td>1,33</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Talento e Cultura</td>
+<td>TC1=1, TC2=1, TC3=1</td>
+<td>1,00</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Desenvolvimento e Operação de IA</td>
+<td>DO1=2, DO2=1, DO3=2, DO4=1</td>
+<td>1,50</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Ética, Transparência e Gestão de Risco</td>
+<td>ER1=1, ER2=2, ER3=1</td>
+<td>1,33</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Impacto Social e Valor</td>
+<td>IV1=2, IV2=1, IV3=1</td>
+<td>1,33</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-calculo-do-indice-geral-de-maturidade">6.2 Cálculo do Índice Geral de Maturidade</h3>
+<p>$$\text{Índice Geral} = \sum_{i=1}^{6} \text{Média}_i \times \text{Peso}_i$$</p>
+<p>$$= (1{,}33 \times 0{,}20) + (1{,}33 \times 0{,}15) + (1{,}00 \times 0{,}15) + (1{,}50 \times 0{,}20) + (1{,}33 \times 0{,}20) + (1{,}33 \times 0{,}10)$$</p>
+<p>$$= 0{,}267 + 0{,}200 + 0{,}150 + 0{,}300 + 0{,}267 + 0{,}133$$</p>
+<p>$$= 1{,}32$$</p>
+<h3 id="63-classificacao">6.3 Classificação</h3>
+<table>
+<thead>
+<tr>
+<th>Faixa</th>
+<th>Nível</th>
+<th>Resultado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1,0 a 1,8</strong></td>
+<td><strong>Nível 1 — Inicial</strong></td>
+<td><strong>← Conversa com a Folha: 1,32</strong></td>
+</tr>
+<tr>
+<td>acima de 1,8 a 2,6</td>
+<td>Nível 2 — Em Desenvolvimento</td>
+<td></td>
+</tr>
+<tr>
+<td>acima de 2,6 a 3,4</td>
+<td>Nível 3 — Otimizado</td>
+<td></td>
+</tr>
+<tr>
+<td>acima de 3,4 a 4,2</td>
+<td>Nível 4 — Consolidado</td>
+<td></td>
+</tr>
+<tr>
+<td>acima de 4,2 a 5,0</td>
+<td>Nível 5 — Estabelecido</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-diagrama-de-maturidade">6.4 Diagrama de Maturidade</h3>
+<div class="mermaid">%%{init: {'theme': 'base'}}%%
+pie title Notas por Dimensão (Média)
+    "EG - Estratégia 1,33" : 1.33
+    "DI - Dados 1,33" : 1.33
+    "TC - Talento 1,00" : 1.00
+    "DO - DevOps 1,50" : 1.50
+    "ER - Ética 1,33" : 1.33
+    "IV - Valor 1,33" : 1.33
+</div>
+<hr />
+<h2 id="7-matriz-mro_raci-modelo-de-responsabilidade-organizacional">7. Matriz MRO_RACI — Modelo de Responsabilidade Organizacional</h2>
+<h3 id="71-objetivo">7.1 Objetivo</h3>
+<p>A Matriz MRO_RACI formaliza os papéis e responsabilidades organizacionais do projeto Conversa com a Folha segundo o Modelo de Responsabilidade Organizacional (MRO), integrando-se ao padrão RACI (Responsible, Accountable, Consulted, Informed) do FACIN_IA.</p>
+<h3 id="72-papeis-organizacionais">7.2 Papéis Organizacionais</h3>
+<table>
+<thead>
+<tr>
+<th>Código</th>
+<th>Papel</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAT</td>
+<td>Patrocinador Executivo</td>
+<td>Aprova escopo, garante recursos, responde institucionalmente</td>
+</tr>
+<tr>
+<td>GPR</td>
+<td>Gestor do Projeto</td>
+<td>Coordena execução, monitora progresso, escala riscos</td>
+</tr>
+<tr>
+<td>ARQ</td>
+<td>Arquiteto de IA</td>
+<td>Define e valida arquitetura, integrações e padrões</td>
+</tr>
+<tr>
+<td>GOV</td>
+<td>Analista de Governança</td>
+<td>Avalia maturidade, conformidade regulatória, risco algorítmico</td>
+</tr>
+<tr>
+<td>DEV</td>
+<td>Desenvolvedor</td>
+<td>Implementa código, gera documentação, executa testes</td>
+</tr>
+<tr>
+<td>AUD</td>
+<td>Auditor</td>
+<td>Revisa aderência, valida critérios de aceite</td>
+</tr>
+<tr>
+<td>DPO</td>
+<td>Encarregado de Dados (DPO)</td>
+<td>Garante conformidade LGPD, monitora tratamento de dados</td>
+</tr>
+<tr>
+<td>USR</td>
+<td>Usuário Final</td>
+<td>Opera o sistema, fornece feedback, utiliza consultas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-matriz-de-responsabilidades">7.3 Matriz de Responsabilidades</h3>
+<table>
+<thead>
+<tr>
+<th>Atividade / Entrega</th>
+<th>PAT</th>
+<th>GPR</th>
+<th>ARQ</th>
+<th>GOV</th>
+<th>DEV</th>
+<th>AUD</th>
+<th>DPO</th>
+<th>USR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Definição de escopo do projeto</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Aprovação de política de IA</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Especificação da arquitetura multiagente</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Desenvolvimento do app.py</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Desenvolvimento do cria_db.py</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Definição do schema SQL</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Documentação do código</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Manual de usuário</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Avaliação de maturidade FACIN_IA</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Avaliação de risco algorítmico</td>
+<td>A</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Conformidade LGPD</td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Resolução ANPD 19/2024</td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Configuração de chaves de API</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Testes automatizados</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Gestão de incidentes de IA</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Monitoramento e observabilidade</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Validação em homologação</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Publicação documental (.md/.html/.pdf)</td>
+<td>I</td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Aprovação de release</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Treinamento de operadores</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Pesquisa de satisfação</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+</tr>
+</tbody>
+</table>
+<h3 id="74-diagrama-de-governanca-mro">7.4 Diagrama de Governança MRO</h3>
+<div class="mermaid">flowchart TB
+    PAT[Patrocinador - PAT] --> GPR[Gestor do Projeto - GPR]
+    GPR --> ARQ[Arquiteto de IA - ARQ]
+    GPR --> GOV[Analista de Governança - GOV]
+    GPR --> DEV[Desenvolvedor - DEV]
+    GPR --> AUD[Auditor - AUD]
+    GOV --> DPO[Encarregado de Dados - DPO]
+    DEV --> USR[Usuário Final - USR]
+
+    subgraph Governança
+        PAT
+        GPR
+        GOV
+        DPO
+        AUD
+    end
+
+    subgraph Execução
+        ARQ
+        DEV
+    end
+
+    subgraph Operação
+        USR
+    end
+</div>
+<h3 id="75-lacunas-identificadas-no-mro">7.5 Lacunas Identificadas no MRO</h3>
+<table>
+<thead>
+<tr>
+<th>Lacuna</th>
+<th>Impacto</th>
+<th>Recomendação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PAT não designado formalmente</td>
+<td>Sem aprovador institucional</td>
+<td>Designar patrocinador executivo</td>
+</tr>
+<tr>
+<td>DPO não atribuído</td>
+<td>Conformidade LGPD informal</td>
+<td>Designar encarregado de proteção de dados</td>
+</tr>
+<tr>
+<td>AUD não ativado</td>
+<td>Sem validação independente</td>
+<td>Programar auditoria de governança</td>
+</tr>
+<tr>
+<td>USR sem canal de feedback</td>
+<td>Sem métricas de satisfação</td>
+<td>Implementar pesquisa de satisfação</td>
+</tr>
+<tr>
+<td>DEV sem testes automatizados</td>
+<td>Risco de regressão</td>
+<td>Implementar suite de testes pytest</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-conformidade-lgpd-lei-geral-de-protecao-de-dados">8. Conformidade LGPD — Lei Geral de Proteção de Dados</h2>
+<h3 id="81-objetivo">8.1 Objetivo</h3>
+<p>Avaliar a conformidade do sistema Conversa com a Folha com a Lei 13.709/2018 (LGPD), identificando os tipos de dados pessoais tratados, as bases legais aplicáveis, os controles implementados e as lacunas que requerem ação.</p>
+<h3 id="82-dados-pessoais-tratados-pelo-sistema">8.2 Dados Pessoais Tratados pelo Sistema</h3>
+<table>
+<thead>
+<tr>
+<th>Dado</th>
+<th>Categoria LGPD</th>
+<th>Módulo que Utiliza</th>
+<th>Tratamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CPF</td>
+<td>Dado pessoal</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Armazenado em SQLite, consultável via agentes</td>
+</tr>
+<tr>
+<td>Nome</td>
+<td>Dado pessoal</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Armazenado em SQLite, consultável via agentes</td>
+</tr>
+<tr>
+<td>Matrícula</td>
+<td>Dado pessoal</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Chave de relacionamento entre tabelas</td>
+</tr>
+<tr>
+<td>Órgão de lotação</td>
+<td>Dado pessoal</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Filtro de consulta</td>
+</tr>
+<tr>
+<td>Cargo</td>
+<td>Dado pessoal</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Filtro de consulta</td>
+</tr>
+<tr>
+<td>Vencimentos</td>
+<td>Dado pessoal sensível*</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Dados financeiros de remuneração</td>
+</tr>
+<tr>
+<td>Descontos</td>
+<td>Dado pessoal sensível*</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Dados financeiros</td>
+</tr>
+<tr>
+<td>Líquido</td>
+<td>Dado pessoal sensível*</td>
+<td>app.py (via SQL), cria_db.py (carga)</td>
+<td>Dados financeiros</td>
+</tr>
+</tbody>
+</table>
+<p>*Dados de remuneração podem ser considerados sensíveis no contexto de administração pública.</p>
+<h3 id="83-bases-legais-aplicaveis-art-7o-lgpd">8.3 Bases Legais Aplicáveis (Art. 7º LGPD)</h3>
+<table>
+<thead>
+<tr>
+<th>Base Legal</th>
+<th>Artigo</th>
+<th>Aplicabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Execução de políticas públicas</td>
+<td>Art. 7º, III</td>
+<td><strong>Aplicável</strong> — gestão de folha de pagamento é atividade de política pública</td>
+</tr>
+<tr>
+<td>Cumprimento de obrigação legal</td>
+<td>Art. 7º, II</td>
+<td><strong>Aplicável</strong> — transparência de remuneração de servidores tem base legal</td>
+</tr>
+<tr>
+<td>Legítimo interesse</td>
+<td>Art. 7º, IX</td>
+<td>Subsidiária — interesse do gestor em consultar a folha</td>
+</tr>
+</tbody>
+</table>
+<h3 id="84-principios-lgpd-avaliados-art-6o">8.4 Princípios LGPD Avaliados (Art. 6º)</h3>
+<table>
+<thead>
+<tr>
+<th>Princípio</th>
+<th>Artigo</th>
+<th>Status</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Finalidade</td>
+<td>Art. 6º, I</td>
+<td>⚠️ Parcial</td>
+<td>Sistema tem finalidade de consulta, mas não há declaração formal de finalidade</td>
+</tr>
+<tr>
+<td>Adequação</td>
+<td>Art. 6º, II</td>
+<td>✅ Conforme</td>
+<td>Dados tratados compatíveis com objetivo de consulta de folha</td>
+</tr>
+<tr>
+<td>Necessidade</td>
+<td>Art. 6º, III</td>
+<td>⚠️ Parcial</td>
+<td>CPF completo armazenado; sem análise de minimização</td>
+</tr>
+<tr>
+<td>Livre acesso</td>
+<td>Art. 6º, IV</td>
+<td>❌ Lacuna</td>
+<td>Titulares (servidores) não são notificados sobre o tratamento</td>
+</tr>
+<tr>
+<td>Qualidade dos dados</td>
+<td>Art. 6º, V</td>
+<td>⚠️ Parcial</td>
+<td>Dados carregados de CSV de exemplo; não há validação formal</td>
+</tr>
+<tr>
+<td>Transparência</td>
+<td>Art. 6º, VI</td>
+<td>❌ Lacuna</td>
+<td>Sem aviso de tratamento ao titular</td>
+</tr>
+<tr>
+<td>Segurança</td>
+<td>Art. 6º, VII</td>
+<td>⚠️ Parcial</td>
+<td>Proteção SQL implementada, mas sem criptografia ou controle de acesso</td>
+</tr>
+<tr>
+<td>Prevenção</td>
+<td>Art. 6º, VIII</td>
+<td>⚠️ Parcial</td>
+<td>Validação de SELECT, mas sem DPIAs formais</td>
+</tr>
+<tr>
+<td>Não discriminação</td>
+<td>Art. 6º, IX</td>
+<td>✅ Conforme</td>
+<td>Sistema não discrimina; consultas baseadas em dados objetivos</td>
+</tr>
+<tr>
+<td>Responsabilização</td>
+<td>Art. 6º, X</td>
+<td>❌ Lacuna</td>
+<td>Sem DPO designado, sem relatório de impacto</td>
+</tr>
+</tbody>
+</table>
+<h3 id="85-direitos-do-titular-art-18-lgpd">8.5 Direitos do Titular (Art. 18 LGPD)</h3>
+<table>
+<thead>
+<tr>
+<th>Direito</th>
+<th>Aplicabilidade</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Confirmação de tratamento</td>
+<td>Aplicável</td>
+<td>❌ Não implementado</td>
+</tr>
+<tr>
+<td>Acesso aos dados</td>
+<td>Aplicável</td>
+<td>⚠️ Via consulta SQL apenas</td>
+</tr>
+<tr>
+<td>Correção de dados</td>
+<td>Aplicável</td>
+<td>❌ Sistema somente leitura</td>
+</tr>
+<tr>
+<td>Anonimização / bloqueio</td>
+<td>Aplicável</td>
+<td>❌ CPF em texto claro</td>
+</tr>
+<tr>
+<td>Eliminação</td>
+<td>Parcial</td>
+<td>⚠️ Dados de exemplo podem ser removidos</td>
+</tr>
+<tr>
+<td>Portabilidade</td>
+<td>Aplicável (dados de exemplo)</td>
+<td>⚠️ CSV e Excel gerados na carga</td>
+</tr>
+<tr>
+<td>Revogação de consentimento</td>
+<td>Não se aplica</td>
+<td>— Base legal não é consentimento</td>
+</tr>
+</tbody>
+</table>
+<h3 id="86-avaliacao-de-conformidade-consolidada">8.6 Avaliação de Conformidade Consolidada</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Nota (1-5)</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base legal definida</td>
+<td>3</td>
+<td>⚠️ Implícita, não formalizada</td>
+</tr>
+<tr>
+<td>Finalidade e adequação</td>
+<td>3</td>
+<td>⚠️ Clara no código, não documentada formalmente</td>
+</tr>
+<tr>
+<td>Necessidade e minimização</td>
+<td>1</td>
+<td>❌ CPF completo sem máscara</td>
+</tr>
+<tr>
+<td>Transparência ao titular</td>
+<td>1</td>
+<td>❌ Não implementada</td>
+</tr>
+<tr>
+<td>Segurança técnica</td>
+<td>2</td>
+<td>⚠️ Proteção SQL, sem criptografia</td>
+</tr>
+<tr>
+<td>DPO / Encarregado</td>
+<td>1</td>
+<td>❌ Não designado</td>
+</tr>
+<tr>
+<td>DPIA / RIPD</td>
+<td>1</td>
+<td>❌ Não realizado</td>
+</tr>
+<tr>
+<td>Registro de atividades de tratamento</td>
+<td>1</td>
+<td>❌ Não documentado</td>
+</tr>
+<tr>
+<td><strong>Média</strong></td>
+<td><strong>1,63</strong></td>
+<td><strong>Inicial</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="87-risco-lgpd-envio-de-dados-a-apis-externas">8.7 Risco LGPD: Envio de Dados a APIs Externas</h3>
+<p><strong>Risco crítico identificado</strong>: O sistema envia o conteúdo das perguntas e resultados SQL (que podem conter dados pessoais como CPF, nome, remuneração) para as APIs externas Groq e OpenAI. Isso configura <strong>transferência internacional de dados pessoais</strong> (Art. 33 LGPD) sem garantias adequadas documentadas.</p>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Estado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cláusulas contratuais padrão</td>
+<td>Não verificadas</td>
+</tr>
+<tr>
+<td>Adequação do país terceiro</td>
+<td>Não avaliada</td>
+</tr>
+<tr>
+<td>Consentimento específico do titular</td>
+<td>Não obtido</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar anonimização antes do envio ou usar LLM local</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-conformidade-com-resolucao-cdanpd-no-19-de-23-de-agosto-de-2024">9. Conformidade com Resolução CD/ANPD Nº 19, de 23 de agosto de 2024</h2>
+<h3 id="91-contexto">9.1 Contexto</h3>
+<p>A Resolução CD/ANPD Nº 19/2024 regulamenta a <strong>comunicação de incidente de segurança</strong> que possa acarretar risco ou dano relevante aos titulares de dados pessoais, nos termos do Art. 48 da LGPD.</p>
+<h3 id="92-aplicabilidade-ao-sistema">9.2 Aplicabilidade ao Sistema</h3>
+<p>O Conversa com a Folha trata dados pessoais (CPF, nome, remuneração) de servidores públicos. A ocorrência de um incidente de segurança — especialmente considerando o envio de dados a APIs externas — exigiria comunicação à ANPD conforme esta Resolução.</p>
+<h3 id="93-avaliacao-de-conformidade-por-dispositivo">9.3 Avaliação de Conformidade por Dispositivo</h3>
+<table>
+<thead>
+<tr>
+<th>Dispositivo</th>
+<th>Requisito</th>
+<th>Status</th>
+<th>Recomendação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Art. 3º</td>
+<td>Comunicar incidente à ANPD e ao titular em prazo razoável</td>
+<td>❌ Não implementado</td>
+<td>Definir processo de comunicação de incidentes</td>
+</tr>
+<tr>
+<td>Art. 4º</td>
+<td>Comunicação com natureza dos dados, titulares afetados, medidas</td>
+<td>❌ Sem inventário</td>
+<td>Criar inventário de dados por componente</td>
+</tr>
+<tr>
+<td>Art. 5º</td>
+<td>Prazo de 3 dias úteis para comunicação à ANPD</td>
+<td>❌ Sem processo</td>
+<td>Estabelecer SLA de comunicação</td>
+</tr>
+<tr>
+<td>Art. 6º</td>
+<td>Comunicação ao titular clara e acessível</td>
+<td>❌ Sem canal</td>
+<td>Definir canal de comunicação</td>
+</tr>
+<tr>
+<td>Art. 7º</td>
+<td>Registro de incidentes de segurança</td>
+<td>❌ Sem registro</td>
+<td>Implementar registro de incidentes</td>
+</tr>
+<tr>
+<td>Art. 8º</td>
+<td>Medidas de contenção e remediação</td>
+<td>⚠️ Parcial</td>
+<td>Proteção SQL existe; falta plano formal</td>
+</tr>
+<tr>
+<td>Art. 10</td>
+<td>Avaliação de risco do incidente</td>
+<td>❌ Sem processo</td>
+<td>Criar matriz de avaliação de risco</td>
+</tr>
+</tbody>
+</table>
+<h3 id="94-matriz-de-risco-de-incidentes">9.4 Matriz de Risco de Incidentes</h3>
+<table>
+<thead>
+<tr>
+<th>Cenário de Incidente</th>
+<th>Probabilidade</th>
+<th>Impacto</th>
+<th>Risco</th>
+<th>Controle Existente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exposição de CPF via API externa (Groq/OpenAI)</td>
+<td>Alta</td>
+<td>Alto</td>
+<td>Crítico</td>
+<td>Nenhum (dados enviados em texto claro)</td>
+</tr>
+<tr>
+<td>Acesso não autorizado à interface Streamlit</td>
+<td>Média</td>
+<td>Alto</td>
+<td>Alto</td>
+<td>Sem autenticação (protótipo)</td>
+</tr>
+<tr>
+<td>Injeção SQL via agente de IA</td>
+<td>Baixa</td>
+<td>Alto</td>
+<td>Médio</td>
+<td>Validação SELECT implementada</td>
+</tr>
+<tr>
+<td>Vazamento de chaves de API</td>
+<td>Média</td>
+<td>Médio</td>
+<td>Médio</td>
+<td>Widgets de senha + não persistência</td>
+</tr>
+<tr>
+<td>Acesso indevido ao arquivo SQLite</td>
+<td>Baixa</td>
+<td>Médio</td>
+<td>Baixo</td>
+<td>Acesso local ao arquivo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-avaliacao-de-risco-algoritmico">10. Avaliação de Risco Algorítmico</h2>
+<h3 id="101-objetivo">10.1 Objetivo</h3>
+<p>Avaliar os riscos específicos do uso de modelos de linguagem (LLM) para geração de consultas SQL e respostas sobre dados de folha de pagamento de servidores públicos.</p>
+<h3 id="102-riscos-identificados">10.2 Riscos Identificados</h3>
+<h4 id="ra-01-alucinacao-do-llm-na-geracao-de-sql">RA-01: Alucinação do LLM na Geração de SQL</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>O agente pode gerar SQL sintaticamente válido mas semanticamente incorreto (ex: usar nome de coluna inexistente ou interpretar incorretamente a pergunta)</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Médio (dados incorretos apresentados como corretos)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Schema documentado na docstring da ferramenta</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Adicionar validação de schema antes da execução; implementar disclaimer de precisão</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-02-exposicao-indevida-de-dados-pessoais">RA-02: Exposição Indevida de Dados Pessoais</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>O agente pode retornar dados pessoais (CPF, nome, remuneração) sem necessidade, em resposta a perguntas genéricas</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Alto (violação de privacidade)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Alto</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Nenhum controle de minimização</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar mascaramento de CPF; limitar colunas retornadas por tipo de pergunta</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-03-vies-na-alternancia-de-agentes">RA-03: Viés na Alternância de Agentes</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>A alternância automática pode favorecer um agente em detrimento de outro, gerando respostas de qualidade desigual</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Baixa</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Baixo (inconsistência na experiência do usuário)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Baixo</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Alternância determinística (par/ímpar)</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar avaliação de qualidade por agente; permitir preferência do usuário</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-04-transferencia-de-dados-pessoais-a-apis-externas">RA-04: Transferência de Dados Pessoais a APIs Externas</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>Dados pessoais (CPF, nome, remuneração) contidos nos resultados SQL são enviados como contexto às APIs Groq e OpenAI</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Alto (transferência internacional sem garantias)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Crítico</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Nenhum</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Anonimizar dados antes do envio ou migrar para LLM local</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-05-prompt-injection-via-mensagem-do-usuario">RA-05: Prompt Injection via Mensagem do Usuário</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>O usuário pode manipular o prompt do sistema via entrada maliciosa para alterar o comportamento do agente</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Médio (geração de SQL não previsto ou bypass do prompt)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Validação SELECT na ferramenta SQL</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar sanitização de entrada e guardrails adicionais</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-06-inconsistencia-entre-respostas-dos-agentes">RA-06: Inconsistência entre Respostas dos Agentes</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>Groq e OpenAI podem fornecer respostas divergentes para a mesma pergunta, confundindo o usuário</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Baixo (confiança do usuário diminuída)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Baixo</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Ambos usam o mesmo prompt e ferramenta</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Documentar que respostas podem variar; considerar consenso entre agentes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-07-dependencia-de-apis-externas">RA-07: Dependência de APIs Externas</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>O sistema é inoperável se ambas as APIs estiverem indisponíveis</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Baixa</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Alto (sistema totalmente indisponível)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Tratamento de exceção por agente</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar fallback local ou cache de respostas</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-08-custo-nao-controlado-de-apis">RA-08: Custo não Controlado de APIs</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>Uso extensivo pode gerar custos não controlados nas APIs Groq e OpenAI</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Médio (custo financeiro)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Nenhum controle de quota ou orçamento</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar limites de requisições por sessão</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-09-falta-de-auditoria-de-consultas">RA-09: Falta de Auditoria de Consultas</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>Consultas SQL executadas não são persistidas para auditoria posterior</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Alta</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Médio (impossibilidade de auditoria)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Médio</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>print() no console (volátil)</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Implementar logging persistente de consultas SQL</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ra-10-limitacao-de-contexto-do-agente">RA-10: Limitação de Contexto do Agente</h4>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Avaliação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Descrição</td>
+<td>O agente pode não entender perguntas complexas ou ambíguas sobre a folha, gerando SQL inadequado</td>
+</tr>
+<tr>
+<td>Probabilidade</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Baixo (resposta incorreta ou vazia)</td>
+</tr>
+<tr>
+<td>Risco</td>
+<td>Baixo</td>
+</tr>
+<tr>
+<td>Controle existente</td>
+<td>Prompt com exemplos de SQL e schema</td>
+</tr>
+<tr>
+<td>Recomendação</td>
+<td>Melhorar prompt com mais exemplos e guardrails</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103-consolidacao-de-riscos-algoritmicos">10.3 Consolidação de Riscos Algorítmicos</h3>
+<table>
+<thead>
+<tr>
+<th>Risco</th>
+<th>Prob.</th>
+<th>Impacto</th>
+<th>Nível</th>
+<th>Ação Prioritária</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RA-04: Transferência de dados a APIs</td>
+<td>Alta</td>
+<td>Alto</td>
+<td>Crítico</td>
+<td>Anonimizar ou usar LLM local</td>
+</tr>
+<tr>
+<td>RA-02: Exposição de dados pessoais</td>
+<td>Alta</td>
+<td>Alto</td>
+<td>Alto</td>
+<td>Mascaramento de CPF</td>
+</tr>
+<tr>
+<td>RA-01: Alucinação SQL</td>
+<td>Média</td>
+<td>Médio</td>
+<td>Médio</td>
+<td>Validação de schema</td>
+</tr>
+<tr>
+<td>RA-05: Prompt injection</td>
+<td>Média</td>
+<td>Médio</td>
+<td>Médio</td>
+<td>Sanitização de entrada</td>
+</tr>
+<tr>
+<td>RA-09: Falta de auditoria</td>
+<td>Alta</td>
+<td>Médio</td>
+<td>Médio</td>
+<td>Logging persistente</td>
+</tr>
+<tr>
+<td>RA-08: Custo de APIs</td>
+<td>Média</td>
+<td>Médio</td>
+<td>Médio</td>
+<td>Controle de quota</td>
+</tr>
+<tr>
+<td>RA-07: Dependência de APIs</td>
+<td>Baixa</td>
+<td>Alto</td>
+<td>Médio</td>
+<td>Fallback local</td>
+</tr>
+<tr>
+<td>RA-06: Inconsistência agentes</td>
+<td>Média</td>
+<td>Baixo</td>
+<td>Baixo</td>
+<td>Documentação</td>
+</tr>
+<tr>
+<td>RA-03: Viés alternância</td>
+<td>Baixa</td>
+<td>Baixo</td>
+<td>Baixo</td>
+<td>Preferência do usuário</td>
+</tr>
+<tr>
+<td>RA-10: Limitação contexto</td>
+<td>Média</td>
+<td>Baixo</td>
+<td>Baixo</td>
+<td>Melhorar prompt</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-plano-de-adequacao-roadmap-de-melhoria">11. Plano de Adequação — Roadmap de Melhoria</h2>
+<h3 id="111-fase-1-acoes-imediatas-curto-prazo">11.1 Fase 1 — Ações Imediatas (Curto Prazo)</h3>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Responsável (RACI)</th>
+<th>Risco Mitigado</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mascarar CPF no banco (exibir parcial)</td>
+<td>DEV</td>
+<td>RA-02</td>
+<td>CPF exibido como <strong>*.XXX.XXX-</strong></td>
+</tr>
+<tr>
+<td>Implementar anonimização antes de envio às APIs</td>
+<td>DEV/ARQ</td>
+<td>RA-04</td>
+<td>Dados pessoais não enviados a Groq/OpenAI</td>
+</tr>
+<tr>
+<td>Implementar logging persistente de consultas</td>
+<td>DEV</td>
+<td>RA-09</td>
+<td>Arquivo de log com SQL executado</td>
+</tr>
+<tr>
+<td>Adicionar disclaimer de IA na interface</td>
+<td>DEV</td>
+<td>ER2</td>
+<td>Aviso visível na interface</td>
+</tr>
+</tbody>
+</table>
+<h3 id="112-fase-2-estruturacao-medio-prazo">11.2 Fase 2 — Estruturação (Médio Prazo)</h3>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Responsável (RACI)</th>
+<th>Risco Mitigado</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Designar DPO e PAT formalmente</td>
+<td>GPR/PAT</td>
+<td>DI2, LGPD</td>
+<td>Documento com designações</td>
+</tr>
+<tr>
+<td>Implementar autenticação na interface</td>
+<td>DEV/ARQ</td>
+<td>Incidente</td>
+<td>Login obrigatório</td>
+</tr>
+<tr>
+<td>Criar suite de testes automatizados</td>
+<td>DEV</td>
+<td>DO2</td>
+<td>pytest com cobertura documentada</td>
+</tr>
+<tr>
+<td>Implementar DPIA / RIPD</td>
+<td>GOV/DPO</td>
+<td>LGPD</td>
+<td>Relatório de impacto publicado</td>
+</tr>
+<tr>
+<td>Validar schema SQL antes de execução</td>
+<td>DEV</td>
+<td>RA-01</td>
+<td>Whitelist de tabelas/colunas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="113-fase-3-consolidacao-longo-prazo">11.3 Fase 3 — Consolidação (Longo Prazo)</h3>
+<table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Responsável (RACI)</th>
+<th>Risco Mitigado</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Migrar para LLM local (eliminar APIs externas)</td>
+<td>ARQ/DEV</td>
+<td>RA-04, RA-07</td>
+<td>Ollama ou similar local</td>
+</tr>
+<tr>
+<td>Implementar monitoramento e alertas</td>
+<td>DEV/ARQ</td>
+<td>DI3, DO4</td>
+<td>Dashboard de saúde do sistema</td>
+</tr>
+<tr>
+<td>Programar auditoria de governança</td>
+<td>AUD/GOV</td>
+<td>ER3</td>
+<td>Relatório de auditoria</td>
+</tr>
+<tr>
+<td>Implementar pesquisa de satisfação</td>
+<td>GPR</td>
+<td>IV3</td>
+<td>Formulário e resultados</td>
+</tr>
+<tr>
+<td>Formalizar política de IA institucional</td>
+<td>PAT/GOV</td>
+<td>EG1</td>
+<td>Documento aprovado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-observacoes-finais">12. Observações Finais</h2>
+<ol>
+<li>O sistema Conversa com a Folha está no <strong>Nível 1 — Inicial</strong> de maturidade de governança de IA, compatível com seu estágio de prova de conceito.</li>
+<li>O risco mais crítico identificado é a <strong>transferência de dados pessoais a APIs externas</strong> (RA-04), que requer ação imediata antes de uso com dados reais.</li>
+<li>A proteção SQL contra operações destrutivas (RN-06) é o controle de segurança mais relevante já implementado.</li>
+<li>A evolução para o Nível 2 requer, minimamente: mascaramento de CPF, logging persistente, disclaimer de IA e designação de DPO.</li>
+<li>O sistema não deve ser utilizado com dados reais de servidores sem a implementação das ações da Fase 1.</li>
+<li>A documentação FACIN_IA gerada neste projeto constitui a base para evolução futura da governança.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

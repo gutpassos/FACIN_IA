@@ -1,0 +1,471 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Arquitetura da Solução</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-arquitetura-da-solucao">Conversa_Folha_doc - Arquitetura da Solução</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-visao-geral-da-arquitetura">1. Visão Geral da Arquitetura</h2>
+<p>O Conversa com a Folha implementa uma arquitetura multiagente em camadas, baseada em LangGraph, que orquestra consultas interativas sobre dados de folha de pagamento de servidores públicos. A solução combina dois agentes de IA (Groq e OpenAI), uma ferramenta de consulta SQL segura, interface Streamlit e um banco de dados SQLite.</p>
+<h3 id="11-principios-arquiteturais">1.1 Princípios Arquiteturais</h3>
+<ol>
+<li><strong>Multiagente com roteamento</strong>: Dois agentes de IA concorrentes com roteamento inteligente por alternância ou menção explícita.</li>
+<li><strong>Consulta segura</strong>: Ferramenta SQL restrita a operações SELECT, protegendo contra injeção.</li>
+<li><strong>Processamento local de dados</strong>: Banco SQLite local sem envio de dados a servidores externos.</li>
+<li><strong>Interface conversacional</strong>: Streamlit com gerenciamento de sessão e histórico de conversa.</li>
+<li><strong>Separação de responsabilidades</strong>: Cada componente possui escopo bem definido.</li>
+</ol>
+<hr />
+<h2 id="2-camadas-arquiteturais">2. Camadas Arquiteturais</h2>
+<h3 id="21-camada-de-apresentacao">2.1 Camada de Apresentação</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface Web</td>
+<td>Streamlit (app.py)</td>
+<td>Upload de chaves, entrada de perguntas, exibição de respostas, histórico</td>
+</tr>
+<tr>
+<td>Barra Lateral</td>
+<td>Streamlit sidebar</td>
+<td>Chaves de API, memória, histórico da conversa</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-camada-de-orquestracao">2.2 Camada de Orquestração</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Grafo Principal</td>
+<td>LangGraph (StateGraph)</td>
+<td>Roteamento, controle de fluxo, alternância entre agentes</td>
+</tr>
+<tr>
+<td>Estado Compartilhado</td>
+<td>TypedDict (AgentState)</td>
+<td>Contrato de mensagens entre nós do grafo</td>
+</tr>
+<tr>
+<td>Nó de Roteamento</td>
+<td>route_junction_node</td>
+<td>Hub de decisão de roteamento</td>
+</tr>
+<tr>
+<td>Lógica de Roteamento</td>
+<td>router_logic</td>
+<td>Decisão de próximo agente com base em menções ou alternância</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-camada-de-agentes">2.3 Camada de Agentes</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Agente Groq</td>
+<td>ChatGroq (Llama 3.1-8b-instant)</td>
+<td>Responde perguntas sobre folha via SQL</td>
+</tr>
+<tr>
+<td>Agente OpenAI</td>
+<td>ChatOpenAI (GPT-3.5-turbo)</td>
+<td>Responde perguntas sobre folha via SQL</td>
+</tr>
+<tr>
+<td>Template de Prompt</td>
+<td>ChatPromptTemplate + MessagesPlaceholder</td>
+<td>Estrutura de prompt com sistema e histórico</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-camada-de-ferramentas">2.4 Camada de Ferramentas</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>query_folha_database</td>
+<td>@tool (LangChain)</td>
+<td>Executa consultas SQL SELECT no SQLite</td>
+</tr>
+<tr>
+<td>Nó de Ferramentas</td>
+<td>ToolNode (LangGraph)</td>
+<td>Gerencia execução de ferramentas chamadas pelos agentes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="25-camada-de-dados">2.5 Camada de Dados</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Tecnologia</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Banco de Dados</td>
+<td>SQLite (folha_pagamento.db)</td>
+<td>Armazenamento de servidores e folha de pagamento</td>
+</tr>
+<tr>
+<td>Carga de Dados</td>
+<td>pandas + CSV</td>
+<td>Importação de dados do CSV para o banco</td>
+</tr>
+<tr>
+<td>Esquema SQL</td>
+<td>criacao_banco.sql</td>
+<td>DDL das tabelas</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-diagrama-de-arquitetura-do-sistema">3. Diagrama de Arquitetura do Sistema</h2>
+<div class="mermaid">flowchart TB
+    subgraph Apresentacao[Camada de Apresentação]
+        WEB[Interface Web - Streamlit]
+        SIDEBAR[Barra Lateral - Chaves + Memória]
+    end
+
+    subgraph Orquestracao[Camada de Orquestração]
+        GRAPH[Grafo LangGraph - StateGraph]
+        STATE[Estado - AgentState / TypedDict]
+        ROUTER[Nó Roteador - router_logic]
+    end
+
+    subgraph Agentes[Camada de Agentes]
+        GROQ[Agente Groq - Llama 3.1]
+        OPENAI[Agente OpenAI - GPT-3.5-turbo]
+    end
+
+    subgraph Ferramentas[Camada de Ferramentas]
+        TOOL[query_folha_database]
+        TOOLNODE[ToolNode - Executor de Ferramentas]
+    end
+
+    subgraph Dados[Camada de Dados]
+        DB[(SQLite - folha_pagamento.db)]
+        CSV[folha_pe_200linhas.csv]
+    end
+
+    WEB --> GRAPH
+    SIDEBAR --> WEB
+    GRAPH <--> STATE
+    GRAPH --> ROUTER
+    ROUTER --> GROQ
+    ROUTER --> OPENAI
+    GROQ --> TOOLNODE
+    OPENAI --> TOOLNODE
+    TOOLNODE --> TOOL
+    TOOL --> DB
+    CSV -.carga inicial.-> DB
+</div>
+<hr />
+<h2 id="4-padrao-de-orquestracao">4. Padrão de Orquestração</h2>
+<p>O grafo LangGraph implementa o padrão de <strong>orquestração multiagente com roteamento condicional</strong>, onde um nó roteador central decide qual agente processará cada mensagem.</p>
+<h3 id="41-diagrama-do-grafo-de-estados">4.1 Diagrama do Grafo de Estados</h3>
+<div class="mermaid">stateDiagram-v2
+    [*] --> Router
+    Router --> GroqAgent: @groq ou alternância par
+    Router --> OpenAIAgent: @openai ou alternância ímpar
+    Router --> Tools: Última msg é AIMessage com tool_calls
+    Router --> [*]: Última msg é AIMessage sem tool_calls
+
+    GroqAgent --> Router: Retorna resposta
+    OpenAIAgent --> Router: Retorna resposta
+    Tools --> Router: Retorna resultado da ferramenta
+
+    state Router {
+        [*] --> AnalisarMensagem
+        AnalisarMensagem --> VerificarMencao: É HumanMessage
+        AnalisarMensagem --> Ferramentas: É AIMessage com tool_calls
+        AnalisarMensagem --> Finalizar: É AIMessage sem tool_calls
+        VerificarMencao --> AlternarAgentes: Sem menção
+    }
+</div>
+<h3 id="42-nos-do-grafo">4.2 Nós do Grafo</h3>
+<table>
+<thead>
+<tr>
+<th>Nó</th>
+<th>Função</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>Ponto de entrada</td>
+<td>Direciona para o roteador</td>
+</tr>
+<tr>
+<td>router</td>
+<td>route_junction_node</td>
+<td>Hub de decisão (sem mudança de estado)</td>
+</tr>
+<tr>
+<td>groq_agent</td>
+<td>groq_agent_node</td>
+<td>Executa agente Groq com prompt de folha</td>
+</tr>
+<tr>
+<td>openai_agent</td>
+<td>openai_agent_node</td>
+<td>Executa agente OpenAI com prompt de folha</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>ToolNode</td>
+<td>Executa ferramentas chamadas pelos agentes</td>
+</tr>
+<tr>
+<td>END</td>
+<td>Ponto de saída</td>
+<td>Encerra o ciclo atual</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-logica-de-roteamento">4.3 Lógica de Roteamento</h3>
+<p>A função <code>router_logic</code> decide o destino com base em:</p>
+<ol>
+<li><strong>Sem mensagens</strong>: encerra o fluxo</li>
+<li><strong>AIMessage com tool_calls</strong>: direciona para nó de ferramentas</li>
+<li><strong>AIMessage sem tool_calls</strong>: encerra o ciclo (resposta final)</li>
+<li><strong>HumanMessage com @openai</strong>: direciona para agente OpenAI</li>
+<li><strong>HumanMessage com @groq</strong>: direciona para agente Groq</li>
+<li><strong>Sem menção explícita</strong>: alterna entre agentes com base na contagem de AIMessages</li>
+</ol>
+<h3 id="44-arestas-do-grafo">4.4 Arestas do Grafo</h3>
+<table>
+<thead>
+<tr>
+<th>Origem</th>
+<th>Destino</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>START</td>
+<td>router</td>
+<td>Fixa</td>
+</tr>
+<tr>
+<td>router</td>
+<td>groq_agent / openai_agent / tools / END</td>
+<td>Condicional</td>
+</tr>
+<tr>
+<td>groq_agent</td>
+<td>router</td>
+<td>Fixa</td>
+</tr>
+<tr>
+<td>openai_agent</td>
+<td>router</td>
+<td>Fixa</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>router</td>
+<td>Fixa</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-padrao-de-comunicacao">5. Padrão de Comunicação</h2>
+<h3 id="51-entre-interface-e-grafo">5.1 Entre Interface e Grafo</h3>
+<div class="mermaid">sequenceDiagram
+    participant U as Usuário
+    participant S as Streamlit
+    participant G as Grafo LangGraph
+    participant A as Agente (Groq/OpenAI)
+    participant T as query_folha_database
+
+    U->>S: Digite pergunta
+    S->>G: Invoca grafo com HumanMessage
+    G->>G: router_logic decide agente
+    G->>A: Encaminha para agente selecionado
+    A->>A: Analisa pergunta, gera SQL
+    A-->>G: AIMessage com tool_call
+    G->>T: Executa query_folha_database
+    T->>T: SELECT no SQLite
+    T-->>G: Resultado formatado
+    G->>A: Retorna resultado da ferramenta
+    A-->>G: AIMessage com resposta final
+    G-->>S: Retorna mensagens do estado
+    S-->>U: Exibe resposta
+</div>
+<h3 id="52-contrato-de-estado-agentstate">5.2 Contrato de Estado (AgentState)</h3>
+<pre><code class="language-python">class AgentState(TypedDict):
+    messages: Annotated[List[BaseMessage], operator.add]
+</code></pre>
+<p>O estado é uma lista acumulativa de mensagens (<code>HumanMessage</code>, <code>AIMessage</code>, <code>ToolMessage</code>) agregadas pelo operador de soma.</p>
+<hr />
+<h2 id="6-padrao-de-seguranca">6. Padrão de Segurança</h2>
+<h3 id="61-protecao-contra-injecao-sql">6.1 Proteção contra Injeção SQL</h3>
+<p>A ferramenta <code>query_folha_database</code> implementa validação de entrada:</p>
+<ol>
+<li>Verifica se a consulta começa com <code>SELECT</code> (case-insensitive)</li>
+<li>Rejeita operações <code>UPDATE</code>, <code>DELETE</code>, <code>INSERT</code>, <code>DROP</code></li>
+<li>Registra tentativas de SQL não-SELECT no console</li>
+</ol>
+<h3 id="62-gerenciamento-de-credenciais">6.2 Gerenciamento de Credenciais</h3>
+<ul>
+<li>Chaves de API informadas via widgets de senha (type="password")</li>
+<li>Chaves não persistidas (mantidas apenas em session_state)</li>
+<li>Recomendação de não publicar chaves no repositório</li>
+</ul>
+<h3 id="63-gerenciamento-de-conexoes">6.3 Gerenciamento de Conexões</h3>
+<ul>
+<li>Conexões SQLite abertas apenas durante a execução da query</li>
+<li>Bloco <code>finally</code> garante fechamento da conexão</li>
+<li>Tratamento de exceções para erros SQL e inesperados</li>
+</ul>
+<hr />
+<h2 id="7-diagrama-de-dependencias">7. Diagrama de Dependências</h2>
+<div class="mermaid">flowchart LR
+    subgraph Core
+        STREAMLIT[streamlit]
+        LANGGRAPH[langgraph]
+        LANGCHAIN[langchain]
+    end
+
+    subgraph APIs
+        GROQ_SDK[langchain-groq]
+        OPENAI_SDK[langchain-openai]
+    end
+
+    subgraph Database
+        SQLITE[sqlite3 - stdlib]
+        PANDAS[pandas]
+    end
+
+    subgraph Utilities
+        DOTENV[python-dotenv]
+        TYPING[typing - stdlib]
+        OPERATOR[operator - stdlib]
+        OS[os - stdlib]
+    end
+
+    STREAMLIT --> LANGGRAPH
+    LANGGRAPH --> LANGCHAIN
+    LANGCHAIN --> GROQ_SDK
+    LANGCHAIN --> OPENAI_SDK
+    LANGGRAPH --> SQLITE
+    SQLITE --> PANDAS
+</div>
+<hr />
+<h2 id="8-padrao-de-resiliencia">8. Padrão de Resiliência</h2>
+<h3 id="81-tratamento-de-erros-por-camada">8.1 Tratamento de Erros por Camada</h3>
+<table>
+<thead>
+<tr>
+<th>Camada</th>
+<th>Erro Tratado</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Inicialização</td>
+<td>Banco de dados inexistente</td>
+<td>Exibe erro e orienta criação</td>
+</tr>
+<tr>
+<td>Inicialização</td>
+<td>Falha na compilação do grafo</td>
+<td>Exibe exceção e interrompe</td>
+</tr>
+<tr>
+<td>API Groq</td>
+<td>Erro de conexão ou quota</td>
+<td>Exibe st.error, retorna mensagem de erro interna</td>
+</tr>
+<tr>
+<td>API OpenAI</td>
+<td>Erro de conexão ou quota</td>
+<td>Exibe st.error, retorna mensagem de erro interna</td>
+</tr>
+<tr>
+<td>Ferramenta SQL</td>
+<td>Erro SQL ou banco inexistente</td>
+<td>Retorna mensagem de erro formatada</td>
+</tr>
+<tr>
+<td>Ferramenta SQL</td>
+<td>SQL não-SELECT</td>
+<td>Retorna erro de segurança</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-fluxo-de-erro">8.2 Fluxo de Erro</h3>
+<div class="mermaid">flowchart TD
+    QUERY[Pergunta do Usuário] --> AGENT[Agente IA]
+    AGENT -->|Sucesso| TOOL[Chamada de Ferramenta]
+    AGENT -->|Erro API| ERR_API[Mensagem de Erro Interna]
+    TOOL -->|SQL Válido| EXEC[Execução SQLite]
+    TOOL -->|SQL Inválido| ERR_SEC[Erro de Segurança]
+    EXEC -->|Sucesso| RES[Resultados Formatados]
+    EXEC -->|Erro SQL| ERR_SQL[Mensagem de Erro SQL]
+    EXEC -->|Erro Inesperado| ERR_GEN[Mensagem Genérica]
+    ERR_API --> UI[Interface Streamlit]
+    ERR_SEC --> UI
+    RES --> UI
+    ERR_SQL --> UI
+    ERR_GEN --> UI
+</div>
+<hr />
+<h2 id="9-observacoes-de-governanca">9. Observações de Governança</h2>
+<ol>
+<li>A arquitetura foi documentada por análise estática, sem alteração do código original.</li>
+<li>O padrão multiagente com roteamento permite escalabilidade horizontal (adição de novos agentes).</li>
+<li>A separação entre ferramenta SQL e agentes permite auditoria independente das consultas.</li>
+<li>O contrato AgentState garante tipagem estática e rastreabilidade das mensagens.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

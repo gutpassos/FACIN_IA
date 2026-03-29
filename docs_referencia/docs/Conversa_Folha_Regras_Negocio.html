@@ -1,0 +1,405 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Regras de Negócio</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-regras-de-negocio">Conversa_Folha_doc - Regras de Negócio</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-finalidade">1. Finalidade</h2>
+<p>Este documento formaliza as regras de negócio implementadas no sistema Conversa com a Folha, abrangendo classificação de perguntas, roteamento de agentes, execução de consultas, segurança de dados, processamento de respostas e rastreabilidade.</p>
+<hr />
+<h2 id="2-contexto-de-negocio">2. Contexto de Negócio</h2>
+<h3 id="21-objetivo-do-sistema">2.1 Objetivo do Sistema</h3>
+<p>O Conversa com a Folha é uma ferramenta interativa de consulta e simulação sobre dados de folha de pagamento de servidores públicos. O sistema permite ao usuário realizar perguntas em linguagem natural que são traduzidas em consultas SQL e executadas sobre as tabelas <code>tb_servidores</code> e <code>tb_folha_pagamento</code>.</p>
+<h3 id="22-premissas-de-negocio">2.2 Premissas de Negócio</h3>
+<ol>
+<li>O sistema é um <strong>assistente de consulta</strong>, não um decisor autônomo.</li>
+<li>Os dados disponíveis são de <strong>exemplo</strong> (200 registros), servindo como prova de conceito.</li>
+<li>As respostas são baseadas exclusivamente nos dados do banco local.</li>
+<li>Os agentes de IA devem gerar apenas consultas SQL SELECT.</li>
+<li>O sistema opera com dois agentes concorrentes para diversidade de respostas.</li>
+<li>As chaves de API são responsabilidade do usuário.</li>
+</ol>
+<hr />
+<h2 id="3-regras-de-roteamento-de-agentes">3. Regras de Roteamento de Agentes</h2>
+<h3 id="rn-01-roteamento-por-mencao-explicita">RN-01: Roteamento por Menção Explícita</h3>
+<p>Quando o usuário inclui menção explícita a um agente, o sistema direciona para o agente mencionado:</p>
+<table>
+<thead>
+<tr>
+<th>Menção</th>
+<th>Agente Direcionado</th>
+<th>Modelo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@groq</code></td>
+<td>Groq Agent</td>
+<td>llama-3.1-8b-instant</td>
+</tr>
+<tr>
+<td><code>@openai</code></td>
+<td>OpenAI Agent</td>
+<td>gpt-3.5-turbo</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-02-roteamento-por-alternancia">RN-02: Roteamento por Alternância</h3>
+<p>Na ausência de menção explícita, o roteamento alterna entre os agentes com base na contagem de <code>AIMessage</code> no histórico:</p>
+<table>
+<thead>
+<tr>
+<th>Contagem de AIMessages</th>
+<th>Agente Selecionado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Par (0, 2, 4, ...)</td>
+<td>Groq Agent</td>
+</tr>
+<tr>
+<td>Ímpar (1, 3, 5, ...)</td>
+<td>OpenAI Agent</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-03-roteamento-para-ferramentas">RN-03: Roteamento para Ferramentas</h3>
+<p>Quando a última mensagem é uma <code>AIMessage</code> com <code>tool_calls</code>, o roteamento direciona automaticamente para o nó de ferramentas (<code>tools</code>).</p>
+<h3 id="rn-04-encerramento-de-ciclo">RN-04: Encerramento de Ciclo</h3>
+<p>Quando a última mensagem é uma <code>AIMessage</code> sem <code>tool_calls</code>, o ciclo é encerrado e a resposta é entregue ao usuário.</p>
+<h3 id="rn-05-ciclo-de-retorno">RN-05: Ciclo de Retorno</h3>
+<p>Após a execução do agente ou da ferramenta, o fluxo retorna ao roteador para decisão do próximo passo, formando ciclos de consulta-resposta.</p>
+<hr />
+<h2 id="4-regras-de-consulta-sql">4. Regras de Consulta SQL</h2>
+<h3 id="rn-06-restricao-a-select">RN-06: Restrição a SELECT</h3>
+<p>A ferramenta <code>query_folha_database</code> aceita <strong>exclusivamente</strong> consultas SQL que iniciam com a palavra <code>SELECT</code> (case-insensitive). Qualquer outra operação é rejeitada.</p>
+<table>
+<thead>
+<tr>
+<th>Operação</th>
+<th>Permitida</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SELECT</td>
+<td>✅ Sim</td>
+<td>Execução normal</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>❌ Não</td>
+<td>Retorna erro de segurança</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>❌ Não</td>
+<td>Retorna erro de segurança</td>
+</tr>
+<tr>
+<td>INSERT</td>
+<td>❌ Não</td>
+<td>Retorna erro de segurança</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>❌ Não</td>
+<td>Retorna erro de segurança</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>❌ Não</td>
+<td>Retorna erro de segurança</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-07-tabelas-disponiveis">RN-07: Tabelas Disponíveis</h3>
+<p>Os agentes devem consultar apenas as tabelas documentadas no schema da ferramenta:</p>
+<table>
+<thead>
+<tr>
+<th>Tabela</th>
+<th>Colunas Disponíveis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tb_servidores</td>
+<td>id, nome, cpf, matricula, orgao, cargo</td>
+</tr>
+<tr>
+<td>tb_folha_pagamento</td>
+<td>id, matricula, competencia, vencimentos, descontos, liquido</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-08-relacionamento-entre-tabelas">RN-08: Relacionamento entre Tabelas</h3>
+<p>A relação entre as tabelas é feita pela coluna <code>matricula</code>:</p>
+<pre><code class="language-sql">SELECT ... FROM tb_servidores s 
+JOIN tb_folha_pagamento f ON s.matricula = f.matricula
+</code></pre>
+<h3 id="rn-09-limite-de-resultados">RN-09: Limite de Resultados</h3>
+<p>A ferramenta retorna no máximo <strong>15 resultados</strong> por consulta. Se houver mais, indica a quantidade omitida:</p>
+<pre><code>... (mais X resultados omitidos)
+</code></pre>
+<h3 id="rn-10-validacao-do-banco-de-dados">RN-10: Validação do Banco de Dados</h3>
+<p>Antes de executar qualquer consulta, a ferramenta verifica se o arquivo <code>folha_pagamento.db</code> existe. Caso não exista, retorna erro orientando a criação do banco.</p>
+<hr />
+<h2 id="5-regras-de-processamento-de-dados">5. Regras de Processamento de Dados</h2>
+<h3 id="rn-11-carga-inicial-de-dados">RN-11: Carga Inicial de Dados</h3>
+<p>O script <code>cria_db.py</code> realiza a carga inicial seguindo a sequência:</p>
+<ol>
+<li>Verifica existência do arquivo SQL (<code>criacao_banco.sql</code>)</li>
+<li>Remove banco anterior se existir (criação limpa)</li>
+<li>Executa o script SQL para criar tabelas</li>
+<li>Lê o arquivo <code>folha_pe_200linhas.csv</code> via pandas</li>
+<li>Insere dados de servidores (deduplica por campos únicos)</li>
+<li>Insere dados de folha de pagamento</li>
+<li>Gera arquivos auxiliares em Excel e CSV</li>
+</ol>
+<h3 id="rn-12-estrutura-do-csv-de-entrada">RN-12: Estrutura do CSV de Entrada</h3>
+<p>O arquivo <code>folha_pe_200linhas.csv</code> deve conter as colunas:</p>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nome</td>
+<td>texto</td>
+<td>Nome do servidor</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>texto</td>
+<td>CPF formatado</td>
+</tr>
+<tr>
+<td>matricula</td>
+<td>texto</td>
+<td>Matrícula funcional (ex: A-1000)</td>
+</tr>
+<tr>
+<td>orgao</td>
+<td>texto</td>
+<td>Órgão de lotação</td>
+</tr>
+<tr>
+<td>cargo</td>
+<td>texto</td>
+<td>Cargo ocupado</td>
+</tr>
+<tr>
+<td>competencia</td>
+<td>texto</td>
+<td>Mês de referência (AAAAMM)</td>
+</tr>
+<tr>
+<td>vencimentos</td>
+<td>numérico</td>
+<td>Valor bruto</td>
+</tr>
+<tr>
+<td>descontos</td>
+<td>numérico</td>
+<td>Valor dos descontos</td>
+</tr>
+<tr>
+<td>liquido</td>
+<td>numérico</td>
+<td>Valor líquido</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-13-orgaos-do-sistema">RN-13: Órgãos do Sistema</h3>
+<table>
+<thead>
+<tr>
+<th>Órgão</th>
+<th>Sigla Implícita</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Secretaria da Saúde</td>
+<td>Saúde</td>
+</tr>
+<tr>
+<td>Secretaria da Fazenda</td>
+<td>Fazenda</td>
+</tr>
+<tr>
+<td>Secretaria da Educação</td>
+<td>Educação</td>
+</tr>
+<tr>
+<td>Secretaria de Administração</td>
+<td>Administração</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-14-cargos-do-sistema">RN-14: Cargos do Sistema</h3>
+<table>
+<thead>
+<tr>
+<th>Cargo</th>
+<th>Nível Implícito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assistente</td>
+<td>Nível inicial</td>
+</tr>
+<tr>
+<td>Técnico</td>
+<td>Nível intermediário</td>
+</tr>
+<tr>
+<td>Analista</td>
+<td>Nível superior</td>
+</tr>
+<tr>
+<td>Gestor</td>
+<td>Nível gerencial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="rn-15-competencias-disponiveis">RN-15: Competências Disponíveis</h3>
+<p>Os dados de exemplo cobrem as competências de 202401 a 202404 (janeiro a abril de 2024).</p>
+<hr />
+<h2 id="6-regras-de-seguranca">6. Regras de Segurança</h2>
+<h3 id="rn-16-registro-de-tentativas-de-sql-nao-select">RN-16: Registro de Tentativas de SQL Não-SELECT</h3>
+<p>Toda tentativa de execução de SQL não-SELECT é registrada no console com a mensagem:</p>
+<pre><code>!!! ERRO DE SEGURANÇA: Tentativa de executar SQL não-SELECT !!!
+</code></pre>
+<h3 id="rn-17-gerenciamento-de-conexoes">RN-17: Gerenciamento de Conexões</h3>
+<p>Toda conexão SQLite deve ser fechada no bloco <code>finally</code>, independentemente do resultado da execução. Isso previne vazamento de recursos.</p>
+<h3 id="rn-18-protecao-de-chaves-de-api">RN-18: Proteção de Chaves de API</h3>
+<ul>
+<li>As chaves são informadas via widgets <code>type="password"</code> (ocultadas)</li>
+<li>As chaves são mantidas apenas em <code>st.session_state</code> (memória de sessão)</li>
+<li>As chaves não são persistidas em disco</li>
+<li>As chaves não devem ser publicadas no repositório</li>
+</ul>
+<h3 id="rn-19-validacao-de-chaves-obrigatorias">RN-19: Validação de Chaves Obrigatórias</h3>
+<p>O sistema requer ambas as chaves (Groq e OpenAI) para prosseguir. Se qualquer uma estiver ausente, o fluxo é interrompido com <code>st.stop()</code>.</p>
+<hr />
+<h2 id="7-regras-de-interacao-com-o-usuario">7. Regras de Interação com o Usuário</h2>
+<h3 id="rn-20-mensagem-de-boas-vindas">RN-20: Mensagem de Boas-Vindas</h3>
+<p>Na primeira inicialização, o sistema exibe:</p>
+<blockquote>
+<p>"Olá! Sou seu assistente de Folha de Pagamento. Pergunte-me sobre servidores ou remunerações."</p>
+</blockquote>
+<h3 id="rn-21-historico-de-conversa">RN-21: Histórico de Conversa</h3>
+<p>O histórico é mantido em <code>st.session_state.chat_history</code> como lista de <code>BaseMessage</code>. O histórico persiste durante a sessão.</p>
+<h3 id="rn-22-instrucoes-do-prompt-de-sistema">RN-22: Instruções do Prompt de Sistema</h3>
+<p>Cada agente recebe instruções específicas via prompt de sistema:</p>
+<table>
+<thead>
+<tr>
+<th>Regra do Prompt</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Usar ferramenta SQL</td>
+<td>Gerar consultas SELECT para responder perguntas</td>
+</tr>
+<tr>
+<td>Consultar schema</td>
+<td>Referenciar tabelas e colunas documentadas</td>
+</tr>
+<tr>
+<td>Ser direto</td>
+<td>Basear respostas nos dados retornados</td>
+</tr>
+<tr>
+<td>Não inventar dados</td>
+<td>Não gerar informações fictícias</td>
+</tr>
+<tr>
+<td>Reportar erros</td>
+<td>Informar ao usuário quando a ferramenta retornar erro</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-regras-de-tratamento-de-erros">8. Regras de Tratamento de Erros</h2>
+<h3 id="rn-23-erros-de-api">RN-23: Erros de API</h3>
+<p>Quando um agente falha na comunicação com a API (Groq ou OpenAI):</p>
+<ol>
+<li>O erro é exibido via <code>st.error()</code></li>
+<li>Uma <code>AIMessage</code> de erro interno é criada</li>
+<li>A mensagem de erro é incluída no estado para continuidade do fluxo</li>
+</ol>
+<h3 id="rn-24-erros-de-sql">RN-24: Erros de SQL</h3>
+<p>Quando a consulta SQL falha no SQLite:</p>
+<ol>
+<li>O erro é registrado no console</li>
+<li>Uma mensagem formatada é retornada ao agente</li>
+<li>O agente pode reformular a consulta ou informar o usuário</li>
+</ol>
+<h3 id="rn-25-banco-de-dados-ausente">RN-25: Banco de Dados Ausente</h3>
+<p>Se o arquivo <code>folha_pagamento.db</code> não existir no momento da inicialização:</p>
+<ol>
+<li>O sistema exibe <code>st.error()</code> com instrução</li>
+<li><code>st.info()</code> orienta a executar <code>cria_db.py</code></li>
+<li>O fluxo é interrompido com <code>st.stop()</code></li>
+</ol>
+<hr />
+<h2 id="9-regras-de-negocio-para-consultas">9. Regras de Negócio para Consultas</h2>
+<h3 id="rn-26-consultas-por-orgao">RN-26: Consultas por Órgão</h3>
+<p>Os agentes devem respeitar os nomes exatos dos órgãos ao gerar SQL:</p>
+<pre><code class="language-sql">WHERE orgao = 'Secretaria da Saúde'    -- correto
+WHERE orgao = 'Saude'                   -- incorreto
+</code></pre>
+<h3 id="rn-27-consultas-por-competencia">RN-27: Consultas por Competência</h3>
+<p>O formato de competência no banco é <code>AAAAMM</code> (6 dígitos):</p>
+<pre><code class="language-sql">WHERE competencia = '202401'            -- janeiro de 2024
+WHERE competencia LIKE '2024%'          -- ano de 2024
+</code></pre>
+<h3 id="rn-28-calculos-de-folha">RN-28: Cálculos de Folha</h3>
+<p>O valor líquido é definido como: <code>liquido = vencimentos - descontos</code></p>
+<p>Para totalizações de folha:</p>
+<pre><code class="language-sql">SELECT SUM(liquido) FROM tb_folha_pagamento WHERE ...
+SELECT SUM(vencimentos) as total_bruto FROM tb_folha_pagamento WHERE ...
+</code></pre>
+<h3 id="rn-29-simulacoes-de-reajuste">RN-29: Simulações de Reajuste</h3>
+<p>Para simulações de reajuste percentual, os agentes devem calcular:</p>
+<pre><code class="language-sql">SELECT nome, vencimentos * 1.10 as vencimentos_reajustados FROM ...
+</code></pre>
+<hr />
+<h2 id="10-observacoes">10. Observações</h2>
+<ol>
+<li>As regras de negócio estão implementadas nos módulos <code>app.py</code> e <code>cria_db.py</code>.</li>
+<li>A segurança SQL é a principal medida de proteção no nível de dados.</li>
+<li>O sistema é uma prova de conceito e não deve ser utilizado com dados reais sem controles adicionais.</li>
+<li>As regras de roteamento podem ser ajustadas sem alteração da arquitetura central.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

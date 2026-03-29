@@ -1,0 +1,488 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Manual de Usuário</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-manual-de-usuario">Conversa_Folha_doc - Manual de Usuário</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-introducao">1. Introdução</h2>
+<p>O <strong>Conversa com a Folha</strong> é um sistema multiagente de inteligência artificial que permite a consulta interativa e simulação sobre dados de folha de pagamento de servidores públicos. O sistema opera com dois agentes de IA — Groq (Llama 3.1) e OpenAI (GPT-3.5-turbo) — orquestrados por LangGraph, e fornece respostas baseadas em consultas SQL ao banco de dados SQLite.</p>
+<h3 id="11-publico-alvo">1.1 Público-Alvo</h3>
+<ul>
+<li>Gestores de recursos humanos e folha de pagamento</li>
+<li>Analistas de políticas públicas</li>
+<li>Equipe técnica de suporte ao sistema</li>
+<li>Auditores e controladores institucionais</li>
+</ul>
+<h3 id="12-escopo-do-manual">1.2 Escopo do Manual</h3>
+<p>Este manual cobre a instalação, configuração, operação e solução de problemas do sistema Conversa com a Folha, contemplando a interface Web (Streamlit).</p>
+<hr />
+<h2 id="2-requisitos-do-sistema">2. Requisitos do Sistema</h2>
+<h3 id="21-hardware-minimo">2.1 Hardware Mínimo</h3>
+<table>
+<thead>
+<tr>
+<th>Requisito</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processador</td>
+<td>2 cores, 2.0 GHz ou superior</td>
+</tr>
+<tr>
+<td>Memória RAM</td>
+<td>4 GB (recomendado 8 GB)</td>
+</tr>
+<tr>
+<td>Armazenamento</td>
+<td>2 GB livres</td>
+</tr>
+<tr>
+<td>Rede</td>
+<td>Conexão à internet (para APIs Groq e OpenAI)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-software-necessario">2.2 Software Necessário</h3>
+<table>
+<thead>
+<tr>
+<th>Software</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.12</td>
+<td>Execução do sistema</td>
+</tr>
+<tr>
+<td>Conda</td>
+<td>Miniconda/Anaconda</td>
+<td>Gerenciamento de ambiente</td>
+</tr>
+<tr>
+<td>Navegador web</td>
+<td>Moderno (Chrome, Firefox, Edge)</td>
+<td>Acesso à interface Streamlit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-dependencias-python">2.3 Dependências Python</h3>
+<p>As dependências estão registradas no arquivo <code>requirements.txt</code> e incluem:</p>
+<ul>
+<li>langchain, langchain-core, langchain-groq, langchain-openai</li>
+<li>langgraph</li>
+<li>streamlit</li>
+<li>sqlite3 (stdlib)</li>
+<li>pandas</li>
+<li>python-dotenv</li>
+</ul>
+<hr />
+<h2 id="3-instalacao-e-configuracao">3. Instalação e Configuração</h2>
+<h3 id="31-ativacao-do-ambiente">3.1 Ativação do Ambiente</h3>
+<pre><code class="language-bash">conda activate figmm
+</code></pre>
+<h3 id="32-instalacao-de-dependencias">3.2 Instalação de Dependências</h3>
+<pre><code class="language-bash">cd Conversa_Folha
+pip install -r requirements.txt
+</code></pre>
+<h3 id="33-criacao-do-banco-de-dados">3.3 Criação do Banco de Dados</h3>
+<p>Antes de iniciar a interface, é necessário criar e popular o banco de dados:</p>
+<pre><code class="language-bash">python cria_db.py
+</code></pre>
+<p>Este comando irá:
+1. Ler o script SQL <code>criacao_banco.sql</code> para criar as tabelas
+2. Importar os dados do arquivo <code>folha_pe_200linhas.csv</code>
+3. Popular as tabelas <code>tb_servidores</code> e <code>tb_folha_pagamento</code>
+4. Gerar arquivos auxiliares (<code>servidores.xlsx</code>, <code>servidores.csv</code>, <code>folha.xlsx</code>, <code>folha.csv</code>)</p>
+<h3 id="34-chaves-de-api">3.4 Chaves de API</h3>
+<p>O sistema requer duas chaves de API:</p>
+<table>
+<thead>
+<tr>
+<th>Chave</th>
+<th>Provedor</th>
+<th>Onde Informar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groq API Key</td>
+<td><a href="https://console.groq.com">console.groq.com</a></td>
+<td>Barra lateral da aplicação</td>
+</tr>
+<tr>
+<td>OpenAI API Key</td>
+<td><a href="https://platform.openai.com">platform.openai.com</a></td>
+<td>Barra lateral da aplicação</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Importante</strong>: As chaves são informadas em tempo de execução pela barra lateral. Nunca publique chaves reais no repositório.</p>
+<hr />
+<h2 id="4-uso-da-interface-web-streamlit">4. Uso da Interface Web (Streamlit)</h2>
+<h3 id="41-inicializacao">4.1 Inicialização</h3>
+<pre><code class="language-bash">cd Conversa_Folha
+streamlit run app.py
+</code></pre>
+<p>A interface será aberta automaticamente no navegador em <code>http://localhost:8501</code>.</p>
+<h3 id="42-fluxo-de-uso-completo">4.2 Fluxo de Uso Completo</h3>
+<h4 id="passo-1-informar-chaves-de-api">Passo 1: Informar Chaves de API</h4>
+<ol>
+<li>Na barra lateral, insira a <strong>Groq API Key</strong>.</li>
+<li>Insira a <strong>OpenAI API Key</strong>.</li>
+<li>Ambas as chaves são obrigatórias para prosseguir.</li>
+</ol>
+<h4 id="passo-2-aguardar-inicializacao">Passo 2: Aguardar Inicialização</h4>
+<ol>
+<li>O sistema compila o grafo LangGraph automaticamente.</li>
+<li>A mensagem "Grafo Folha de Pagamento inicializado." confirma que o sistema está pronto.</li>
+<li>O assistente exibe uma mensagem de boas-vindas.</li>
+</ol>
+<h4 id="passo-3-fazer-perguntas">Passo 3: Fazer Perguntas</h4>
+<ol>
+<li>No campo de entrada na parte inferior da tela, digite sua pergunta.</li>
+<li>Pressione Enter para enviar.</li>
+<li>O sistema direciona automaticamente para um dos agentes (Groq ou OpenAI).</li>
+</ol>
+<h4 id="passo-4-direcionar-para-agente-especifico">Passo 4: Direcionar para Agente Específico</h4>
+<p>Para direcionar a pergunta a um agente específico, use menções:</p>
+<table>
+<thead>
+<tr>
+<th>Comando</th>
+<th>Efeito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@groq</code> + pergunta</td>
+<td>Direciona para o agente Groq (Llama 3.1)</td>
+</tr>
+<tr>
+<td><code>@openai</code> + pergunta</td>
+<td>Direciona para o agente OpenAI (GPT-3.5-turbo)</td>
+</tr>
+<tr>
+<td>Sem menção</td>
+<td>Alternância automática entre os agentes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="passo-5-visualizar-resultados">Passo 5: Visualizar Resultados</h4>
+<p>O agente executa a consulta SQL e apresenta os resultados formatados com:
+- Nomes das colunas como cabeçalho
+- Dados separados por " | "
+- Até 15 resultados por consulta
+- Contagem total de registros encontrados</p>
+<h3 id="43-diagrama-do-fluxo-de-uso">4.3 Diagrama do Fluxo de Uso</h3>
+<div class="mermaid">flowchart TD
+    A[Informar Chaves de API] --> B[Inicialização do Grafo]
+    B --> C[Digitar Pergunta]
+    C --> D{Menção explícita?}
+    D -->|"#64;openai"| F[Agente OpenAI - GPT-3.5]
+    D -->|"#64;groq"| E[Agente Groq - Llama 3.1]
+    D -->|Sem menção| G{Alternância automática}
+    G -->|Par| E
+    G -->|Ímpar| F
+    E --> H{Precisa de ferramenta?}
+    F --> H
+    H -->|Sim| I[query_folha_database]
+    H -->|Não| J[Resposta direta]
+    I --> K[Executa SQL SELECT]
+    K --> L[Retorna resultados ao agente]
+    L --> J
+    J --> M[Exibe na interface]
+</div>
+<hr />
+<h2 id="5-exemplos-de-perguntas">5. Exemplos de Perguntas</h2>
+<h3 id="51-consultas-basicas-de-servidores">5.1 Consultas Básicas de Servidores</h3>
+<table>
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quais servidores estão ativos?</td>
+<td>Listar todos os servidores cadastrados</td>
+</tr>
+<tr>
+<td>Quantos servidores estão ativos?</td>
+<td>Contar servidores</td>
+</tr>
+<tr>
+<td>Qual é a remuneração do Servidor 2?</td>
+<td>Consultar remuneração individual</td>
+</tr>
+<tr>
+<td>Quantos servidores ocupam o cargo de Assistente?</td>
+<td>Filtrar por cargo</td>
+</tr>
+<tr>
+<td>Quantos servidores são da Secretaria da Saúde?</td>
+<td>Filtrar por órgão</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-consultas-de-folha-de-pagamento">5.2 Consultas de Folha de Pagamento</h3>
+<table>
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Qual é o valor da folha da Fazenda em 202401?</td>
+<td>Total por órgão e competência</td>
+</tr>
+<tr>
+<td>Qual é o valor da folha da Saúde no ano de 2024?</td>
+<td>Total anual por órgão</td>
+</tr>
+<tr>
+<td>Quantos servidores tiveram aumento?</td>
+<td>Análise temporal de remuneração</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-simulacoes">5.3 Simulações</h3>
+<table>
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Faça uma simulação da folha da Saúde para maio de 2024</td>
+<td>Projeção de valores</td>
+</tr>
+<tr>
+<td>Qual seria o valor da folha da Fazenda se houvesse aumento de 10%?</td>
+<td>Simulação de reajuste</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-consultas-avancadas">5.4 Consultas Avançadas</h3>
+<table>
+<thead>
+<tr>
+<th>Pergunta</th>
+<th>Objetivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Na Fazenda, quantos servidores ocupam o cargo de Assistente?</td>
+<td>Filtro combinado</td>
+</tr>
+<tr>
+<td>Qual o valor total da folha da Secretaria da Fazenda em 2024?</td>
+<td>Agregação anual</td>
+</tr>
+<tr>
+<td>Algum servidor foi demitido? Quais?</td>
+<td>Análise de status</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-barra-lateral-memoria-e-historico">6. Barra Lateral — Memória e Histórico</h2>
+<h3 id="61-historico-da-conversa">6.1 Histórico da Conversa</h3>
+<p>Na barra lateral, a seção <strong>"📜 Ver Histórico Completo da Conversa"</strong> permite:
+- Visualizar todas as mensagens trocadas
+- Acompanhar a sequência de perguntas e respostas
+- Monitorar qual agente respondeu cada pergunta</p>
+<h3 id="62-limpar-historico">6.2 Limpar Histórico</h3>
+<p>O botão <strong>"🗑️ Limpar Histórico"</strong> reinicia a conversa, removendo todas as mensagens anteriores.</p>
+<hr />
+<h2 id="7-estrutura-do-banco-de-dados">7. Estrutura do Banco de Dados</h2>
+<h3 id="71-tabela-tb_servidores">7.1 Tabela <code>tb_servidores</code></h3>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INTEGER (PK)</td>
+<td>Identificador único autoincremental</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>TEXT</td>
+<td>Nome do servidor</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>TEXT</td>
+<td>CPF do servidor</td>
+</tr>
+<tr>
+<td>matricula</td>
+<td>TEXT (UNIQUE)</td>
+<td>Matrícula funcional</td>
+</tr>
+<tr>
+<td>orgao</td>
+<td>TEXT</td>
+<td>Órgão de lotação</td>
+</tr>
+<tr>
+<td>cargo</td>
+<td>TEXT</td>
+<td>Cargo ocupado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-tabela-tb_folha_pagamento">7.2 Tabela <code>tb_folha_pagamento</code></h3>
+<table>
+<thead>
+<tr>
+<th>Coluna</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>INTEGER (PK)</td>
+<td>Identificador único autoincremental</td>
+</tr>
+<tr>
+<td>matricula</td>
+<td>TEXT (FK)</td>
+<td>Matrícula do servidor</td>
+</tr>
+<tr>
+<td>competencia</td>
+<td>TEXT</td>
+<td>Mês de referência (AAAAMM)</td>
+</tr>
+<tr>
+<td>vencimentos</td>
+<td>REAL</td>
+<td>Valor bruto dos vencimentos</td>
+</tr>
+<tr>
+<td>descontos</td>
+<td>REAL</td>
+<td>Valor total dos descontos</td>
+</tr>
+<tr>
+<td>liquido</td>
+<td>REAL</td>
+<td>Valor líquido (vencimentos - descontos)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-orgaos-disponiveis">7.3 Órgãos Disponíveis</h3>
+<ul>
+<li>Secretaria da Saúde</li>
+<li>Secretaria da Fazenda</li>
+<li>Secretaria da Educação</li>
+<li>Secretaria de Administração</li>
+</ul>
+<h3 id="74-cargos-disponiveis">7.4 Cargos Disponíveis</h3>
+<ul>
+<li>Assistente</li>
+<li>Analista</li>
+<li>Técnico</li>
+<li>Gestor</li>
+</ul>
+<hr />
+<h2 id="8-solucao-de-problemas">8. Solução de Problemas</h2>
+<h3 id="81-erros-comuns">8.1 Erros Comuns</h3>
+<table>
+<thead>
+<tr>
+<th>Erro</th>
+<th>Causa</th>
+<th>Solução</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"⚠️ Defina ambas as chaves"</td>
+<td>Chaves de API não informadas</td>
+<td>Insira ambas as chaves na barra lateral</td>
+</tr>
+<tr>
+<td>"Arquivo do banco de dados não encontrado"</td>
+<td>Banco não criado</td>
+<td>Execute <code>python cria_db.py</code></td>
+</tr>
+<tr>
+<td>"Erro ao contactar a API Groq"</td>
+<td>Chave Groq inválida ou sem créditos</td>
+<td>Verifique a chave no console.groq.com</td>
+</tr>
+<tr>
+<td>"Erro ao contactar a API OpenAI"</td>
+<td>Chave OpenAI inválida ou sem créditos</td>
+<td>Verifique a chave no platform.openai.com</td>
+</tr>
+<tr>
+<td>"Erro ao executar a consulta SQL"</td>
+<td>SQL gerado incorretamente pelo agente</td>
+<td>Reformule a pergunta de forma mais clara</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-seguranca-sql">8.2 Segurança SQL</h3>
+<p>O sistema implementa proteção contra injeção SQL:
+- Somente consultas <code>SELECT</code> são aceitas
+- Tentativas de <code>UPDATE</code>, <code>DELETE</code>, <code>INSERT</code> ou <code>DROP</code> são bloqueadas
+- Erros de segurança são registrados no console</p>
+<hr />
+<h2 id="9-limitacoes-conhecidas">9. Limitações Conhecidas</h2>
+<ol>
+<li>O banco de dados contém dados de exemplo (200 registros), não dados reais</li>
+<li>A alternância automática entre agentes pode não ser ideal para todas as perguntas</li>
+<li>O sistema depende de conectividade com internet para acessar as APIs de IA</li>
+<li>Límite de 15 resultados exibidos por consulta</li>
+<li>Não há autenticação de usuário na interface Streamlit</li>
+<li>As chaves de API são informadas manualmente a cada sessão</li>
+</ol>
+<hr />
+<h2 id="10-observacoes-de-governanca">10. Observações de Governança</h2>
+<ol>
+<li>O código original da pasta <code>Conversa_Folha/</code> não foi alterado</li>
+<li>A documentação segue o template FACIN_IA</li>
+<li>O modelo Claude Opus 4.6 foi utilizado para a geração documental</li>
+<li>O ambiente figmm é o ambiente oficial de trabalho</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

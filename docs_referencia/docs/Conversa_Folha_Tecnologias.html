@@ -1,0 +1,558 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Tecnologias</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-tecnologias">Conversa_Folha_doc - Tecnologias</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-finalidade">1. Finalidade</h2>
+<p>Este documento apresenta o inventário completo do stack tecnológico utilizado no sistema Conversa com a Folha, incluindo linguagens, frameworks, modelos de IA, bibliotecas e infraestrutura.</p>
+<hr />
+<h2 id="2-linguagem-e-runtime">2. Linguagem e Runtime</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.12</td>
+<td>Linguagem principal do sistema</td>
+</tr>
+<tr>
+<td>Conda (Anaconda)</td>
+<td>Última estável</td>
+<td>Gerenciamento de ambiente virtual</td>
+</tr>
+<tr>
+<td>pip</td>
+<td>Última estável</td>
+<td>Gerenciamento de pacotes Python</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21-ambiente-virtual">2.1 Ambiente Virtual</h3>
+<p>O ambiente oficial do projeto é o <strong>figmm</strong>, gerenciado via Conda:</p>
+<pre><code class="language-bash">conda activate figmm
+</code></pre>
+<hr />
+<h2 id="3-framework-de-orquestracao">3. Framework de Orquestração</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LangGraph</td>
+<td>0.3.34</td>
+<td>Construção e execução de grafos de agentes</td>
+</tr>
+<tr>
+<td>LangChain</td>
+<td>0.3.24</td>
+<td>Abstrações para modelos de linguagem</td>
+</tr>
+<tr>
+<td>LangChain-Core</td>
+<td>0.3.56</td>
+<td>Tipos centrais, mensagens e interfaces</td>
+</tr>
+<tr>
+<td>LangChain-Groq</td>
+<td>0.3.2</td>
+<td>Integração com API Groq</td>
+</tr>
+<tr>
+<td>LangChain-OpenAI</td>
+<td>0.3.14</td>
+<td>Integração com API OpenAI</td>
+</tr>
+<tr>
+<td>LangGraph-Prebuilt</td>
+<td>0.1.8</td>
+<td>Nós pré-construídos (ToolNode)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="31-padrao-de-orquestracao">3.1 Padrão de Orquestração</h3>
+<p>O LangGraph implementa o padrão de <strong>grafo de estado finito com roteamento multiagente</strong> onde:</p>
+<ul>
+<li>Cada nó representa um agente ou ponto de decisão</li>
+<li>As transições são condicionais, baseadas no tipo de mensagem e menções</li>
+<li>O estado é tipado com <code>TypedDict</code> (<code>AgentState</code>) para contratos explícitos</li>
+<li>O campo <code>messages</code> acumula o histórico completo via <code>operator.add</code></li>
+</ul>
+<hr />
+<h2 id="4-modelos-de-inteligencia-artificial">4. Modelos de Inteligência Artificial</h2>
+<h3 id="41-agente-groq">4.1 Agente Groq</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo</td>
+<td>llama-3.1-8b-instant</td>
+</tr>
+<tr>
+<td>Provedor</td>
+<td>Groq Cloud</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>API REST (HTTPS)</td>
+</tr>
+<tr>
+<td>Temperatura</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>API Key (informada em tempo de execução)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-agente-openai">4.2 Agente OpenAI</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo</td>
+<td>gpt-3.5-turbo</td>
+</tr>
+<tr>
+<td>Provedor</td>
+<td>OpenAI</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>API REST (HTTPS)</td>
+</tr>
+<tr>
+<td>Temperatura</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>API Key (informada em tempo de execução)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-parametros-de-ia">4.3 Parâmetros de IA</h3>
+<table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Valor</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>temperature</td>
+<td>0.2</td>
+<td>Baixa variabilidade nas respostas (mais determinístico)</td>
+</tr>
+<tr>
+<td>Ferramentas vinculadas</td>
+<td>query_folha_database</td>
+<td>Ambos os agentes acessam a mesma ferramenta SQL</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-interface-de-usuario">5. Interface de Usuário</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Streamlit</td>
+<td>1.44.1</td>
+<td>Interface web interativa e conversacional</td>
+</tr>
+</tbody>
+</table>
+<h3 id="51-caracteristicas-da-interface-web">5.1 Características da Interface Web</h3>
+<ul>
+<li>Layout em largura total (<code>layout="wide"</code>)</li>
+<li>Barra lateral para chaves de API e histórico</li>
+<li>Widgets de senha para proteção de credenciais</li>
+<li>Expansor para histórico completo da conversa</li>
+<li>Gerenciamento de sessão via <code>st.session_state</code></li>
+<li>Botão de limpeza de histórico</li>
+</ul>
+<hr />
+<h2 id="6-banco-de-dados">6. Banco de Dados</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SQLite</td>
+<td>stdlib Python</td>
+<td>Armazenamento local de dados de folha de pagamento</td>
+</tr>
+<tr>
+<td>sqlite3</td>
+<td>stdlib Python</td>
+<td>Driver nativo para acesso ao SQLite</td>
+</tr>
+</tbody>
+</table>
+<h3 id="61-modelo-de-dados">6.1 Modelo de Dados</h3>
+<table>
+<thead>
+<tr>
+<th>Tabela</th>
+<th>Campos</th>
+<th>Registros</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tb_servidores</td>
+<td>id, nome, cpf, matricula, orgao, cargo</td>
+<td>~50 servidores</td>
+</tr>
+<tr>
+<td>tb_folha_pagamento</td>
+<td>id, matricula, competencia, vencimentos, descontos, liquido</td>
+<td>~200 registros</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-carga-de-dados">6.2 Carga de Dados</h3>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandas</td>
+<td>Leitura do CSV e importação para SQLite</td>
+</tr>
+<tr>
+<td>CSV (folha_pe_200linhas.csv)</td>
+<td>Base de dados de exemplo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-bibliotecas-de-apoio">7. Bibliotecas de Apoio</h2>
+<table>
+<thead>
+<tr>
+<th>Biblioteca</th>
+<th>Versão</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pandas</td>
+<td>2.2.3</td>
+<td>Manipulação de dados tabulares e carga de CSV</td>
+</tr>
+<tr>
+<td>python-dotenv</td>
+<td>1.1.0</td>
+<td>Carregamento de variáveis de ambiente (presente mas não ativo)</td>
+</tr>
+<tr>
+<td>pydantic</td>
+<td>2.11.3</td>
+<td>Validação de dados e schemas</td>
+</tr>
+<tr>
+<td>numpy</td>
+<td>2.2.5</td>
+<td>Operações numéricas</td>
+</tr>
+<tr>
+<td>requests</td>
+<td>2.32.3</td>
+<td>Requisições HTTP</td>
+</tr>
+<tr>
+<td>openai</td>
+<td>1.76.0</td>
+<td>SDK oficial da OpenAI</td>
+</tr>
+<tr>
+<td>groq</td>
+<td>0.23.1</td>
+<td>SDK oficial da Groq</td>
+</tr>
+<tr>
+<td>tiktoken</td>
+<td>0.9.0</td>
+<td>Tokenização para modelos OpenAI</td>
+</tr>
+<tr>
+<td>PyYAML</td>
+<td>6.0.2</td>
+<td>Serialização YAML</td>
+</tr>
+</tbody>
+</table>
+<h3 id="71-bibliotecas-standard-library">7.1 Bibliotecas Standard Library</h3>
+<table>
+<thead>
+<tr>
+<th>Biblioteca</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>os</td>
+<td>Manipulação de caminhos e variáveis de ambiente</td>
+</tr>
+<tr>
+<td>sqlite3</td>
+<td>Acesso ao banco de dados SQLite</td>
+</tr>
+<tr>
+<td>operator</td>
+<td>Operador de soma para agregação de mensagens</td>
+</tr>
+<tr>
+<td>typing</td>
+<td>Anotações de tipo (Annotated, List, TypedDict)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-infraestrutura">8. Infraestrutura</h2>
+<h3 id="81-ambiente-de-desenvolvimento-local">8.1 Ambiente de Desenvolvimento (Local)</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sistema Operacional</td>
+<td>Windows 10/11</td>
+</tr>
+<tr>
+<td>Python Runtime</td>
+<td>Conda (figmm) com Python 3.12</td>
+</tr>
+<tr>
+<td>Banco de Dados</td>
+<td>SQLite local (folha_pagamento.db)</td>
+</tr>
+<tr>
+<td>IDE</td>
+<td>VS Code</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-deploy-em-nuvem-streamlit-cloud">8.2 Deploy em Nuvem (Streamlit Cloud)</h3>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plataforma</td>
+<td>Streamlit Community Cloud</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>https://chatfolha-gp4chli5wpb4rfutyxx6zj.streamlit.app/</td>
+</tr>
+<tr>
+<td>Branch</td>
+<td>main</td>
+</tr>
+<tr>
+<td>Arquivo principal</td>
+<td>app.py</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-diagrama-de-infraestrutura">8.3 Diagrama de Infraestrutura</h3>
+<div class="mermaid">flowchart TB
+    subgraph DEV[Ambiente DEV - Windows Local]
+        DEVPY[Python 3.12 - figmm]
+        DEVDB[(SQLite - folha_pagamento.db)]
+        DEVVS[VS Code]
+        DEVST[Streamlit :8501]
+    end
+
+    subgraph CLOUD[Deploy - Streamlit Cloud]
+        CLOUDST[Streamlit App]
+        CLOUDDB[(SQLite - gerado em runtime)]
+    end
+
+    subgraph APIs[APIs Externas]
+        GROQ_API[Groq API - Llama 3.1]
+        OPENAI_API[OpenAI API - GPT-3.5-turbo]
+    end
+
+    DEV -.push.-> CLOUD
+    DEVST --> GROQ_API
+    DEVST --> OPENAI_API
+    CLOUDST --> GROQ_API
+    CLOUDST --> OPENAI_API
+</div>
+<hr />
+<h2 id="9-geracao-de-documentacao">9. Geração de Documentação</h2>
+<table>
+<thead>
+<tr>
+<th>Tecnologia</th>
+<th>Finalidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>markdown (Python)</td>
+<td>Conversão de Markdown para HTML</td>
+</tr>
+<tr>
+<td>xhtml2pdf</td>
+<td>Conversão de HTML para PDF</td>
+</tr>
+<tr>
+<td>ast (stdlib)</td>
+<td>Análise estática de código Python</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-diagrama-de-stack-tecnologico">10. Diagrama de Stack Tecnológico</h2>
+<div class="mermaid">flowchart TB
+    subgraph Stack[Stack Tecnológico Conversa com a Folha]
+        subgraph UI[Interface]
+            STREAMLIT[Streamlit 1.44.1]
+        end
+        subgraph AI[Inteligência Artificial]
+            GROQ[Groq - Llama 3.1-8b-instant]
+            OPENAI[OpenAI - GPT-3.5-turbo]
+            LG[LangGraph 0.3.34]
+            LC[LangChain 0.3.24]
+        end
+        subgraph DATA[Dados]
+            SQLITE[SQLite3]
+            PD[pandas 2.2.3]
+            CSV[CSV - Dados de Exemplo]
+        end
+        subgraph INFRA[Infraestrutura]
+            PY[Python 3.12]
+            CONDA[Conda - figmm]
+            GIT[Git]
+        end
+    end
+
+    UI --> AI
+    AI --> DATA
+    DATA --> INFRA
+</div>
+<hr />
+<h2 id="11-versoes-e-compatibilidade">11. Versões e Compatibilidade</h2>
+<table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Versão Mínima</th>
+<th>Versão Testada</th>
+<th>Observação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>3.10</td>
+<td>3.12</td>
+<td>Requer suporte a TypedDict, Annotated</td>
+</tr>
+<tr>
+<td>LangGraph</td>
+<td>0.3.x</td>
+<td>0.3.34</td>
+<td>API de StateGraph e ToolNode</td>
+</tr>
+<tr>
+<td>LangChain</td>
+<td>0.3.x</td>
+<td>0.3.24</td>
+<td>ChatPromptTemplate e MessagesPlaceholder</td>
+</tr>
+<tr>
+<td>Streamlit</td>
+<td>1.40+</td>
+<td>1.44.1</td>
+<td>set_page_config, session_state</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>3.x</td>
+<td>stdlib</td>
+<td>Incluído no Python</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-observacoes-de-governanca">12. Observações de Governança</h2>
+<ol>
+<li>Todas as versões foram extraídas do arquivo <code>requirements.txt</code> do projeto original.</li>
+<li>O sistema depende de APIs externas (Groq e OpenAI) para funcionamento dos agentes.</li>
+<li>Os dados são processados localmente (SQLite), mas as perguntas são enviadas às APIs de IA.</li>
+<li>O ambiente figmm é o único ambiente autorizado para instalações.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

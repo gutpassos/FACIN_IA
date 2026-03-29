@@ -1,0 +1,509 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Backlog de Sprints</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-backlog-de-sprints">Conversa_Folha_doc - Backlog de Sprints</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-finalidade">1. Finalidade</h2>
+<p>Detalhar o backlog do projeto Conversa_Folha_doc em sprints, com itens priorizados, critérios de aceite, pontos de story, esforço em pessoa-dia e qualificação MRO.</p>
+<hr />
+<h2 id="2-escala-de-estimativa">2. Escala de Estimativa</h2>
+<p>A escala de pontos segue o modelo de referência FACIN_IA (projeto Foundry), com correspondência para a qualificação da demanda pelo Modelo de Responsabilidade Organizacional (MRO_RACI).</p>
+<h3 id="21-escala-de-complexidade">2.1 Escala de Complexidade</h3>
+<table>
+<thead>
+<tr>
+<th>Escala</th>
+<th>Significado</th>
+<th>Pessoa-dia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 ponto</td>
+<td>Item pequeno, baixa incerteza e baixo acoplamento</td>
+<td>0,5 a 1</td>
+</tr>
+<tr>
+<td>2 pontos</td>
+<td>Item simples, com uma dependência relevante</td>
+<td>1 a 2</td>
+</tr>
+<tr>
+<td>3 pontos</td>
+<td>Item moderado, com necessidade de validação cruzada</td>
+<td>2 a 3</td>
+</tr>
+<tr>
+<td>5 pontos</td>
+<td>Item de maior complexidade técnica ou institucional</td>
+<td>3 a 5</td>
+</tr>
+<tr>
+<td>8 pontos</td>
+<td>Item crítico, com maior risco, integração ou incerteza</td>
+<td>5 a 8</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-qualificacao-mro-da-demanda">2.2 Qualificação MRO da Demanda</h3>
+<p>A complexidade de um item é qualificada pela quantidade e tipo de papéis organizacionais (RACI) que requer:</p>
+<table>
+<thead>
+<tr>
+<th>Pontos</th>
+<th>Qualificação MRO</th>
+<th>Papéis ativos (R/A/C)</th>
+<th>Exemplo de padrão RACI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Operacional simples</td>
+<td>1-2 papéis</td>
+<td>DEV=R, GPR=A, demais I</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Operacional com dependência</td>
+<td>2-3 papéis</td>
+<td>DEV=R, GPR=A, ARQ=C</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Tático com validação cruzada</td>
+<td>3-4 papéis</td>
+<td>DEV=R, GPR=A, ARQ=C, GOV=C</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tático-institucional</td>
+<td>4-5 papéis</td>
+<td>GOV=R, GPR=A, ARQ=C, DEV=C, DPO=C</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Estratégico-crítico</td>
+<td>5+ papéis</td>
+<td>GOV=R, PAT=A, ARQ=C, DEV=C, AUD=C, DPO=C</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Referência</strong>: Escala adaptada do documento FACIN_IA_D_P_Foundry_Backlog_Sprints, seção 2.1 — Escala de Estimativa.</p>
+<hr />
+<h2 id="3-visao-geral-das-sprints">3. Visão Geral das Sprints</h2>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Foco</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1</td>
+<td>Documentação Base</td>
+<td>Concluída</td>
+</tr>
+<tr>
+<td>Sprint 2</td>
+<td>Documentação Avançada</td>
+<td>Concluída</td>
+</tr>
+<tr>
+<td>Sprint 3</td>
+<td>Avaliação de Maturidade e Gestão</td>
+<td>Concluída</td>
+</tr>
+<tr>
+<td>Sprint 4</td>
+<td>Conformidade, Risco e Planejamento</td>
+<td>Concluída</td>
+</tr>
+<tr>
+<td>Sprint 5</td>
+<td>Publicação e Dashboard</td>
+<td>Concluída</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-sprint-1-documentacao-base">4. Sprint 1 — Documentação Base</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de Aceite</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Criar estrutura de pastas (docs/, erros/, scripts/)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0,5</td>
+<td>Operacional simples (DEV=R, GPR=A)</td>
+<td>Pastas existem no repositório</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Projeto.md</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (DEV=R, GPR=A, ARQ=C, GOV=I)</td>
+<td>Especificações funcional e técnica em PT-BR</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Documentacao_Codigo.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (DEV=R, GPR=A, ARQ=C, GOV=I)</td>
+<td>Inventário de módulos app.py e cria_db.py</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Manual_Usuario.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (DEV=R, GPR=A, ARQ=C, AUD=C, USR=C)</td>
+<td>Manual com instalação, configuração e operação</td>
+<td>Concluído</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Sprint 1: 14 pontos · 10,5 pessoa-dia</strong></p>
+<hr />
+<h2 id="5-sprint-2-documentacao-avancada">5. Sprint 2 — Documentação Avançada</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de Aceite</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gerar Conversa_Folha_Arquitetura_Solucao.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (ARQ=R, GPR=A, DEV=C, GOV=I)</td>
+<td>5 camadas, grafo LangGraph, diagramas Mermaid</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Tecnologias.md</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (ARQ=R, DEV=C, GPR=I)</td>
+<td>Stack completo com versões e infraestrutura</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Integracoes.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (ARQ=R, GPR=A, DEV=C, GOV=I)</td>
+<td>Groq, OpenAI, SQLite, Streamlit mapeados</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Regras_Negocio.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (DEV=R, GPR=A, ARQ=C, GOV=C)</td>
+<td>29 regras formalizadas com evidências</td>
+<td>Concluído</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Sprint 2: 18 pontos · 14 pessoa-dia</strong></p>
+<hr />
+<h2 id="6-sprint-3-avaliacao-de-maturidade-e-gestao">6. Sprint 3 — Avaliação de Maturidade e Gestão</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de Aceite</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gerar Conversa_Folha_Avaliacao_Maturidade.md</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">6</td>
+<td>Estratégico-crítico (GOV=R, PAT=A, ARQ=C, DEV=C, AUD=C, DPO=I)</td>
+<td>18 indicadores, 6 dimensões, índice geral 1,32</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Incluir Matriz MRO_RACI</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (GOV=R, GPR=A, PAT=C, DEV=I)</td>
+<td>8 papéis × 21 atividades mapeados</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Incluir Conformidade LGPD</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (GOV=R, PAT=A, DPO=C, AUD=C, DEV=I)</td>
+<td>Análise por artigo, Resolução ANPD 19/2024</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Incluir Risco Algorítmico</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (GOV=R, PAT=A, ARQ=C, DEV=C, DPO=C)</td>
+<td>10 riscos com classificação e controles</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Erros_Resolvidos.md</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (DEV=R, GPR=A, ARQ=C)</td>
+<td>7 erros documentados com impacto</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Backlog_Sprints.md</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (DEV=R, GPR=A, GOV=C)</td>
+<td>Backlog completo com 5 sprints</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Backlog_Kanban.md</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (DEV=R, GPR=A, GOV=C)</td>
+<td>Quadro Kanban com métricas</td>
+<td>Concluído</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Sprint 3: 28 pontos · 20 pessoa-dia</strong></p>
+<hr />
+<h2 id="7-sprint-4-conformidade-risco-e-planejamento">7. Sprint 4 — Conformidade, Risco e Planejamento</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de Aceite</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gerar Conversa_Folha_Plano_Executivo.md</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (GPR=R, PAT=A, ARQ=C, GOV=C)</td>
+<td>RACI, cronograma, marcos, riscos</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Kanban_Executivo.md</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (GPR=R, GOV=C)</td>
+<td>Visão executiva com semáforo de status</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Indice_Executivo.md</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (DEV=R, GPR=A)</td>
+<td>Navegação centralizada</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Revisar conformidade LGPD completa</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (GOV=R, PAT=A, DPO=C, AUD=C)</td>
+<td>8 aspectos avaliados</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Avaliar riscos algorítmicos</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional (GOV=R, PAT=A, ARQ=C, DEV=C, DPO=C)</td>
+<td>Matriz de risco com mitigações</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Documentar controles e lacunas</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (GOV=R, GPR=A, DEV=C, DPO=C)</td>
+<td>Plano de adequação em 3 fases</td>
+<td>Concluído</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Sprint 4: 22 pontos · 16 pessoa-dia</strong></p>
+<hr />
+<h2 id="8-sprint-5-publicacao-e-dashboard">8. Sprint 5 — Publicação e Dashboard</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de Aceite</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gerar versões HTML de todos os documentos</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (DEV=R, GPR=A, GOV=I)</td>
+<td>HTML navegável com suporte Mermaid</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar versões PDF de todos os documentos</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (DEV=R, GPR=A, GOV=I)</td>
+<td>PDF institucional legível</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar README.md do projeto</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (DEV=R, GPR=A)</td>
+<td>Navegação e instruções de execução</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Gerar Conversa_Folha_Dashboard_Executivo.html</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td>Tático com validação (DEV=R, GPR=A, GOV=C)</td>
+<td>KPIs, barras de maturidade, tabelas de risco</td>
+<td>Concluído</td>
+</tr>
+<tr>
+<td>Adaptar generate_project_docs.py</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td>Operacional com dependência (DEV=R, GPR=A)</td>
+<td>Script funcional para MD → HTML → PDF</td>
+<td>Concluído</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Total Sprint 5: 13 pontos · 8 pessoa-dia</strong></p>
+<hr />
+<h2 id="9-burndown-consolidado">9. Burndown Consolidado</h2>
+<table>
+<thead>
+<tr>
+<th>Sprint</th>
+<th style="text-align: right;">Pontos</th>
+<th style="text-align: right;">Pessoa-dia</th>
+<th style="text-align: right;">Entregues</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sprint 1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">10,5</td>
+<td style="text-align: right;">14</td>
+<td>✅ 100%</td>
+</tr>
+<tr>
+<td>Sprint 2</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">18</td>
+<td>✅ 100%</td>
+</tr>
+<tr>
+<td>Sprint 3</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">28</td>
+<td>✅ 100%</td>
+</tr>
+<tr>
+<td>Sprint 4</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">22</td>
+<td>✅ 100%</td>
+</tr>
+<tr>
+<td>Sprint 5</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">13</td>
+<td>✅ 100%</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>95</strong></td>
+<td style="text-align: right;"><strong>68,5</strong></td>
+<td style="text-align: right;"><strong>95</strong></td>
+<td><strong>✅ 100%</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-observacoes">10. Observações</h2>
+<ol>
+<li>Todas as 5 sprints foram concluídas com sucesso.</li>
+<li>O modelo de referência do projeto é Claude Opus 4.6 no ambiente figmm.</li>
+<li>O código original na pasta <code>Conversa_Folha/</code> não foi alterado.</li>
+<li>A documentação segue o template FACIN_IA e está disponível em .md, .html e .pdf.</li>
+<li>Itens de evolução futura (mascaramento CPF, autenticação, LLM local) estão no backlog Kanban.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

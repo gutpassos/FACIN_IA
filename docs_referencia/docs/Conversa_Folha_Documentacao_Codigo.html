@@ -1,0 +1,315 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Documentação do Código Python</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-documentacao-do-codigo-python">Conversa_Folha_doc - Documentação do Código Python</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-escopo">1. Escopo</h2>
+<p>Este documento descreve os módulos Python do projeto Conversa com a Folha identificados na pasta <code>Conversa_Folha/</code>. A documentação foi gerada por <strong>análise estática</strong>, sem alteração do código original.</p>
+<h2 id="2-inventario-consolidado">2. Inventário Consolidado</h2>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th style="text-align: right;">Linhas</th>
+<th style="text-align: right;">Classes</th>
+<th style="text-align: right;">Funções</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app.py</td>
+<td style="text-align: right;">~450</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7</td>
+<td>Interface Streamlit, orquestração multiagente LangGraph, ferramenta SQL, roteamento</td>
+</tr>
+<tr>
+<td>cria_db.py</td>
+<td style="text-align: right;">~100</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td>Criação e carga do banco de dados SQLite a partir de CSV</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td style="text-align: right;"><strong>~550</strong></td>
+<td style="text-align: right;"><strong>1</strong></td>
+<td style="text-align: right;"><strong>10</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-arquitetura-do-sistema">3. Arquitetura do Sistema</h2>
+<p>O Conversa com a Folha é um sistema multiagente conversacional com três camadas principais:</p>
+<ol>
+<li><strong>Camada de Interface</strong> — Streamlit (<code>app.py</code>) para interação com o usuário.</li>
+<li><strong>Camada de Orquestração</strong> — Grafo LangGraph (<code>app.py</code>) com roteamento entre agentes.</li>
+<li><strong>Camada de Dados</strong> — SQLite (<code>cria_db.py</code>, <code>criacao_banco.sql</code>) para armazenamento.</li>
+</ol>
+<h3 id="31-diagrama-de-componentes">3.1 Diagrama de Componentes</h3>
+<div class="mermaid">flowchart TB
+    U[Usuário] --> UI[Streamlit app.py]
+    UI --> KEYS[Chaves API - Sidebar]
+    UI --> GRAPH[Grafo LangGraph]
+    GRAPH --> ROUTER[Roteador]
+    ROUTER --> GROQ[Agente Groq - Llama 3.1]
+    ROUTER --> OPENAI[Agente OpenAI - GPT-3.5]
+    GROQ --> TOOLS[ToolNode]
+    OPENAI --> TOOLS
+    TOOLS --> SQLTOOL[query_folha_database]
+    SQLTOOL --> DB[(SQLite - folha_pagamento.db)]
+    DB -.carga.-> CRIADB[cria_db.py]
+    CRIADB --> CSV[folha_pe_200linhas.csv]
+    CRIADB --> SQL[criacao_banco.sql]
+</div>
+<h3 id="32-diagrama-de-fluxo-de-execucao">3.2 Diagrama de Fluxo de Execução</h3>
+<div class="mermaid">sequenceDiagram
+    participant User
+    participant App as app.py (Streamlit)
+    participant Graph as LangGraph
+    participant Router as router_logic
+    participant Agent as Agente (Groq/OpenAI)
+    participant Tool as query_folha_database
+    participant DB as SQLite
+
+    User->>App: Informa chaves API
+    User->>App: Digita pergunta
+    App->>Graph: invoke com HumanMessage
+    Graph->>Router: Analisa última mensagem
+    Router->>Agent: Direciona para agente
+    Agent->>Agent: Gera SQL via LLM
+    Agent-->>Graph: AIMessage com tool_call
+    Graph->>Tool: Executa ferramenta
+    Tool->>DB: SELECT no banco
+    DB-->>Tool: Resultados
+    Tool-->>Graph: String formatada
+    Graph->>Agent: Resultado da ferramenta
+    Agent-->>Graph: AIMessage com resposta
+    Graph-->>App: Estado final
+    App-->>User: Exibe resposta
+</div>
+<h2 id="4-modulos-documentados">4. Módulos Documentados</h2>
+<h3 id="41-apppy">4.1 app.py</h3>
+<ul>
+<li><strong>Propósito:</strong> Interface Streamlit com orquestração multiagente LangGraph, ferramenta de consulta SQL e roteamento inteligente entre agentes.</li>
+<li><strong>Linhas analisadas:</strong> ~450</li>
+<li><strong>Imports:</strong> 15</li>
+<li><strong>Constantes globais:</strong> 1 (DB_FILE)</li>
+<li><strong>Classes:</strong> 1</li>
+<li><strong>Funções:</strong> 7</li>
+</ul>
+<h4 id="imports">Imports</h4>
+<ul>
+<li><code>os</code></li>
+<li><code>streamlit</code></li>
+<li><code>sqlite3</code></li>
+<li><code>operator</code></li>
+<li><code>from dotenv import load_dotenv</code></li>
+<li><code>from typing import Annotated, List, TypedDict</code></li>
+<li><code>from langchain_groq import ChatGroq</code></li>
+<li><code>from langchain_openai import ChatOpenAI</code></li>
+<li><code>from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, ToolMessage</code></li>
+<li><code>from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder</code></li>
+<li><code>from langgraph.graph import StateGraph, END, START</code></li>
+<li><code>from langgraph.prebuilt import ToolNode</code></li>
+<li><code>from langchain.tools import tool</code></li>
+</ul>
+<h4 id="constantes-globais">Constantes Globais</h4>
+<ul>
+<li><code>DB_FILE</code> = "folha_pagamento.db"</li>
+</ul>
+<h4 id="classes">Classes</h4>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th style="text-align: right;">Linha</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AgentState</code></td>
+<td style="text-align: right;">~30</td>
+<td>TypedDict que define o estado do grafo com campo messages</td>
+</tr>
+</tbody>
+</table>
+<h4 id="funcoes">Funções</h4>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Assinatura</th>
+<th>Retorno</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query_folha_database</code></td>
+<td><code>(sql_query: str)</code></td>
+<td><code>str</code></td>
+<td>Ferramenta @tool que executa SQL SELECT no SQLite e retorna resultados formatados</td>
+</tr>
+<tr>
+<td><code>cria_agente_runnable</code></td>
+<td><code>(llm, system_prompt)</code></td>
+<td>agent_runnable</td>
+<td>Cria um agente executável combinando LLM, prompt e ferramentas</td>
+</tr>
+<tr>
+<td><code>groq_agent_node</code></td>
+<td><code>(state: AgentState)</code></td>
+<td><code>dict</code></td>
+<td>Nó do grafo que executa o agente Groq (Llama 3.1)</td>
+</tr>
+<tr>
+<td><code>openai_agent_node</code></td>
+<td><code>(state: AgentState)</code></td>
+<td><code>dict</code></td>
+<td>Nó do grafo que executa o agente OpenAI (GPT-3.5-turbo)</td>
+</tr>
+<tr>
+<td><code>route_junction_node</code></td>
+<td><code>(state: AgentState)</code></td>
+<td><code>dict</code></td>
+<td>Nó hub de roteamento (sem mudança de estado)</td>
+</tr>
+<tr>
+<td><code>router_logic</code></td>
+<td><code>(state: AgentState)</code></td>
+<td><code>str</code></td>
+<td>Função de decisão de roteamento (groq_agent, openai_agent, tools, <strong>end</strong>)</td>
+</tr>
+<tr>
+<td><code>compila_grafo</code></td>
+<td><code>()</code></td>
+<td><code>app</code></td>
+<td>Compila o grafo LangGraph com todos os nós e arestas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-cria_dbpy">4.2 cria_db.py</h3>
+<ul>
+<li><strong>Propósito:</strong> Criação e carga do banco de dados SQLite a partir de CSV e script SQL.</li>
+<li><strong>Linhas analisadas:</strong> ~100</li>
+<li><strong>Imports:</strong> 5</li>
+<li><strong>Constantes globais:</strong> 2 (DB_FILE, SQL_FILE)</li>
+<li><strong>Classes:</strong> 0</li>
+<li><strong>Funções:</strong> 3</li>
+</ul>
+<h4 id="imports_1">Imports</h4>
+<ul>
+<li><code>os</code></li>
+<li><code>sqlite3</code></li>
+<li><code>pandas</code></li>
+<li><code>from datetime import datetime, timedelta</code></li>
+</ul>
+<h4 id="constantes-globais_1">Constantes Globais</h4>
+<ul>
+<li><code>DB_FILE</code> = "folha_pagamento.db"</li>
+<li><code>SQL_FILE</code> = "criacao_banco.sql"</li>
+</ul>
+<h4 id="funcoes_1">Funções</h4>
+<table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Assinatura</th>
+<th>Retorno</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cria_database</code></td>
+<td><code>()</code></td>
+<td><code>(conn, cursor)</code></td>
+<td>Cria o banco SQLite executando o script SQL</td>
+</tr>
+<tr>
+<td><code>popula_tabelas</code></td>
+<td><code>(conn, cursor)</code></td>
+<td><code>None</code></td>
+<td>Lê o CSV e insere dados nas tabelas via pandas</td>
+</tr>
+<tr>
+<td><code>main</code></td>
+<td><code>()</code></td>
+<td><code>None</code></td>
+<td>Função principal: chama cria_database e popula_tabelas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-criacao_bancosql">4.3 criacao_banco.sql</h3>
+<ul>
+<li><strong>Propósito:</strong> DDL de criação das tabelas do banco de dados.</li>
+<li><strong>Tabelas criadas:</strong> 2</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Tabela</th>
+<th>Campos</th>
+<th>Constraints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tb_servidores</td>
+<td>id (PK AUTOINCREMENT), nome, cpf, matricula (UNIQUE), orgao, cargo</td>
+<td>PK, UNIQUE</td>
+</tr>
+<tr>
+<td>tb_folha_pagamento</td>
+<td>id (PK AUTOINCREMENT), matricula (FK), competencia, vencimentos, descontos, liquido</td>
+<td>PK, FK</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-fluxos-operacionais-relevantes">5. Fluxos Operacionais Relevantes</h2>
+<ol>
+<li><code>app.py</code> monta a interface Streamlit, coleta chaves de API, compila o grafo LangGraph e coordena o fluxo conversacional multiagente.</li>
+<li>O roteador (<code>router_logic</code>) decide qual agente processa cada mensagem com base em menções (@groq/@openai) ou alternância automática.</li>
+<li>Os agentes geram consultas SQL via LLM e invocam a ferramenta <code>query_folha_database</code>.</li>
+<li>A ferramenta valida, executa e formata os resultados do SQLite.</li>
+<li><code>cria_db.py</code> é executado uma vez para criar e popular o banco a partir do CSV.</li>
+</ol>
+<h2 id="6-dependencias-externas-criticas">6. Dependências Externas Críticas</h2>
+<ul>
+<li><strong>Groq API</strong> — Backend LLM cloud para agente Groq (Llama 3.1-8b-instant).</li>
+<li><strong>OpenAI API</strong> — Backend LLM cloud para agente OpenAI (GPT-3.5-turbo).</li>
+<li><strong>Streamlit</strong> — Interface web para interação do usuário.</li>
+<li><strong>LangGraph / LangChain</strong> — Framework de orquestração de agentes.</li>
+<li><strong>SQLite</strong> — Banco de dados local para folha de pagamento.</li>
+<li><strong>pandas</strong> — Leitura de CSV e carga de dados.</li>
+</ul>
+<h2 id="7-observacoes-de-governanca">7. Observações de Governança</h2>
+<ol>
+<li>O código original da pasta <code>Conversa_Folha/</code> não foi alterado — documentação gerada por análise estática.</li>
+<li>A documentação segue o template FACIN_IA com avaliação de maturidade, MRO_RACI e conformidade LGPD.</li>
+<li>O modelo Claude Opus 4.6 foi utilizado para a geração documental; o código-fonte usa Groq e OpenAI.</li>
+<li>Divergências e erros encontrados estão documentados na pasta <code>erros/</code>.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

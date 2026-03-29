@@ -1,0 +1,180 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Projeto Consolidado</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-projeto-consolidado">Conversa_Folha_doc - Projeto Consolidado</h1>
+<p>Projeto de Documentação e Avaliação de Maturidade do Sistema Conversa com a Folha</p>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM utilizado: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-identificacao-do-projeto">1. Identificação do Projeto</h2>
+<ul>
+<li><strong>Projeto</strong>: Conversa_Folha_doc</li>
+<li><strong>Sistema avaliado</strong>: Conversa com a Folha de Pagamento — V4</li>
+<li><strong>Domínio</strong>: Engenharia de Software, Inteligência Artificial e Políticas Públicas</li>
+<li><strong>Responsável</strong>: Guttenberg Ferreira Passos</li>
+<li><strong>Base metodológica</strong>: FACIN, Modelo de Responsabilidade Organizacional (MRO), Spec-Driven Development (SDD) e arquitetura multiagente com LangGraph</li>
+<li><strong>Princípio fundamental</strong>: A IA executa especificações governadas; o código original permanece preservado; a documentação é o contrato primário do projeto</li>
+</ul>
+<hr />
+<h2 id="2-especificacao-funcional">2. Especificação Funcional</h2>
+<p>O sistema <strong>Conversa com a Folha</strong> implementa um sistema multiagente de inteligência artificial voltado à consulta e simulação sobre dados de folha de pagamento de servidores públicos. O sistema opera sobre um banco de dados SQLite com duas tabelas principais (<code>tb_servidores</code> e <code>tb_folha_pagamento</code>) e combina:</p>
+<ol>
+<li>Interface web interativa via Streamlit</li>
+<li>Dois agentes de IA concorrentes — Groq (Llama 3.1) e OpenAI (GPT-3.5-turbo)</li>
+<li>Orquestração multiagente via LangGraph com grafo de estados</li>
+<li>Ferramenta de consulta SQL segura (somente SELECT)</li>
+<li>Roteamento inteligente entre agentes com alternância e menção explícita</li>
+<li>Gerenciamento de memória e contexto de conversa via <code>st.session_state</code></li>
+<li>Carga de dados a partir de arquivo CSV (<code>folha_pe_200linhas.csv</code>)</li>
+</ol>
+<p>O objetivo funcional desta documentação é produzir uma camada documental completa, capaz de:</p>
+<ol>
+<li>Preservar integralmente os fontes originais da pasta <code>Conversa_Folha</code></li>
+<li>Registrar a arquitetura e o comportamento dos módulos Python existentes</li>
+<li>Explicitar dependências, fluxos, riscos e pontos de integração com LLMs</li>
+<li>Padronizar o projeto no template FACIN_IA</li>
+<li>Disponibilizar artefatos em Markdown, HTML e PDF para uso institucional</li>
+</ol>
+<hr />
+<h2 id="3-especificacao-tecnica">3. Especificação Técnica</h2>
+<h3 id="31-estrategia-de-documentacao">3.1 Estratégia de Documentação</h3>
+<p>A documentação foi implementada por composição documental nas pastas <code>docs/</code> e <code>erros/</code> do workspace, sem alteração do código original na pasta <code>Conversa_Folha/</code>.</p>
+<ul>
+<li>A pasta <code>Conversa_Folha/</code> foi mantida como fonte de análise (somente leitura)</li>
+<li>O template FACIN_IA serviu como referência metodológica</li>
+<li>As pastas <code>docs/</code> e <code>erros/</code> concentram a documentação gerada, avaliação e registro de erros</li>
+</ul>
+<h3 id="32-componentes-documentados">3.2 Componentes Documentados</h3>
+<table>
+<thead>
+<tr>
+<th>Módulo</th>
+<th>Responsabilidade</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conversa_Folha/app.py</td>
+<td>Interface Streamlit, orquestração multiagente LangGraph, ferramenta SQL, roteamento</td>
+</tr>
+<tr>
+<td>Conversa_Folha/cria_db.py</td>
+<td>Criação e carga do banco de dados SQLite a partir de CSV</td>
+</tr>
+<tr>
+<td>Conversa_Folha/criacao_banco.sql</td>
+<td>DDL de criação das tabelas <code>tb_servidores</code> e <code>tb_folha_pagamento</code></td>
+</tr>
+<tr>
+<td>Conversa_Folha/folha_pe_200linhas.csv</td>
+<td>Base de dados de exemplo com 200 registros de folha de pagamento</td>
+</tr>
+<tr>
+<td>Conversa_Folha/requirements.txt</td>
+<td>Dependências Python do projeto</td>
+</tr>
+<tr>
+<td>Conversa_Folha/README.md</td>
+<td>Documentação básica do repositório</td>
+</tr>
+<tr>
+<td>Conversa_Folha/LEIAME.txt</td>
+<td>Instruções operacionais e exemplos de perguntas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-padrao-de-publicacao">3.3 Padrão de Publicação</h3>
+<p>Os arquivos Markdown são convertidos para:</p>
+<ol>
+<li>Markdown publicado (docs/)</li>
+<li>HTML navegável (docs/)</li>
+<li>PDF institucional (docs/)</li>
+</ol>
+<h3 id="34-modelo-de-dados">3.4 Modelo de Dados</h3>
+<p>O sistema opera sobre um banco SQLite com duas tabelas:</p>
+<table>
+<thead>
+<tr>
+<th>Tabela</th>
+<th>Campos</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tb_servidores</td>
+<td>id, nome, cpf, matricula, orgao, cargo</td>
+<td>Cadastro de servidores públicos</td>
+</tr>
+<tr>
+<td>tb_folha_pagamento</td>
+<td>id, matricula, competencia, vencimentos, descontos, liquido</td>
+<td>Registros mensais de remuneração</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-criterios-de-aceitacao">4. Critérios de Aceitação</h2>
+<p>O projeto será considerado aderente quando:</p>
+<ol>
+<li>O repositório original <code>Conversa_Folha/</code> permanecer sem alteração de código</li>
+<li>Existir documentação consolidada em Português do Brasil</li>
+<li>A documentação estiver disponível em .md, .html e .pdf</li>
+<li>Houver pasta <code>docs/</code> para publicação documental</li>
+<li>Houver pasta <code>erros/</code> com erros encontrados e resolvidos</li>
+<li>A avaliação de maturidade FACIN_IA estiver completa com MRO_RACI, LGPD e risco algorítmico</li>
+<li>O projeto estiver nomeado como Conversa_Folha_doc</li>
+<li>A autoria e o modelo Claude Opus 4.6 estiverem explicitados</li>
+<li>O ambiente de trabalho figmm estiver registrado como ambiente oficial</li>
+<li>Existirem documentos separados para Manual de Usuário, Arquitetura, Tecnologias, Integrações e Regras de Negócio</li>
+</ol>
+<hr />
+<h2 id="5-testes-derivados">5. Testes Derivados</h2>
+<ol>
+<li>Verificar se os diretórios <code>docs/</code> e <code>erros/</code> existem na raiz do workspace</li>
+<li>Verificar se há artefatos Markdown, HTML e PDF gerados</li>
+<li>Verificar se a documentação cobre todos os módulos Python identificados</li>
+<li>Verificar se nenhum arquivo Python original da pasta <code>Conversa_Folha/</code> foi editado</li>
+<li>Verificar se a avaliação de maturidade segue os indicadores FACIN_IA com MRO_RACI</li>
+<li>Verificar se a conformidade LGPD, Resolução ANPD 19/2024 e risco algorítmico estão documentados</li>
+</ol>
+<hr />
+<h2 id="6-restricoes-de-ia">6. Restrições de IA</h2>
+<ol>
+<li>IA não altera o código original da pasta <code>Conversa_Folha/</code></li>
+<li>Toda documentação deve ser produzida em Português do Brasil</li>
+<li>O ambiente autorizado para execução e eventuais instalações é exclusivamente figmm</li>
+<li>O modelo de referência declarado para o projeto é Claude Opus 4.6</li>
+<li>A documentação deve privilegiar rastreabilidade, governança e reprodutibilidade</li>
+</ol>
+<hr />
+<h2 id="7-log-de-interacoes-com-ia">7. Log de Interações com IA</h2>
+<ul>
+<li>Solicitação principal: documentar e avaliar maturidade do sistema Conversa com a Folha, aplicando template FACIN_IA com MRO_RACI, LGPD e risco algorítmico</li>
+<li>Código-fonte analisado: pasta <code>Conversa_Folha/</code> (somente leitura)</li>
+<li>Template aplicado: diretrizes e estrutura documental do FACIN_IA</li>
+<li>Ambiente utilizado: figmm</li>
+<li>Modelo LLM: Claude Opus 4.6</li>
+<li>Método de documentação: leitura estática dos fontes, análise estrutural e geração de artefatos</li>
+</ul>
+<hr />
+<h2 id="8-conclusao-executiva">8. Conclusão Executiva</h2>
+<p>O projeto Conversa_Folha_doc estabelece uma camada de governança documental sobre o sistema Conversa com a Folha, convertendo uma aplicação de consulta multiagente a dados de folha de pagamento em um projeto documentado, rastreável e preparado para evolução institucional. O resultado não modifica o código legado, mas o torna inteligível, auditável e institucionalmente reutilizável, seguindo as diretrizes do template FACIN_IA.</p></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

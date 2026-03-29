@@ -1,0 +1,282 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Erros Encontrados e Resolvidos</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-erros-encontrados-e-resolvidos">Conversa_Folha_doc - Erros Encontrados e Resolvidos</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-finalidade">1. Finalidade</h2>
+<p>Registro de erros, lacunas e oportunidades de melhoria identificados durante a análise e documentação do projeto Conversa com a Folha, incluindo impacto e resolução ou recomendação adotada.</p>
+<hr />
+<h2 id="2-erros-identificados">2. Erros Identificados</h2>
+<h3 id="err-001-dados-pessoais-cpf-armazenados-em-texto-claro">ERR-001: Dados pessoais (CPF) armazenados em texto claro</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>O arquivo <code>folha_pe_200linhas.csv</code> e o banco SQLite <code>folha_pagamento.db</code> armazenam CPFs completos em texto claro (ex: 202.535.960-24)</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Risco de exposição de dados pessoais; não conformidade com princípio de minimização da LGPD</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Recomendado: implementar mascaramento de CPF na exibição e considerar hash ou pseudonimização no armazenamento</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — ação pendente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-002-envio-de-dados-pessoais-a-apis-externas-sem-anonimizacao">ERR-002: Envio de dados pessoais a APIs externas sem anonimização</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>Os resultados de consultas SQL contendo CPF, nome e remuneração são incluídos nas mensagens enviadas às APIs Groq e OpenAI como contexto para o agente formular a resposta</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Transferência internacional de dados pessoais sem garantias adequadas (Art. 33 LGPD)</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Recomendado: implementar camada de anonimização antes do envio ou migrar para LLM local</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — ação prioritária pendente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-003-ausencia-de-autenticacao-na-interface-streamlit">ERR-003: Ausência de autenticação na interface Streamlit</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>A interface web não possui mecanismo de autenticação. Qualquer pessoa com acesso à URL pode consultar os dados</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Acesso não autorizado aos dados de folha de pagamento</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Recomendado: implementar autenticação via Streamlit Authenticator ou similar</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — ação pendente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-004-ausencia-de-testes-automatizados">ERR-004: Ausência de testes automatizados</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>Não há módulos de teste (pytest ou similar) no repositório. Toda validação é feita manualmente</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Risco de regressão em alterações futuras; impossibilidade de CI/CD</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Recomendado: implementar suite de testes cobrindo ferramenta SQL, roteamento e fluxo do grafo</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — ação pendente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-005-referencia-a-crm-no-codigo-inconsistencia-de-nomenclatura">ERR-005: Referência a "CRM" no código (inconsistência de nomenclatura)</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>O código do <code>app.py</code> contém referências a "CRM" em comentários e prints do agente Groq (linhas <code># Define a função do nó do agente Groq responsável por interagir com o CRM</code> e <code>print(f"Nó Groq (CRM) está chamando a ferramenta...")</code>)</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Inconsistência de documentação; código possivelmente adaptado de outro projeto sem revisão completa</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Observação documentada. O código original não foi alterado conforme diretriz do projeto</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — código original preservado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-006-logs-via-print-sem-persistencia">ERR-006: Logs via print() sem persistência</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>Todo o logging do sistema é feito via <code>print()</code>, sendo volátil e perdido ao encerrar a aplicação</td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>Impossibilidade de auditoria posterior; sem rastreabilidade persistente</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Recomendado: implementar módulo <code>logging</code> do Python com persistência em arquivo</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — ação pendente</td>
+</tr>
+</tbody>
+</table>
+<h3 id="err-007-prompt-do-agente-openai-referencia-colunas-inexistentes">ERR-007: Prompt do agente OpenAI referencia colunas inexistentes</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Achado</td>
+<td>O prompt do agente OpenAI menciona colunas que não existem no schema real: <code>cpf_mascarado</code>, <code>orgao_lotacao</code>, <code>status</code>, <code>ano_mes</code>, <code>remuneracao_basica_bruta</code>, <code>verbas_indenizatorias</code>, <code>total_descontos</code>, <code>salario_liquido</code></td>
+</tr>
+<tr>
+<td>Impacto</td>
+<td>O agente OpenAI pode gerar SQL com colunas inexistentes, causando erros de execução</td>
+</tr>
+<tr>
+<td>Resolução</td>
+<td>Observação documentada. O código original não foi alterado conforme diretriz do projeto</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Documentado — código original preservado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-registro-de-resolucao">3. Registro de Resolução</h2>
+<table>
+<thead>
+<tr>
+<th>ERR</th>
+<th>Data</th>
+<th>Ação</th>
+<th>Arquivo Afetado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ERR-001</td>
+<td>29/03/2026</td>
+<td>Documentado na avaliação LGPD e risco RA-02</td>
+<td>Conversa_Folha_Avaliacao_Maturidade.md</td>
+</tr>
+<tr>
+<td>ERR-002</td>
+<td>29/03/2026</td>
+<td>Documentado como risco crítico RA-04</td>
+<td>Conversa_Folha_Avaliacao_Maturidade.md</td>
+</tr>
+<tr>
+<td>ERR-003</td>
+<td>29/03/2026</td>
+<td>Documentado no roadmap Fase 2</td>
+<td>Conversa_Folha_Avaliacao_Maturidade.md</td>
+</tr>
+<tr>
+<td>ERR-004</td>
+<td>29/03/2026</td>
+<td>Documentado no indicador DO2 e roadmap</td>
+<td>Conversa_Folha_Avaliacao_Maturidade.md</td>
+</tr>
+<tr>
+<td>ERR-005</td>
+<td>29/03/2026</td>
+<td>Documentado — código original preservado</td>
+<td>Nenhum (somente leitura)</td>
+</tr>
+<tr>
+<td>ERR-006</td>
+<td>29/03/2026</td>
+<td>Documentado no indicador DO3 e roadmap</td>
+<td>Conversa_Folha_Avaliacao_Maturidade.md</td>
+</tr>
+<tr>
+<td>ERR-007</td>
+<td>29/03/2026</td>
+<td>Documentado — código original preservado</td>
+<td>Nenhum (somente leitura)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-observacoes">4. Observações</h2>
+<ol>
+<li>Todos os erros foram identificados durante a análise estática do código e a avaliação de maturidade FACIN_IA.</li>
+<li>Os erros ERR-005 e ERR-007 são inconsistências no código original que foram preservadas conforme diretriz do projeto (somente leitura).</li>
+<li>Nenhum arquivo do código original na pasta <code>Conversa_Folha/</code> foi alterado.</li>
+<li>As resoluções pendentes estão vinculadas ao roadmap de melhoria na avaliação de maturidade.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

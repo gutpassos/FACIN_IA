@@ -1,0 +1,1190 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Plano de Ação para Nível 3</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-plano-de-acao-para-nivel-3">Conversa_Folha_doc - Plano de Ação para Nível 3</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-objetivo">1. Objetivo</h2>
+<p>Definir o plano de ação necessário para elevar a maturidade de governança de IA do sistema <strong>Conversa com a Folha — V4</strong> do <strong>Nível 1 (Inicial, índice 1,32)</strong> para o <strong>Nível 3 (Otimizado, índice ≥ 2,60)</strong>, segundo o modelo FACIN_IA.</p>
+<h3 id="11-o-que-significa-nivel-3">1.1 O que significa Nível 3</h3>
+<table>
+<thead>
+<tr>
+<th>Critério</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classificação</td>
+<td>Otimizado</td>
+</tr>
+<tr>
+<td>Faixa de índice</td>
+<td>acima de 2,6 a 3,4</td>
+</tr>
+<tr>
+<td>Definição</td>
+<td>Formalizado, repetível e aplicado nas iniciativas principais</td>
+</tr>
+<tr>
+<td>Implicação prática</td>
+<td>Processos documentados, controles formais implantados, papéis designados, testes e monitoramento ativos, conformidade regulatória verificada</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-distancia-a-percorrer">1.2 Distância a Percorrer</h3>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th style="text-align: right;">Peso</th>
+<th style="text-align: right;">Atual</th>
+<th style="text-align: right;">Meta (N3)</th>
+<th style="text-align: right;">Gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EG — Estratégia e Governança de IA</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+1,67</td>
+</tr>
+<tr>
+<td>DI — Dados e Infraestrutura</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+1,67</td>
+</tr>
+<tr>
+<td>TC — Talento e Cultura</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">1,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+2,00</td>
+</tr>
+<tr>
+<td>DO — DevOps/MLOps</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,50</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+1,50</td>
+</tr>
+<tr>
+<td>ER — Ética, Transparência e Risco</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+1,67</td>
+</tr>
+<tr>
+<td>IV — Impacto Social e Valor</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">+1,67</td>
+</tr>
+<tr>
+<td><strong>Índice ponderado</strong></td>
+<td style="text-align: right;"><strong>100%</strong></td>
+<td style="text-align: right;"><strong>1,32</strong></td>
+<td style="text-align: right;"><strong>3,00</strong></td>
+<td style="text-align: right;"><strong>+1,68</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-simulacao-do-indice-meta">1.3 Simulação do Índice Meta</h3>
+<p>$$\text{Índice Meta} = (3{,}00 \times 0{,}20) + (3{,}00 \times 0{,}15) + (3{,}00 \times 0{,}15) + (3{,}00 \times 0{,}20) + (3{,}00 \times 0{,}20) + (3{,}00 \times 0{,}10) = 3{,}00$$</p>
+<hr />
+<h2 id="2-principios-do-plano">2. Princípios do Plano</h2>
+<ol>
+<li><strong>Especificação antes de código</strong> — cada ação tem critério de aceite e evidência esperada antes da implementação.</li>
+<li><strong>Rastreabilidade</strong> — cada ação está vinculada ao indicador FACIN_IA, ao risco mitigado e ao responsável RACI.</li>
+<li><strong>Proporcionalidade</strong> — ações priorizadas pelo impacto no índice ponderado e pelo risco que mitigam.</li>
+<li><strong>Incrementalidade</strong> — organizado em 4 fases sequenciais, cada uma entregando valor verificável.</li>
+</ol>
+<hr />
+<h2 id="3-estrutura-de-fases">3. Estrutura de Fases</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Nome</th>
+<th>Objetivo</th>
+<th>Prazo Indicativo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 1</td>
+<td>Proteção e Transparência</td>
+<td>Eliminar riscos críticos e atender requisitos mínimos de LGPD</td>
+<td>Semanas 1-4</td>
+</tr>
+<tr>
+<td>Fase 2</td>
+<td>Formalização Organizacional</td>
+<td>Designar papéis, formalizar política e estabelecer processos</td>
+<td>Semanas 5-8</td>
+</tr>
+<tr>
+<td>Fase 3</td>
+<td>Qualidade e Operação</td>
+<td>Implementar testes, observabilidade e gestão de incidentes</td>
+<td>Semanas 9-14</td>
+</tr>
+<tr>
+<td>Fase 4</td>
+<td>Valor e Melhoria Contínua</td>
+<td>Medir impacto, validar conformidade e consolidar maturidade</td>
+<td>Semanas 15-18</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-fase-1-protecao-e-transparencia-semanas-1-4">4. Fase 1 — Proteção e Transparência (Semanas 1-4)</h2>
+<p><strong>Objetivo</strong>: Eliminar risco crítico RA-04, proteger dados pessoais e estabelecer transparência mínima.</p>
+<h3 id="41-acoes-da-fase-1">4.1 Ações da Fase 1</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Ação</th>
+<th>Indicadores Impactados</th>
+<th>Risco Mitigado</th>
+<th>Responsável</th>
+<th>Critério de Aceite</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-01</td>
+<td>Implementar mascaramento de CPF no retorno de consultas</td>
+<td>DI2, ER2</td>
+<td>RA-02</td>
+<td>DEV</td>
+<td>CPF exibido como <code>***.XXX.XXX-**</code> em todas as saídas</td>
+<td>Código + teste manual + screenshot</td>
+</tr>
+<tr>
+<td>A-02</td>
+<td>Anonimizar dados pessoais antes do envio às APIs externas</td>
+<td>DI2, ER1</td>
+<td>RA-04</td>
+<td>DEV/ARQ</td>
+<td>Nenhum CPF, nome ou remuneração enviado em texto claro às APIs</td>
+<td>Teste de interceptação de payload + log</td>
+</tr>
+<tr>
+<td>A-03</td>
+<td>Implementar logging persistente de consultas SQL</td>
+<td>DO3, ER3</td>
+<td>RA-09</td>
+<td>DEV</td>
+<td>Arquivo de log com timestamp, SQL, agente, resultado e usuário</td>
+<td>Log rotacionado com 30 dias de retenção</td>
+</tr>
+<tr>
+<td>A-04</td>
+<td>Adicionar disclaimer de IA na interface</td>
+<td>ER2</td>
+<td>—</td>
+<td>DEV</td>
+<td>Aviso "Respostas geradas por IA — verifique os dados" visível antes da primeira interação</td>
+<td>Screenshot da interface</td>
+</tr>
+<tr>
+<td>A-05</td>
+<td>Implementar autenticação básica na interface Streamlit</td>
+<td>DI2</td>
+<td>Incidente</td>
+<td>DEV</td>
+<td>Login obrigatório com usuário/senha antes do acesso</td>
+<td>Tela de login + teste de acesso negado</td>
+</tr>
+<tr>
+<td>A-06</td>
+<td>Validar schema SQL antes da execução de consultas</td>
+<td>DO1</td>
+<td>RA-01</td>
+<td>DEV</td>
+<td>Whitelist de tabelas e colunas aceitas; rejeição de referências fora do schema</td>
+<td>Teste com consulta válida e inválida</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-impacto-estimado-da-fase-1">4.2 Impacto Estimado da Fase 1</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Antes</th>
+<th>Depois</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DI2</td>
+<td>1</td>
+<td>3</td>
+<td>Mascaramento + anonimização + autenticação</td>
+</tr>
+<tr>
+<td>DO1</td>
+<td>2</td>
+<td>3</td>
+<td>Validação de schema formalizada</td>
+</tr>
+<tr>
+<td>DO3</td>
+<td>2</td>
+<td>3</td>
+<td>Logging persistente estruturado</td>
+</tr>
+<tr>
+<td>ER1</td>
+<td>1</td>
+<td>2</td>
+<td>Anonimização implanta controle de risco</td>
+</tr>
+<tr>
+<td>ER2</td>
+<td>2</td>
+<td>3</td>
+<td>Disclaimer + transparência dos agentes</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-fase-2-formalizacao-organizacional-semanas-5-8">5. Fase 2 — Formalização Organizacional (Semanas 5-8)</h2>
+<p><strong>Objetivo</strong>: Designar papéis críticos, formalizar política e estratégia de IA, estabelecer governança de portfólio.</p>
+<h3 id="51-acoes-da-fase-2">5.1 Ações da Fase 2</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Ação</th>
+<th>Indicadores Impactados</th>
+<th>Risco Mitigado</th>
+<th>Responsável</th>
+<th>Critério de Aceite</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-07</td>
+<td>Formalizar política institucional de IA</td>
+<td>EG1</td>
+<td>—</td>
+<td>PAT/GOV</td>
+<td>Documento aprovado com princípios, escopo, responsabilidades e restrições</td>
+<td>Política assinada + publicação interna</td>
+</tr>
+<tr>
+<td>A-08</td>
+<td>Estabelecer portfólio formal de casos de uso</td>
+<td>EG1, EG2</td>
+<td>—</td>
+<td>GPR/GOV</td>
+<td>Registro com caso de uso, classificação de risco, patrocinador e status</td>
+<td>Planilha de portfólio + ata de aprovação</td>
+</tr>
+<tr>
+<td>A-09</td>
+<td>Designar Patrocinador Executivo (PAT)</td>
+<td>EG2, TC1</td>
+<td>—</td>
+<td>Direção</td>
+<td>Nomeação formal com atribuições documentadas</td>
+<td>Ato de designação</td>
+</tr>
+<tr>
+<td>A-10</td>
+<td>Designar Encarregado de Dados (DPO)</td>
+<td>DI2, LGPD</td>
+<td>—</td>
+<td>Direção</td>
+<td>Nomeação formal com atribuições de proteção de dados</td>
+<td>Ato de designação + comunicação à ANPD</td>
+</tr>
+<tr>
+<td>A-11</td>
+<td>Designar Auditor (AUD)</td>
+<td>ER3, TC1</td>
+<td>—</td>
+<td>PAT/GPR</td>
+<td>Nomeação formal com escopo de auditoria definido</td>
+<td>Ato de designação + plano de auditoria</td>
+</tr>
+<tr>
+<td>A-12</td>
+<td>Implementar versionamento formal de prompts</td>
+<td>EG3</td>
+<td>—</td>
+<td>DEV/ARQ</td>
+<td>Prompts versionados em arquivo separado com changelog</td>
+<td>Arquivo prompts_v*.md + histórico Git</td>
+</tr>
+<tr>
+<td>A-13</td>
+<td>Elaborar DPIA / RIPD</td>
+<td>DI2, ER1, LGPD</td>
+<td>RA-04</td>
+<td>GOV/DPO</td>
+<td>Relatório de Impacto à Proteção de Dados publicado</td>
+<td>Documento RIPD aprovado</td>
+</tr>
+<tr>
+<td>A-14</td>
+<td>Criar processo formal de comunicação de incidentes</td>
+<td>ER3, ANPD</td>
+<td>Incidente</td>
+<td>GOV/DPO</td>
+<td>Fluxo documentado atendendo Resolução ANPD 19/2024 (3 dias úteis)</td>
+<td>Procedimento + template de comunicação</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-impacto-estimado-da-fase-2">5.2 Impacto Estimado da Fase 2</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Antes (Fase 1)</th>
+<th>Depois</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EG1</td>
+<td>1</td>
+<td>3</td>
+<td>Política de IA formalizada e publicada</td>
+</tr>
+<tr>
+<td>EG2</td>
+<td>1</td>
+<td>3</td>
+<td>Portfólio com classificação e patrocínio</td>
+</tr>
+<tr>
+<td>EG3</td>
+<td>2</td>
+<td>3</td>
+<td>Versionamento de prompts + rastreabilidade Git</td>
+</tr>
+<tr>
+<td>TC1</td>
+<td>1</td>
+<td>3</td>
+<td>PAT, DPO e AUD designados formalmente</td>
+</tr>
+<tr>
+<td>DI2</td>
+<td>3</td>
+<td>3</td>
+<td>DPIA complementa os controles da Fase 1</td>
+</tr>
+<tr>
+<td>ER1</td>
+<td>2</td>
+<td>3</td>
+<td>DPIA + processo de incidentes</td>
+</tr>
+<tr>
+<td>ER3</td>
+<td>1</td>
+<td>3</td>
+<td>Processo de incidentes + auditor designado</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-fase-3-qualidade-e-operacao-semanas-9-14">6. Fase 3 — Qualidade e Operação (Semanas 9-14)</h2>
+<p><strong>Objetivo</strong>: Implantar testes automatizados, monitoramento, gestão de incidentes e capacitação formal.</p>
+<h3 id="61-acoes-da-fase-3">6.1 Ações da Fase 3</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Ação</th>
+<th>Indicadores Impactados</th>
+<th>Risco Mitigado</th>
+<th>Responsável</th>
+<th>Critério de Aceite</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-15</td>
+<td>Criar suite de testes automatizados (pytest)</td>
+<td>DO2</td>
+<td>RA-01, RA-05</td>
+<td>DEV</td>
+<td>≥ 80% de cobertura em app.py e cria_db.py; testes de SQL injection, schema e roteamento</td>
+<td>pytest --cov + relatório de cobertura</td>
+</tr>
+<tr>
+<td>A-16</td>
+<td>Implementar monitoramento de disponibilidade das APIs</td>
+<td>DI3</td>
+<td>RA-07</td>
+<td>DEV/ARQ</td>
+<td>Health check periódico Groq/OpenAI com alerta por e-mail ou webhook</td>
+<td>Dashboard de saúde + registro de alertas</td>
+</tr>
+<tr>
+<td>A-17</td>
+<td>Implementar fallback entre agentes</td>
+<td>DI3</td>
+<td>RA-07</td>
+<td>DEV/ARQ</td>
+<td>Se Groq falhar, redirecionar para OpenAI (e vice-versa) automaticamente</td>
+<td>Teste de failover + log de fallback</td>
+</tr>
+<tr>
+<td>A-18</td>
+<td>Estabelecer processo de gestão de incidentes</td>
+<td>DO4</td>
+<td>Incidente</td>
+<td>GPR/GOV</td>
+<td>Workflow documentado: detecção → triagem → resolução → post-mortem</td>
+<td>Template de incidente + registro</td>
+</tr>
+<tr>
+<td>A-19</td>
+<td>Implementar catálogo formal de dados e linhagem</td>
+<td>DI1</td>
+<td>—</td>
+<td>GOV/DEV</td>
+<td>Dicionário de dados (tabelas, colunas, tipos, origens) + diagrama de linhagem</td>
+<td>Documento publicado + diagrama Mermaid</td>
+</tr>
+<tr>
+<td>A-20</td>
+<td>Implementar segregação de ambientes (dev/homol/prod)</td>
+<td>TC3</td>
+<td>—</td>
+<td>DEV/ARQ</td>
+<td>3 ambientes distintos com fluxo de promoção documentado</td>
+<td>Configuração de ambientes + procedimento</td>
+</tr>
+<tr>
+<td>A-21</td>
+<td>Executar programa de capacitação em governança de IA</td>
+<td>TC2</td>
+<td>—</td>
+<td>GPR/GOV</td>
+<td>≥ 1 trilha formativa aplicada à equipe do projeto com registro de participação</td>
+<td>Lista de presença + material + avaliação</td>
+</tr>
+<tr>
+<td>A-22</td>
+<td>Implementar controle de quota e custo de APIs</td>
+<td>DO3</td>
+<td>RA-08</td>
+<td>DEV</td>
+<td>Limite de requisições por sessão/dia com alerta ao atingir 80%</td>
+<td>Log de uso + configuração de limites</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-impacto-estimado-da-fase-3">6.2 Impacto Estimado da Fase 3</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Antes (Fases 1-2)</th>
+<th>Depois</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DO2</td>
+<td>1</td>
+<td>3</td>
+<td>pytest com ≥ 80% cobertura</td>
+</tr>
+<tr>
+<td>DO4</td>
+<td>1</td>
+<td>3</td>
+<td>Processo de incidentes + MTTR documentado</td>
+</tr>
+<tr>
+<td>DI1</td>
+<td>2</td>
+<td>3</td>
+<td>Catálogo formal + linhagem documentada</td>
+</tr>
+<tr>
+<td>DI3</td>
+<td>1</td>
+<td>3</td>
+<td>Monitoramento + fallback + alertas</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>1</td>
+<td>3</td>
+<td>Capacitação aplicada com registro</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>1</td>
+<td>3</td>
+<td>3 ambientes segregados</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-fase-4-valor-e-melhoria-continua-semanas-15-18">7. Fase 4 — Valor e Melhoria Contínua (Semanas 15-18)</h2>
+<p><strong>Objetivo</strong>: Medir impacto, consolidar acessibilidade, validar conformidade e garantir a nota ≥ 3 em todos os indicadores.</p>
+<h3 id="71-acoes-da-fase-4">7.1 Ações da Fase 4</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Ação</th>
+<th>Indicadores Impactados</th>
+<th>Risco Mitigado</th>
+<th>Responsável</th>
+<th>Critério de Aceite</th>
+<th>Evidência Esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A-23</td>
+<td>Definir e medir metas formais de valor</td>
+<td>IV1</td>
+<td>—</td>
+<td>GPR/PAT</td>
+<td>≥ 3 metas mensuráveis (ex: tempo de resposta, acurácia SQL, taxa de uso) com baseline e target</td>
+<td>Dashboard de indicadores + relatório</td>
+</tr>
+<tr>
+<td>A-24</td>
+<td>Realizar auditoria de acessibilidade</td>
+<td>IV2</td>
+<td>—</td>
+<td>DEV/GOV</td>
+<td>Avaliação WCAG 2.1 nível A com plano de correção para itens reprovados</td>
+<td>Relatório de auditoria + plano de ação</td>
+</tr>
+<tr>
+<td>A-25</td>
+<td>Implementar pesquisa de satisfação do usuário</td>
+<td>IV3</td>
+<td>—</td>
+<td>GPR</td>
+<td>Formulário in-app com ≥ 5 respostas coletadas e analisadas</td>
+<td>Formulário + relatório de resultados</td>
+</tr>
+<tr>
+<td>A-26</td>
+<td>Executar primeira auditoria de governança</td>
+<td>ER3</td>
+<td>—</td>
+<td>AUD</td>
+<td>Relatório de auditoria cobrindo os 18 indicadores FACIN_IA</td>
+<td>Relatório de auditoria assinado</td>
+</tr>
+<tr>
+<td>A-27</td>
+<td>Reavaliação de maturidade FACIN_IA</td>
+<td>Todos</td>
+<td>—</td>
+<td>GOV</td>
+<td>Nova avaliação com índice ≥ 2,60 documentado</td>
+<td>Avaliação completa publicada em .md/.html/.pdf</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-impacto-estimado-da-fase-4">7.2 Impacto Estimado da Fase 4</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Antes (Fases 1-3)</th>
+<th>Depois</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IV1</td>
+<td>2</td>
+<td>3</td>
+<td>Metas formais definidas e medidas</td>
+</tr>
+<tr>
+<td>IV2</td>
+<td>1</td>
+<td>3</td>
+<td>Auditoria WCAG + plano de correção</td>
+</tr>
+<tr>
+<td>IV3</td>
+<td>1</td>
+<td>3</td>
+<td>Pesquisa implementada e analisada</td>
+</tr>
+<tr>
+<td>ER3</td>
+<td>3</td>
+<td>3</td>
+<td>Auditoria realizada confirma a nota</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-projecao-completa-de-notas">8. Projeção Completa de Notas</h2>
+<h3 id="81-projecao-por-indicador">8.1 Projeção por Indicador</h3>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Descrição</th>
+<th style="text-align: right;">Atual</th>
+<th style="text-align: right;">Fase 1</th>
+<th style="text-align: right;">Fase 2</th>
+<th style="text-align: right;">Fase 3</th>
+<th style="text-align: right;">Fase 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EG1</td>
+<td>Política e estratégia de IA</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>EG2</td>
+<td>Portfólio de casos de uso</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>EG3</td>
+<td>Rastreabilidade de decisões</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DI1</td>
+<td>Catálogo e linhagem</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DI2</td>
+<td>Proteção de dados</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DI3</td>
+<td>Disponibilidade infra</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>TC1</td>
+<td>Papéis críticos</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>TC2</td>
+<td>Capacitação</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>TC3</td>
+<td>Segregação ideação/produção</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DO1</td>
+<td>Especificação antes de código</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DO2</td>
+<td>Testes e validações</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DO3</td>
+<td>Observabilidade</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>DO4</td>
+<td>MTTR</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>ER1</td>
+<td>Risco algorítmico</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>ER2</td>
+<td>Transparência</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td>ER3</td>
+<td>Conformidade regulatória</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;"><strong>3</strong></td>
+</tr>
+<tr>
+<td>IV1</td>
+<td>Metas de valor</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;"><strong>3</strong></td>
+</tr>
+<tr>
+<td>IV2</td>
+<td>Acessibilidade</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+</tr>
+<tr>
+<td>IV3</td>
+<td>Satisfação do usuário</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><strong>3</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-projecao-por-dimensao-e-indice-geral">8.2 Projeção por Dimensão e Índice Geral</h3>
+<table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th style="text-align: right;">Peso</th>
+<th style="text-align: right;">Atual</th>
+<th style="text-align: right;">Após F1</th>
+<th style="text-align: right;">Após F2</th>
+<th style="text-align: right;">Após F3</th>
+<th style="text-align: right;">Após F4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EG (3 indicadores)</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td>DI (3 indicadores)</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td>TC (3 indicadores)</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">1,00</td>
+<td style="text-align: right;">1,00</td>
+<td style="text-align: right;">1,67</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td>DO (4 indicadores)</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,50</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td>ER (3 indicadores)</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">2,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td>IV (3 indicadores)</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">1,33</td>
+<td style="text-align: right;">3,00</td>
+</tr>
+<tr>
+<td><strong>Índice Geral</strong></td>
+<td style="text-align: right;"><strong>100%</strong></td>
+<td style="text-align: right;"><strong>1,32</strong></td>
+<td style="text-align: right;"><strong>1,67</strong></td>
+<td style="text-align: right;"><strong>2,23</strong></td>
+<td style="text-align: right;"><strong>2,73</strong></td>
+<td style="text-align: right;"><strong>3,00</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-evolucao-visual">8.3 Evolução Visual</h3>
+<div class="mermaid">%%{init: {'theme': 'base'}}%%
+xychart-beta
+    title "Evolução Projetada do Índice de Maturidade"
+    x-axis ["Atual", "Fase 1", "Fase 2", "Fase 3", "Fase 4"]
+    y-axis "Índice" 0 --> 5
+    bar [1.32, 1.67, 2.23, 2.73, 3.00]
+    line [2.60, 2.60, 2.60, 2.60, 2.60]
+</div>
+<hr />
+<h2 id="9-cronograma-gantt">9. Cronograma Gantt</h2>
+<div class="mermaid">gantt
+    title Plano de Ação — Nível 3 de Maturidade FACIN_IA
+    dateFormat  YYYY-MM-DD
+    axisFormat  %d/%m
+
+    section Fase 1 — Proteção
+    A-01 Mascaramento CPF          :done, a01, 2026-04-01, 5d
+    A-02 Anonimização APIs         :a02, 2026-04-01, 7d
+    A-05 Autenticação Streamlit    :a05, after a01, 5d
+    A-03 Logging persistente       :a03, after a02, 5d
+    A-04 Disclaimer de IA          :a04, 2026-04-01, 2d
+    A-06 Validação schema SQL      :a06, after a03, 5d
+
+    section Fase 2 — Formalização
+    A-07 Política de IA            :a07, 2026-04-29, 10d
+    A-08 Portfólio de casos        :a08, 2026-04-29, 5d
+    A-09 Designação PAT            :a09, 2026-04-29, 3d
+    A-10 Designação DPO            :a10, after a09, 3d
+    A-11 Designação AUD            :a11, after a10, 3d
+    A-12 Versionamento prompts     :a12, after a08, 5d
+    A-13 DPIA / RIPD               :a13, after a10, 10d
+    A-14 Processo incidentes       :a14, after a11, 7d
+
+    section Fase 3 — Qualidade
+    A-15 Testes pytest             :a15, 2026-05-27, 14d
+    A-16 Monitoramento APIs        :a16, 2026-05-27, 7d
+    A-17 Fallback agentes          :a17, after a16, 7d
+    A-18 Gestão incidentes         :a18, after a17, 5d
+    A-19 Catálogo de dados         :a19, 2026-05-27, 10d
+    A-20 Segregação ambientes      :a20, after a19, 7d
+    A-21 Capacitação               :a21, after a20, 5d
+    A-22 Controle quota APIs       :a22, after a15, 5d
+
+    section Fase 4 — Valor
+    A-23 Metas de valor            :a23, 2026-07-08, 7d
+    A-24 Auditoria acessibilidade  :a24, 2026-07-08, 7d
+    A-25 Pesquisa satisfação       :a25, after a24, 7d
+    A-26 Auditoria governança      :a26, after a23, 10d
+    A-27 Reavaliação FACIN_IA      :a27, after a26, 5d
+</div>
+<hr />
+<h2 id="10-estimativa-de-esforco">10. Estimativa de Esforço</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th style="text-align: right;">Ações</th>
+<th style="text-align: right;">Esforço (pessoa-semana)</th>
+<th>Perfis Envolvidos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">4</td>
+<td>DEV, ARQ</td>
+</tr>
+<tr>
+<td>Fase 2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">5</td>
+<td>PAT, GPR, GOV, DPO, DEV</td>
+</tr>
+<tr>
+<td>Fase 3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td>DEV, ARQ, GOV, GPR</td>
+</tr>
+<tr>
+<td>Fase 4</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+<td>GPR, GOV, AUD, DEV</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>27</strong></td>
+<td style="text-align: right;"><strong>21</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-dependencias-criticas">11. Dependências Críticas</h2>
+<table>
+<thead>
+<tr>
+<th>Dependência</th>
+<th>Fase</th>
+<th>Impacto se não resolvida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Aprovação da Direção para designação de PAT e DPO</td>
+<td>Fase 2</td>
+<td>Bloqueia EG2, TC1, DI2 (LGPD compliance)</td>
+</tr>
+<tr>
+<td>Acesso a ferramenta de testes (pytest instalado)</td>
+<td>Fase 3</td>
+<td>Bloqueia DO2</td>
+</tr>
+<tr>
+<td>Orçamento para capacitação</td>
+<td>Fase 3</td>
+<td>Bloqueia TC2</td>
+</tr>
+<tr>
+<td>Colaboração do jurídico para DPIA</td>
+<td>Fase 2</td>
+<td>Bloqueia ER1, conformidade LGPD</td>
+</tr>
+<tr>
+<td>Disponibilidade do Auditor</td>
+<td>Fase 4</td>
+<td>Bloqueia ER3, validação final</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-riscos-do-plano">12. Riscos do Plano</h2>
+<table>
+<thead>
+<tr>
+<th>Risco</th>
+<th>Probabilidade</th>
+<th>Impacto</th>
+<th>Mitigação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Atraso na designação de PAT e DPO</td>
+<td>Alta</td>
+<td>Alto — Bloqueia Fase 2</td>
+<td>Escalar para Direção; RACI provisional</td>
+</tr>
+<tr>
+<td>Resistência organizacional à política de IA</td>
+<td>Média</td>
+<td>Alto — Bloqueia EG1</td>
+<td>Workshop de sensibilização + benchmarks</td>
+</tr>
+<tr>
+<td>Falta de orçamento para capacitação</td>
+<td>Média</td>
+<td>Médio — Bloqueia TC2</td>
+<td>Usar materiais gratuitos e internos</td>
+</tr>
+<tr>
+<td>Indisponibilidade do Auditor</td>
+<td>Média</td>
+<td>Médio — Atrasa Fase 4</td>
+<td>Planejar auditoria com 30 dias de antecedência</td>
+</tr>
+<tr>
+<td>Complexidade da migração para LLM local</td>
+<td>Alta</td>
+<td>Baixo (fora do escopo N3)</td>
+<td>Não é requisito para Nível 3; priorizar anonimização</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-indicadores-de-acompanhamento-do-plano">13. Indicadores de Acompanhamento do Plano</h2>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Meta</th>
+<th>Frequência</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ações concluídas vs. planejadas</td>
+<td>≥ 90% por fase</td>
+<td>Quinzenal</td>
+<td>GPR</td>
+</tr>
+<tr>
+<td>Índice de maturidade projetado</td>
+<td>Progressão conforme §8.2</td>
+<td>Ao final de cada fase</td>
+<td>GOV</td>
+</tr>
+<tr>
+<td>Riscos com mitigação definida</td>
+<td>100%</td>
+<td>Semanal</td>
+<td>GPR</td>
+</tr>
+<tr>
+<td>Bloqueios ativos</td>
+<td>0</td>
+<td>Semanal</td>
+<td>GPR</td>
+</tr>
+<tr>
+<td>Cobertura de testes</td>
+<td>≥ 80%</td>
+<td>Ao final da Fase 3</td>
+<td>DEV</td>
+</tr>
+<tr>
+<td>Papéis designados</td>
+<td>7 de 7</td>
+<td>Ao final da Fase 2</td>
+<td>GPR</td>
+</tr>
+<tr>
+<td>Conformidade LGPD (nota)</td>
+<td>≥ 3,00</td>
+<td>Ao final da Fase 2</td>
+<td>GOV/DPO</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-criterios-de-sucesso">14. Critérios de Sucesso</h2>
+<p>O plano será considerado bem-sucedido quando:</p>
+<ol>
+<li><strong>Todos os 18 indicadores</strong> FACIN_IA alcançarem nota ≥ 3.</li>
+<li>O <strong>índice geral ponderado</strong> for ≥ 2,60 (confirmado pela reavaliação A-27).</li>
+<li>Todos os <strong>7 papéis MRO_RACI</strong> estiverem formalmente designados.</li>
+<li>O <strong>RIPD/DPIA</strong> estiver publicado e aprovado.</li>
+<li>A <strong>suite de testes</strong> apresentar cobertura ≥ 80%.</li>
+<li>O <strong>risco RA-04</strong> (dados pessoais em APIs externas) estiver mitigado por anonimização.</li>
+<li>A <strong>primeira auditoria</strong> de governança estiver concluída e documentada.</li>
+</ol>
+<hr />
+<h2 id="15-observacoes">15. Observações</h2>
+<ol>
+<li>O Nível 3 não exige migração para LLM local — a anonimização de dados antes do envio às APIs é suficiente para mitigar o risco RA-04.</li>
+<li>A nota 3 em cada indicador significa "formalizado, repetível e aplicado" — não "perfeito". A excelência é Nível 5.</li>
+<li>Este plano não altera o código original da pasta <code>Conversa_Folha/</code>. As implementações devem ser feitas em branches ou forks governados.</li>
+<li>A reavaliação (A-27) deve ser conduzida com o mesmo modelo de avaliação FACIN_IA para garantir comparabilidade.</li>
+<li>Ações de Fase 1 podem ser iniciadas imediatamente, pois dependem apenas de desenvolvimento técnico.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

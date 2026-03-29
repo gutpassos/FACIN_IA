@@ -1,0 +1,797 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Plano Executivo</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-plano-executivo">Conversa_Folha_doc - Plano Executivo</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-objetivo-executivo">1. Objetivo Executivo</h2>
+<p>Traduzir a documentação técnica do sistema Conversa com a Folha de Pagamento — V4 em visão executiva com governança formal, matriz RACI no padrão FACIN_IA, cronograma de referência, esforço estimado, marcos e critérios de pronto, incluindo conformidade LGPD e risco algorítmico.</p>
+<hr />
+<h2 id="2-escopo-executivo">2. Escopo Executivo</h2>
+<h3 id="21-entregas-cobertas">2.1 Entregas Cobertas</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Entrega</th>
+<th>Tipo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Projeto Consolidado</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Documentação do Código</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Manual de Usuário</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Arquitetura da Solução</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tecnologias</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Integrações</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Regras de Negócio</td>
+<td>Documental</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Avaliação de Maturidade FACIN_IA</td>
+<td>Governança</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Conformidade LGPD e ANPD</td>
+<td>Regulatório</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Avaliação de Risco Algorítmico</td>
+<td>Governança</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Backlog de Sprints e Kanban</td>
+<td>Gestão</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Plano Executivo e Kanban Executivo</td>
+<td>Gestão</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Publicação em .md, .html e .pdf</td>
+<td>Operacional</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-fora-de-escopo">2.2 Fora de Escopo</h3>
+<ul>
+<li>Alteração do código original na pasta <code>Conversa_Folha/</code></li>
+<li>Implementação efetiva das ações do plano de adequação</li>
+<li>Migração para LLM local ou Microsoft Foundry</li>
+<li>Testes de penetração ou auditoria de segurança em produção</li>
+</ul>
+<hr />
+<h2 id="3-principios-facin_ia-aplicados-ao-plano">3. Princípios FACIN_IA Aplicados ao Plano</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Princípio</th>
+<th>Aplicação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Documentação como contrato</td>
+<td>Todo artefato é rastreável e versionado</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Código original preservado</td>
+<td>Pasta <code>Conversa_Folha/</code> é somente leitura</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Governança explícita</td>
+<td>Matriz RACI, MRO e conformidade LGPD</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transparência e explicabilidade</td>
+<td>Rastreabilidade de decisões e prompts</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Conformidade regulatória</td>
+<td>LGPD, ANPD Resolução 19/2024, risco algorítmico</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-estrutura-de-governanca-executiva">4. Estrutura de Governança Executiva</h2>
+<h3 id="41-papeis-executivos-do-plano">4.1 Papéis Executivos do Plano</h3>
+<table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Responsabilidade</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Patrocinador (PAT)</td>
+<td>Aprovar escopo, aprovar entregas, garantir recursos</td>
+<td>Não designado</td>
+</tr>
+<tr>
+<td>Gestor do Projeto (GPR)</td>
+<td>Coordenar execução, monitorar progresso, escalar riscos</td>
+<td>Implícito</td>
+</tr>
+<tr>
+<td>Arquiteto de IA (ARQ)</td>
+<td>Definir arquitetura, validar padrões, revisar integrações</td>
+<td>Implícito</td>
+</tr>
+<tr>
+<td>Analista de Governança (GOV)</td>
+<td>Avaliar maturidade, conformidade LGPD, risco algorítmico</td>
+<td>Ativo (FACIN_IA)</td>
+</tr>
+<tr>
+<td>Desenvolvedor (DEV)</td>
+<td>Implementar documentação, gerar artefatos, executar testes</td>
+<td>Ativo</td>
+</tr>
+<tr>
+<td>Auditor (AUD)</td>
+<td>Revisar aderência, validar critérios de aceite</td>
+<td>Não ativado</td>
+</tr>
+<tr>
+<td>Encarregado de Dados (DPO)</td>
+<td>Proteção de dados pessoais, conformidade LGPD</td>
+<td>Não designado</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-formula-raci-adotada">4.2 Fórmula RACI Adotada</h3>
+<table>
+<thead>
+<tr>
+<th>Letra</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R</td>
+<td>Responsável pela execução</td>
+</tr>
+<tr>
+<td>A</td>
+<td>Accountable (aprova e responde pelo resultado)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Consultado (emite parecer técnico ou de negócio)</td>
+</tr>
+<tr>
+<td>I</td>
+<td>Informado (recebe comunicação sobre status)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-matriz-raci-facin_ia">5. Matriz RACI FACIN_IA</h2>
+<table>
+<thead>
+<tr>
+<th>Entrega</th>
+<th>PAT</th>
+<th>GPR</th>
+<th>ARQ</th>
+<th>GOV</th>
+<th>DEV</th>
+<th>AUD</th>
+<th>DPO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Projeto Consolidado</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Documentação do Código</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Manual de Usuário</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Arquitetura da Solução</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Tecnologias</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Integrações</td>
+<td>I</td>
+<td>A</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Regras de Negócio</td>
+<td>C</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Avaliação de Maturidade</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Conformidade LGPD</td>
+<td>A</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+</tr>
+<tr>
+<td>Risco Algorítmico</td>
+<td>A</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Backlog e Kanban</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Plano Executivo</td>
+<td>A</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+</tr>
+<tr>
+<td>Publicação (.md/.html/.pdf)</td>
+<td>I</td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>R</td>
+<td>I</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="6-cronograma-executivo">6. Cronograma Executivo</h2>
+<h3 id="61-janela-indicativa">6.1 Janela Indicativa</h3>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Duração</th>
+<th>Sprints</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 1 — Documentação Base</td>
+<td>2 sprints</td>
+<td>Sprint 1-2</td>
+</tr>
+<tr>
+<td>Fase 2 — Avaliação e Governança</td>
+<td>1 sprint</td>
+<td>Sprint 3</td>
+</tr>
+<tr>
+<td>Fase 3 — Conformidade e Planejamento</td>
+<td>1 sprint</td>
+<td>Sprint 4</td>
+</tr>
+<tr>
+<td>Fase 4 — Publicação e Dashboard</td>
+<td>1 sprint</td>
+<td>Sprint 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-cronograma-por-fase">6.2 Cronograma por Fase</h3>
+<div class="mermaid">gantt
+    title Cronograma Executivo Conversa_Folha_doc
+    dateFormat  YYYY-MM-DD
+    section Fase 1 - Documentação
+    Projeto Consolidado           :done, p1, 2026-03-01, 3d
+    Documentação do Código        :done, p2, after p1, 3d
+    Manual de Usuário             :done, p3, after p2, 3d
+    Arquitetura + Tecnologias     :done, p4, after p3, 3d
+    Integrações + Regras Negócio  :done, p5, after p4, 3d
+    section Fase 2 - Governança
+    Avaliação de Maturidade       :done, p6, after p5, 3d
+    MRO_RACI + LGPD + Risco      :done, p7, after p6, 3d
+    Erros Resolvidos              :done, p8, after p7, 2d
+    section Fase 3 - Planejamento
+    Plano Executivo               :done, p9, after p8, 2d
+    Kanban Executivo              :done, p10, after p9, 1d
+    Backlog Sprints + Kanban      :done, p11, after p10, 2d
+    Índice Executivo              :done, p12, after p11, 1d
+    section Fase 4 - Publicação
+    Geração HTML/PDF              :done, p13, after p12, 1d
+    Dashboard Executivo           :done, p14, after p13, 1d
+    README.md                     :done, p15, after p14, 1d
+</div>
+<hr />
+<h2 id="7-estimativa-de-esforco">7. Estimativa de Esforço</h2>
+<h3 id="71-metodo-de-estimativa">7.1 Método de Estimativa</h3>
+<p>As estimativas de esforço foram produzidas com a técnica <strong>Expert Judgment</strong> (Julgamento Especialista), conforme descrito no <em>PMBOK® Guide — Seventh Edition</em> (PMI, 2021), seção 2.7.3 — Estimating, e complementada pela correspondência com a qualificação da demanda do <strong>Modelo de Responsabilidade Organizacional (MRO_RACI)</strong>.</p>
+<h3 id="72-escala-de-estimativa-e-correspondencia-mro">7.2 Escala de Estimativa e Correspondência MRO</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Pontos</th>
+<th>Significado</th>
+<th>Pessoa-dia</th>
+<th>Qualificação MRO</th>
+<th>Critério de classificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Item pequeno, baixa incerteza, baixo acoplamento</td>
+<td>0,5 a 1</td>
+<td>Operacional simples</td>
+<td>1-2 papéis ativos (R+A), demais I</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Item simples, com uma dependência relevante</td>
+<td>1 a 2</td>
+<td>Operacional com dependência</td>
+<td>2-3 papéis ativos (R+A+C)</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Item moderado, validação cruzada necessária</td>
+<td>2 a 3</td>
+<td>Tático com validação cruzada</td>
+<td>3-4 papéis ativos, inclui GOV ou AUD em C</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Maior complexidade técnica ou institucional</td>
+<td>3 a 5</td>
+<td>Tático-institucional</td>
+<td>4-5 papéis ativos, inclui GOV ou DPO em R/C</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Item crítico, maior risco, integração ou incerteza</td>
+<td>5 a 8</td>
+<td>Estratégico-crítico</td>
+<td>5+ papéis ativos, PAT em A, GOV+DPO+AUD</td>
+</tr>
+</tbody>
+</table>
+<p>A lógica de correspondência é: <strong>quanto mais papéis organizacionais precisam ser acionados (R, A, C) para entregar um item, maior sua complexidade institucional e, portanto, maior a pontuação e o esforço</strong>.</p>
+<p><strong>Critérios complementares:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Critério</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unidade</td>
+<td><strong>Pessoa-dia</strong> — 1 pessoa-dia = 8 horas efetivas de trabalho</td>
+</tr>
+<tr>
+<td>Granularidade</td>
+<td>Estimativa por frente de trabalho (épico), não por tarefa individual</td>
+</tr>
+<tr>
+<td>Base de comparação</td>
+<td>Esforço observado no projeto AGE_OPUS_4_6 (mesma metodologia FACIN_IA)</td>
+</tr>
+<tr>
+<td>Premissa de produtividade</td>
+<td>Geração assistida por LLM (Claude Opus 4.6) — produtividade ~3× superior à redação manual</td>
+</tr>
+<tr>
+<td>Margem</td>
+<td>Valores arredondados para cima em 0,5 pessoa-dia para absorver revisões</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73-referencias">7.3 Referências</h3>
+<ol>
+<li>Project Management Institute. <em>A Guide to the Project Management Body of Knowledge (PMBOK® Guide)</em> — Seventh Edition. PMI, 2021.</li>
+<li>Project Management Institute. <em>Practice Standard for Scheduling</em> — Third Edition. PMI, 2019.</li>
+<li>McConnell, S. <em>Software Estimation: Demystifying the Black Art</em>. Microsoft Press, 2006.</li>
+<li>FACIN_IA_D_P_Foundry_Backlog_Sprints, seção 2.1 — Escala de Estimativa. Projeto FACIN_IA, 2026.</li>
+</ol>
+<h3 id="74-esforco-por-frente">7.4 Esforço por Frente</h3>
+<table>
+<thead>
+<tr>
+<th>Frente</th>
+<th style="text-align: right;">Esforço (pessoa-dia)</th>
+<th>Qualificação MRO</th>
+<th>Justificativa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentação base (Projeto, Código, Manual)</td>
+<td style="text-align: right;">3</td>
+<td>Tático com validação cruzada</td>
+<td>3 documentos densos; análise de código + redação</td>
+</tr>
+<tr>
+<td>Documentação avançada (Arq., Tec., Int., RN)</td>
+<td style="text-align: right;">4</td>
+<td>Tático-institucional</td>
+<td>4 documentos com diagramas Mermaid e 29 regras</td>
+</tr>
+<tr>
+<td>Avaliação de Maturidade FACIN_IA (com MRO, LGPD, Risco)</td>
+<td style="text-align: right;">3</td>
+<td>Tático com validação cruzada</td>
+<td>18 indicadores + MRO_RACI + LGPD + 10 riscos</td>
+</tr>
+<tr>
+<td>Erros Resolvidos</td>
+<td style="text-align: right;">1</td>
+<td>Operacional simples</td>
+<td>7 erros identificados e documentados</td>
+</tr>
+<tr>
+<td>Plano Executivo + Kanban Executivo</td>
+<td style="text-align: right;">2</td>
+<td>Operacional com dependência</td>
+<td>RACI + cronograma + épicos com semáforo</td>
+</tr>
+<tr>
+<td>Backlog Sprints + Backlog Kanban</td>
+<td style="text-align: right;">1</td>
+<td>Operacional simples</td>
+<td>Estrutura derivada dos épicos já definidos</td>
+</tr>
+<tr>
+<td>Índice Executivo</td>
+<td style="text-align: right;">0,5</td>
+<td>Operacional simples</td>
+<td>Compilação de links e resumo consolidado</td>
+</tr>
+<tr>
+<td>Publicação (HTML, PDF, Dashboard)</td>
+<td style="text-align: right;">1</td>
+<td>Operacional simples</td>
+<td>Script de conversão + Dashboard HTML manual</td>
+</tr>
+<tr>
+<td>README.md</td>
+<td style="text-align: right;">0,5</td>
+<td>Operacional simples</td>
+<td>Compilação da estrutura e instruções</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>16</strong></td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-marcos-executivos">8. Marcos Executivos</h2>
+<table>
+<thead>
+<tr>
+<th>Marco</th>
+<th>Critério de Pronto</th>
+<th>Fase</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1 — Documentação Base</td>
+<td>Projeto, Código e Manual publicados em .md</td>
+<td>Fase 1</td>
+</tr>
+<tr>
+<td>M2 — Documentação Avançada</td>
+<td>Arquitetura, Tecnologias, Integrações e Regras publicados</td>
+<td>Fase 1</td>
+</tr>
+<tr>
+<td>M3 — Avaliação de Maturidade</td>
+<td>18 indicadores FACIN_IA, MRO_RACI, LGPD e risco documentados</td>
+<td>Fase 2</td>
+</tr>
+<tr>
+<td>M4 — Planejamento</td>
+<td>Plano Executivo, Kanban Executivo e Backlogs concluídos</td>
+<td>Fase 3</td>
+</tr>
+<tr>
+<td>M5 — Publicação Completa</td>
+<td>Todos os artefatos em .md, .html e .pdf + Dashboard</td>
+<td>Fase 4</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="9-criterios-de-pronto-por-fase">9. Critérios de Pronto por Fase</h2>
+<table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Critérios</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fase 1</td>
+<td>Todos os documentos base e avançados existem em Português do Brasil</td>
+</tr>
+<tr>
+<td>Fase 2</td>
+<td>Avaliação segue os 18 indicadores FACIN_IA com MRO_RACI, LGPD e risco</td>
+</tr>
+<tr>
+<td>Fase 3</td>
+<td>Plano executivo com RACI, cronograma e marcos; Kanban com semáforo</td>
+</tr>
+<tr>
+<td>Fase 4</td>
+<td>Artefatos publicados em 3 formatos; Dashboard HTML funcional</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="10-dependencias-criticas">10. Dependências Críticas</h2>
+<table>
+<thead>
+<tr>
+<th>Dependência</th>
+<th>Tipo</th>
+<th>Impacto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Código-fonte <code>Conversa_Folha/</code> acessível</td>
+<td>Técnica</td>
+<td>Bloqueante para documentação</td>
+</tr>
+<tr>
+<td>Ambiente figmm com Python 3.11+</td>
+<td>Infraestrutura</td>
+<td>Bloqueante para geração</td>
+</tr>
+<tr>
+<td>Pacotes <code>markdown</code> e <code>xhtml2pdf</code> instalados</td>
+<td>Técnica</td>
+<td>Bloqueante para HTML/PDF</td>
+</tr>
+<tr>
+<td>Designação de papéis organizacionais</td>
+<td>Organizacional</td>
+<td>Necessário para RACI efetivo</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-principais-riscos-executivos">11. Principais Riscos Executivos</h2>
+<table>
+<thead>
+<tr>
+<th>Risco</th>
+<th>Probabilidade</th>
+<th>Impacto</th>
+<th>Mitigação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dados pessoais transferidos a APIs externas (RA-04)</td>
+<td>Alta</td>
+<td>Alto</td>
+<td>Anonimizar dados ou migrar para LLM local</td>
+</tr>
+<tr>
+<td>Exposição de CPF sem máscara (RA-02)</td>
+<td>Alta</td>
+<td>Alto</td>
+<td>Implementar mascaramento</td>
+</tr>
+<tr>
+<td>Atraso na designação de PAT e DPO</td>
+<td>Alta</td>
+<td>Médio</td>
+<td>RACI provisional com revisão periódica</td>
+</tr>
+<tr>
+<td>Não conformidade LGPD</td>
+<td>Média</td>
+<td>Alto</td>
+<td>Avaliação antecipada realizada (nota 1,63)</td>
+</tr>
+<tr>
+<td>Ausência de testes automatizados</td>
+<td>Alta</td>
+<td>Médio</td>
+<td>Implementar pytest na próxima fase</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12-indicadores-executivos-de-acompanhamento">12. Indicadores Executivos de Acompanhamento</h2>
+<table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Meta</th>
+<th>Atual</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Artefatos documentais entregues</td>
+<td>13</td>
+<td>13</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Cobertura de módulos documentados</td>
+<td>100%</td>
+<td>100%</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Índice de maturidade FACIN_IA</td>
+<td>≥ 2,50</td>
+<td>1,32</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Conformidade LGPD</td>
+<td>≥ 3,00</td>
+<td>1,63</td>
+<td>🔴</td>
+</tr>
+<tr>
+<td>Riscos com mitigação definida</td>
+<td>100%</td>
+<td>100%</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Papéis organizacionais designados</td>
+<td>7</td>
+<td>3</td>
+<td>🟡</td>
+</tr>
+<tr>
+<td>Bloqueios ativos</td>
+<td>0</td>
+<td>0</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>

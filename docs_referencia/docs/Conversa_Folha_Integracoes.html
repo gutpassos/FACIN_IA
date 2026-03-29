@@ -1,0 +1,527 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Conversa_Folha_doc - Integrações</title><style>
+:root { --bg: #f4f1e8; --panel: #fffaf0; --ink: #17324d; --line: #d4c7ad; --accent: #0b5c63; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Segoe UI, Arial, sans-serif; background: var(--bg); color: var(--ink); }
+main { max-width: 1100px; margin: 0 auto; padding: 28px 22px 40px; }
+article { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 28px;
+          box-shadow: 0 16px 36px rgba(23,50,77,0.08); }
+h1, h2, h3, h4 { color: #0b3a66; }
+h1 { font-size: 32px; margin-top: 0; }
+h2 { border-top: 1px solid var(--line); padding-top: 18px; }
+p, li { line-height: 1.6; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 13px; }
+th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
+th { background: #eadfc6; text-align: left; }
+code { background: #efe5d1; padding: 2px 4px; }
+pre { background: #f7f0e5; padding: 14px; overflow-x: auto; border-radius: 14px; }
+.mermaid { margin: 24px 0; text-align: center; overflow-x: auto; }
+</style></head><body><main><article><h1 id="conversa_folha_doc-integracoes">Conversa_Folha_doc - Integrações</h1>
+<p>Autor: Guttenberg Ferreira Passos<br />
+Modelo LLM de referência do projeto: Claude Opus 4.6<br />
+Ambiente validado: figmm<br />
+Data: 29 de março de 2026</p>
+<hr />
+<h2 id="1-finalidade">1. Finalidade</h2>
+<p>Este documento mapeia todas as integrações externas e internas do sistema Conversa com a Folha, descrevendo protocolos, formatos de dados, fluxos de comunicação e requisitos de conectividade para cada ponto de integração.</p>
+<hr />
+<h2 id="2-mapa-de-integracoes">2. Mapa de Integrações</h2>
+<div class="mermaid">flowchart TB
+    subgraph Sistema[Sistema Conversa com a Folha]
+        GRAPH[Grafo LangGraph]
+        TOOL[query_folha_database]
+        ROUTER[Roteador de Agentes]
+    end
+
+    subgraph APIs[APIs de IA Externas]
+        GROQ[Groq Cloud - Llama 3.1]
+        OPENAI[OpenAI - GPT-3.5-turbo]
+    end
+
+    subgraph Local[Serviços Locais]
+        SQLITE[(SQLite - folha_pagamento.db)]
+        SLIT[Streamlit - Interface Web]
+    end
+
+    GRAPH -->|API REST HTTPS| GROQ
+    GRAPH -->|API REST HTTPS| OPENAI
+    TOOL -->|sqlite3 Python| SQLITE
+    GRAPH -->|API Python| SLIT
+</div>
+<hr />
+<h2 id="3-integracoes-externas">3. Integrações Externas</h2>
+<h3 id="31-api-groq-llm-cloud">3.1 API Groq (LLM Cloud)</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>API REST externa</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>https://api.groq.com/openai/v1</td>
+</tr>
+<tr>
+<td>Modelo</td>
+<td>llama-3.1-8b-instant</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>Bearer Token (API Key)</td>
+</tr>
+<tr>
+<td>Formato de requisição</td>
+<td>JSON (via LangChain ChatGroq)</td>
+</tr>
+<tr>
+<td>Formato de resposta</td>
+<td>JSON com texto gerado e tool_calls</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>Padrão do SDK</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fluxo-de-comunicacao-com-groq">Fluxo de Comunicação com Groq</h4>
+<div class="mermaid">sequenceDiagram
+    participant G as Grafo LangGraph
+    participant LC as LangChain ChatGroq
+    participant API as Groq Cloud API
+
+    G->>LC: Invoca agente com messages + tools
+    LC->>API: POST /openai/v1/chat/completions (JSON)
+    API-->>LC: Resposta com content e/ou tool_calls
+    LC-->>G: AIMessage processado
+</div>
+<h4 id="situacoes-de-integracao">Situações de Integração</h4>
+<table>
+<thead>
+<tr>
+<th>Situação</th>
+<th>Comportamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Resposta direta</td>
+<td>Retorna AIMessage com content</td>
+</tr>
+<tr>
+<td>Chamada de ferramenta</td>
+<td>Retorna AIMessage com tool_calls</td>
+</tr>
+<tr>
+<td>Erro de API</td>
+<td>Captura exceção, exibe st.error, retorna erro interno</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-api-openai-llm-cloud">3.2 API OpenAI (LLM Cloud)</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>API REST externa</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>Endpoint</td>
+<td>https://api.openai.com/v1</td>
+</tr>
+<tr>
+<td>Modelo</td>
+<td>gpt-3.5-turbo</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>Bearer Token (API Key)</td>
+</tr>
+<tr>
+<td>Formato de requisição</td>
+<td>JSON (via LangChain ChatOpenAI)</td>
+</tr>
+<tr>
+<td>Formato de resposta</td>
+<td>JSON com texto gerado e tool_calls</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>Padrão do SDK</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fluxo-de-comunicacao-com-openai">Fluxo de Comunicação com OpenAI</h4>
+<div class="mermaid">sequenceDiagram
+    participant G as Grafo LangGraph
+    participant LC as LangChain ChatOpenAI
+    participant API as OpenAI API
+
+    G->>LC: Invoca agente com messages + tools
+    LC->>API: POST /v1/chat/completions (JSON)
+    API-->>LC: Resposta com content e/ou tool_calls
+    LC-->>G: AIMessage processado
+</div>
+<h3 id="33-comparacao-entre-apis">3.3 Comparação entre APIs</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Groq</th>
+<th>OpenAI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modelo</td>
+<td>llama-3.1-8b-instant</td>
+<td>gpt-3.5-turbo</td>
+</tr>
+<tr>
+<td>Licença do modelo</td>
+<td>Open Source (Meta)</td>
+<td>Proprietário</td>
+</tr>
+<tr>
+<td>Velocidade</td>
+<td>Alta (hardware especializado)</td>
+<td>Média</td>
+</tr>
+<tr>
+<td>Custo</td>
+<td>Tier gratuito disponível</td>
+<td>Pay-per-use</td>
+</tr>
+<tr>
+<td>Temperatura</td>
+<td>0.2</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Ferramentas</td>
+<td>Suporta tool_calls</td>
+<td>Suporta tool_calls</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-integracoes-locais">4. Integrações Locais</h2>
+<h3 id="41-sqlite-banco-de-dados">4.1 SQLite (Banco de Dados)</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>Banco de dados local</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>API Python sqlite3 (stdlib)</td>
+</tr>
+<tr>
+<td>Arquivo</td>
+<td>folha_pagamento.db</td>
+</tr>
+<tr>
+<td>Autenticação</td>
+<td>Nenhuma (acesso direto ao arquivo)</td>
+</tr>
+<tr>
+<td>Operações permitidas</td>
+<td>Somente SELECT</td>
+</tr>
+<tr>
+<td>Timeout</td>
+<td>Nenhum explícito</td>
+</tr>
+</tbody>
+</table>
+<h4 id="fluxo-de-comunicacao-com-sqlite">Fluxo de Comunicação com SQLite</h4>
+<div class="mermaid">sequenceDiagram
+    participant A as Agente (Groq/OpenAI)
+    participant T as query_folha_database
+    participant DB as SQLite
+
+    A->>T: tool_call com sql_query
+    T->>T: Valida se é SELECT
+    T->>DB: sqlite3.connect + cursor.execute
+    DB-->>T: fetchall() com resultados
+    T->>T: Formata header + rows (máx 15)
+    T-->>A: String formatada com resultados
+</div>
+<h4 id="tabelas-acessiveis">Tabelas Acessíveis</h4>
+<table>
+<thead>
+<tr>
+<th>Tabela</th>
+<th>Colunas</th>
+<th>Chave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tb_servidores</td>
+<td>id, nome, cpf, matricula, orgao, cargo</td>
+<td>matricula (UNIQUE)</td>
+</tr>
+<tr>
+<td>tb_folha_pagamento</td>
+<td>id, matricula, competencia, vencimentos, descontos, liquido</td>
+<td>FK → matricula</td>
+</tr>
+</tbody>
+</table>
+<h4 id="exemplos-de-sql-gerado-pelos-agentes">Exemplos de SQL Gerado pelos Agentes</h4>
+<pre><code class="language-sql">-- Listar servidores por órgão
+SELECT nome, cargo FROM tb_servidores WHERE orgao = 'Secretaria da Saúde';
+
+-- Consultar remuneração individual
+SELECT competencia, vencimentos, descontos, liquido 
+FROM tb_servidores s 
+JOIN tb_folha_pagamento f ON f.matricula = s.matricula 
+WHERE nome = 'Servidor 3' 
+ORDER BY competencia DESC;
+
+-- Contar servidores com aumento
+SELECT COUNT(DISTINCT f1.matricula) AS total_servidores_com_aumento 
+FROM tb_folha_pagamento AS f1 
+WHERE f1.vencimentos &gt; (
+    SELECT f2.vencimentos FROM tb_folha_pagamento AS f2 
+    WHERE f2.matricula = f1.matricula 
+    AND f2.competencia &lt; f1.competencia 
+    ORDER BY f2.competencia DESC LIMIT 1
+);
+</code></pre>
+<h3 id="42-streamlit-interface-web">4.2 Streamlit (Interface Web)</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tipo</td>
+<td>Framework web Python</td>
+</tr>
+<tr>
+<td>Protocolo</td>
+<td>HTTP local</td>
+</tr>
+<tr>
+<td>Porta padrão</td>
+<td>8501</td>
+</tr>
+<tr>
+<td>Elementos utilizados</td>
+<td>text_input, sidebar, write, error, warning, success, expander</td>
+</tr>
+<tr>
+<td>Gerenciamento de estado</td>
+<td>st.session_state</td>
+</tr>
+</tbody>
+</table>
+<h4 id="componentes-de-interface">Componentes de Interface</h4>
+<table>
+<thead>
+<tr>
+<th>Widget</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>st.sidebar.text_input (password)</td>
+<td>Entrada de chaves API</td>
+</tr>
+<tr>
+<td>st.title</td>
+<td>Títulos da aplicação</td>
+</tr>
+<tr>
+<td>st.write</td>
+<td>Exibição de mensagens</td>
+</tr>
+<tr>
+<td>st.error / st.warning / st.success</td>
+<td>Alertas ao usuário</td>
+</tr>
+<tr>
+<td>st.sidebar.expander</td>
+<td>Histórico da conversa</td>
+</tr>
+<tr>
+<td>st.session_state</td>
+<td>Persistência de app, chat_history, thread_id</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-integracao-entre-langgraph-e-ferramentas">4.3 Integração entre LangGraph e Ferramentas</h3>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Especificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Padrão</td>
+<td>Tool calling via LangChain @tool</td>
+</tr>
+<tr>
+<td>Registro</td>
+<td>Lista <code>tools = [query_folha_database]</code></td>
+</tr>
+<tr>
+<td>Executor</td>
+<td><code>ToolNode(tools)</code> do LangGraph-prebuilt</td>
+</tr>
+<tr>
+<td>Vinculação ao LLM</td>
+<td><code>llm.bind_tools(tools)</code> no template de prompt</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-formato-dos-contratos-de-integracao">5. Formato dos Contratos de Integração</h2>
+<h3 id="51-contrato-de-estado-agentstate">5.1 Contrato de Estado (AgentState)</h3>
+<pre><code class="language-python">class AgentState(TypedDict):
+    messages: Annotated[List[BaseMessage], operator.add]
+</code></pre>
+<h3 id="52-contrato-da-ferramenta-sql">5.2 Contrato da Ferramenta SQL</h3>
+<p><strong>Entrada</strong> (tool_call do agente):</p>
+<pre><code class="language-json">{
+    &quot;name&quot;: &quot;query_folha_database&quot;,
+    &quot;args&quot;: {
+        &quot;sql_query&quot;: &quot;SELECT nome, cargo FROM tb_servidores WHERE orgao = 'Secretaria da Saúde'&quot;
+    }
+}
+</code></pre>
+<p><strong>Saída (sucesso)</strong>:</p>
+<pre><code>Resultados da consulta (5 encontrados):
+nome | cargo
+Servidor 1 | Assistente
+Servidor 6 | Assistente
+...
+</code></pre>
+<p><strong>Saída (erro de segurança)</strong>:</p>
+<pre><code>Erro: Esta ferramenta só pode executar consultas SELECT.
+</code></pre>
+<p><strong>Saída (erro SQL)</strong>:</p>
+<pre><code>Erro ao executar a consulta SQL: no such table: xxx. Verifique a sintaxe da sua consulta e os nomes das tabelas/colunas.
+</code></pre>
+<hr />
+<h2 id="6-diagrama-de-conectividade">6. Diagrama de Conectividade</h2>
+<div class="mermaid">flowchart LR
+    subgraph Local[Ambiente Local]
+        APP[Conversa com a Folha]
+        DB[(SQLite)]
+        ST[Streamlit :8501]
+    end
+
+    subgraph Cloud[APIs Externas]
+        GROQ[Groq Cloud]
+        OPENAI[OpenAI API]
+    end
+
+    subgraph Deploy[Streamlit Cloud]
+        CLOUD_APP[App Publicado]
+    end
+
+    APP -->|sqlite3| DB
+    APP -->|HTTPS| GROQ
+    APP -->|HTTPS| OPENAI
+    ST -->|localhost| APP
+    CLOUD_APP -->|HTTPS| GROQ
+    CLOUD_APP -->|HTTPS| OPENAI
+
+    USER[Usuário] --> ST
+    USER --> CLOUD_APP
+</div>
+<hr />
+<h2 id="7-requisitos-de-conectividade">7. Requisitos de Conectividade</h2>
+<table>
+<thead>
+<tr>
+<th>Integração</th>
+<th>Tipo</th>
+<th>Porta</th>
+<th>Protocolo</th>
+<th>Obrigatória</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groq API</td>
+<td>Externa</td>
+<td>443 (HTTPS)</td>
+<td>REST</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>OpenAI API</td>
+<td>Externa</td>
+<td>443 (HTTPS)</td>
+<td>REST</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>Local</td>
+<td>N/A (arquivo)</td>
+<td>sqlite3</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Streamlit</td>
+<td>Local</td>
+<td>8501</td>
+<td>HTTP</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>Streamlit Cloud</td>
+<td>Externa</td>
+<td>443 (HTTPS)</td>
+<td>HTTP</td>
+<td>Não (opcional para deploy)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-observacoes-de-governanca">8. Observações de Governança</h2>
+<ol>
+<li>O sistema envia o conteúdo das perguntas do usuário para APIs externas (Groq e OpenAI).</li>
+<li>Os dados do banco SQLite são retornados pelas ferramentas e potencialmente incluídos nas mensagens enviadas aos LLMs.</li>
+<li>As chaves de API são gerenciadas em tempo de execução, sem persistência em disco.</li>
+<li>Não há criptografia adicional além do HTTPS padrão das APIs.</li>
+<li>Não há controle de acesso formal à interface Streamlit.</li>
+</ol></article></main><script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";mermaid.initialize({ startOnLoad: true });</script>
+</body></html>
