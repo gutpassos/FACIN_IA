@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>FACIN_IA - Distribuicao como pacote Python e GitHub Template</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; margin: 36px auto; max-width: 980px; color: #16324f; }
+    h1, h2, h3 { color: #0b3a66; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th, td { border: 1px solid #c8d5e3; padding: 8px; vertical-align: top; }
+    th { background: #0b3a66; color: white; }
+    code { background: #eef3f8; padding: 2px 4px; }
+    blockquote { border-left: 4px solid #0b3a66; padding-left: 12px; color: #385269; }
+    </style>
+</head>
+<body>
+<h1 id="facin_ia-distribuicao-como-pacote-python-e-github-template">FACIN_IA - Distribuicao como pacote Python e GitHub Template</h1>
+<p>Autor: Guttenberg Ferreira Passos</p>
+<p>Especificacao do empacotamento inicial do FACIN_IA como pacote Python com CLI de scaffolding e da preparacao do repositório para uso como GitHub Template.</p>
+<h2 id="1-objetivo">1. Objetivo</h2>
+<p>Criar uma terceira via de distribuicao do FACIN_IA, complementar a customizacao direta e ao plugin de agente, para permitir:</p>
+<ol>
+<li>provisionamento automatizado do metodo em repositórios existentes;</li>
+<li>inicializacao de novos projetos ja com o FACIN_IA embarcado;</li>
+<li>padronizacao institucional de artefatos de governanca, rastreabilidade e onboarding.</li>
+</ol>
+<h2 id="2-base-implementada-no-repositorio">2. Base implementada no repositório</h2>
+<h3 id="21-pacote-python">2.1 Pacote Python</h3>
+<p>O repositório passa a incluir:</p>
+<ul>
+<li><code>pyproject.toml</code>;</li>
+<li><code>src/facin_ia/__init__.py</code>;</li>
+<li><code>src/facin_ia/cli.py</code>;</li>
+<li><code>src/facin_ia/scaffold.py</code>;</li>
+<li><code>src/facin_ia/__main__.py</code>.</li>
+</ul>
+<p>Essa estrutura permite instalar o projeto localmente com <code>pip install .</code> e executar a CLI <code>facin-ia</code>.</p>
+<h3 id="22-perfis-de-scaffolding">2.2 Perfis de scaffolding</h3>
+<p>A CLI foi preparada com tres perfis:</p>
+<ol>
+<li><code>customizacao</code>: instala agente, prompt e skill em <code>.github/</code>;</li>
+<li><code>plugin</code>: instala a customizacao e o plugin local em <code>plugins/facin-ia/</code>;</li>
+<li><code>template-base</code>: instala customizacao, plugin e arquivos auxiliares para repositórios criados a partir de template.</li>
+</ol>
+<h3 id="23-arquivos-de-template">2.3 Arquivos de template</h3>
+<p>O repositório tambem passa a incluir:</p>
+<ul>
+<li><code>TEMPLATE_SETUP.md</code>;</li>
+<li><code>.github/PULL_REQUEST_TEMPLATE.md</code>;</li>
+<li><code>.github/ISSUE_TEMPLATE/facin-ia-adocao.md</code>;</li>
+<li><code>.github/ISSUE_TEMPLATE/config.yml</code>.</li>
+</ul>
+<p>Esses arquivos preparam o repositório para colaboracao e onboarding quando usado como template do GitHub.</p>
+<h2 id="3-instalacao-para-o-usuario">3. Instalacao para o usuario</h2>
+<h3 id="31-repositorios-existentes">3.1 Repositórios existentes</h3>
+<p>Fluxo atual:</p>
+<pre><code class="language-bash">pip install .
+facin-ia init --profile customizacao
+</code></pre>
+<p>Fluxo previsto apos publicacao no PyPI:</p>
+<pre><code class="language-bash">pip install facin-ia
+facin-ia init --profile customizacao
+</code></pre>
+<p>O usuario pode trocar o perfil para <code>plugin</code> ou <code>template-base</code> conforme a necessidade.</p>
+<h3 id="32-novos-projetos-via-github-template">3.2 Novos projetos via GitHub Template</h3>
+<p>Fluxo previsto para o usuario:</p>
+<ol>
+<li>acessar o repositório no GitHub;</li>
+<li>selecionar <code>Use this template</code>;</li>
+<li>criar o novo repositório;</li>
+<li>clonar o repositório gerado;</li>
+<li>abrir no VS Code com GitHub Copilot habilitado;</li>
+<li>revisar o roteiro em <code>TEMPLATE_SETUP.md</code>.</li>
+</ol>
+<h2 id="4-diferenca-em-relacao-as-outras-formas-de-adocao">4. Diferenca em relacao as outras formas de adocao</h2>
+<h3 id="41-em-relacao-a-customizacao-direta">4.1 Em relacao a customizacao direta</h3>
+<p>A customizacao direta continua sendo a opcao mais simples e manual. O pacote Python reduz o trabalho repetitivo ao materializar os mesmos artefatos por comando.</p>
+<h3 id="42-em-relacao-ao-plugin">4.2 Em relacao ao plugin</h3>
+<p>O plugin resolve distribuicao operacional do agente no VS Code. O pacote Python resolve provisao automatizada de estrutura no repositório. O GitHub Template resolve bootstrap de novos projetos.</p>
+<h2 id="5-beneficios">5. Beneficios</h2>
+<ol>
+<li>menor atrito de instalacao para usuarios finais;</li>
+<li>padronizacao de estrutura entre equipes e repositórios;</li>
+<li>reducao de erro manual na copia de artefatos;</li>
+<li>base pronta para futura publicacao no PyPI;</li>
+<li>base pronta para marcar o repositório como template oficial no GitHub.</li>
+</ol>
+<h2 id="6-limites-atuais">6. Limites atuais</h2>
+<ol>
+<li>o pacote ja esta estruturado, mas ainda nao foi publicado no PyPI;</li>
+<li>o repositório ja esta preparado como template, mas a marcacao como template depende da configuracao no GitHub;</li>
+<li>os artefatos gerados pela CLI sao uma base inicial e podem ser refinados por contexto institucional.</li>
+</ol>
+<h2 id="7-criterios-de-aceitacao">7. Criterios de aceitacao</h2>
+<p>Esta frente sera considerada concluida quando:</p>
+<ol>
+<li>o pacote puder ser instalado localmente com <code>pip install .</code>;</li>
+<li>a CLI <code>facin-ia</code> materializar corretamente os perfis previstos;</li>
+<li>o repositório contiver arquivos adequados para uso como template;</li>
+<li>a documentacao explicar claramente a experiencia do usuario em cada modo de distribuicao.</li>
+</ol>
+</body>
+</html>

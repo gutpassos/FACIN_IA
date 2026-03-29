@@ -93,6 +93,8 @@ A customização foi desenhada para apoiar tarefas como:
 
 Na forma atual, a reutilização ocorre por cópia dos artefatos de customização para o repositório de destino.
 
+O repositório passa a incluir também uma base de empacotamento Python com CLI, documentada em `docs/FACIN_IA_Distribuicao_PyPI_Template.md`, para automatizar essa mesma provisão em repositórios existentes.
+
 Passos:
 
 1. copiar `.github/agents/` para o novo repositório;
@@ -151,13 +153,14 @@ O uso da customização traz os seguintes ganhos práticos:
 
 ## 9. Limites da implementação atual
 
-Na versão atual, a distribuição é feita como customização local de repositório e não como plugin instalável centralmente.
+Na versão atual, a customização local continua sendo a forma primária e mais simples de reutilização do método.
 
 Isso significa que:
 
 1. a instalação ainda depende de copiar as pastas de customização;
 2. a atualização entre múltiplos projetos exige replicação controlada das mudanças;
-3. um empacotamento futuro como plugin de agente pode simplificar a distribuição organizacional.
+3. o plugin de agente simplifica a distribuição organizacional no VS Code, mas depende de suporte a plugins em preview;
+4. a base PyPI recém-estruturada ainda precisa ser publicada para viabilizar instalação por `pip install facin-ia`.
 
 ## 10. Critérios de aceitação
 

@@ -95,6 +95,7 @@
 </ol>
 <h2 id="5-instalacao-em-outros-projetos">5. Instalação em outros projetos</h2>
 <p>Na forma atual, a reutilização ocorre por cópia dos artefatos de customização para o repositório de destino.</p>
+<p>O repositório passa a incluir também uma base de empacotamento Python com CLI, documentada em <code>docs/FACIN_IA_Distribuicao_PyPI_Template.md</code>, para automatizar essa mesma provisão em repositórios existentes.</p>
 <p>Passos:</p>
 <ol>
 <li>copiar <code>.github/agents/</code> para o novo repositório;</li>
@@ -145,12 +146,13 @@
 <li>aceleração da adoção do FACIN_IA em múltiplos times.</li>
 </ol>
 <h2 id="9-limites-da-implementacao-atual">9. Limites da implementação atual</h2>
-<p>Na versão atual, a distribuição é feita como customização local de repositório e não como plugin instalável centralmente.</p>
+<p>Na versão atual, a customização local continua sendo a forma primária e mais simples de reutilização do método.</p>
 <p>Isso significa que:</p>
 <ol>
 <li>a instalação ainda depende de copiar as pastas de customização;</li>
 <li>a atualização entre múltiplos projetos exige replicação controlada das mudanças;</li>
-<li>um empacotamento futuro como plugin de agente pode simplificar a distribuição organizacional.</li>
+<li>o plugin de agente simplifica a distribuição organizacional no VS Code, mas depende de suporte a plugins em preview;</li>
+<li>a base PyPI recém-estruturada ainda precisa ser publicada para viabilizar instalação por <code>pip install facin-ia</code>.</li>
 </ol>
 <h2 id="10-criterios-de-aceitacao">10. Critérios de aceitação</h2>
 <p>Esta customização será considerada aderente ao objetivo proposto quando:</p>

@@ -70,6 +70,19 @@ Exemplo:
 
 Depois disso, o plugin `facin-ia` pode ser instalado e habilitado na interface de plugins do VS Code.
 
+## 4.3 Relacao com PyPI e GitHub Template
+
+O plugin nao substitui as outras formas de adocao do FACIN_IA.
+
+O repositório passa a incluir tambem uma base de pacote Python com CLI e preparacao para GitHub Template, descrita em `docs/FACIN_IA_Distribuicao_PyPI_Template.md`.
+
+O posicionamento entre as opcoes fica assim:
+
+1. customizacao direta: copia manual dos artefatos para um repositório existente;
+2. plugin: distribuicao operacional do agente dentro do VS Code;
+3. PyPI: provisionamento automatizado da estrutura em repositórios existentes;
+4. GitHub Template: criacao de novos repositórios ja nascendo com o FACIN_IA embarcado.
+
 ## 5. Instrucoes de uso
 
 Depois de instalado e habilitado, a equipe pode usar:
@@ -91,6 +104,7 @@ Depois de instalado e habilitado, a equipe pode usar:
 3. distribuicao por marketplace ou caminho local;
 4. evolucao versionada do agente, da skill e do comando;
 5. menor friccao para adocao institucional do FACIN_IA.
+6. coexistencia com a trilha de pacote Python e template, ampliando as formas de distribuicao.
 
 ## 8. Limites atuais
 

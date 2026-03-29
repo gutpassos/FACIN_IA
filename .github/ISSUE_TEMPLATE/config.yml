@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Diretrizes FACIN_IA
+    url: https://github.com/gutpassos/FACIN_IA/blob/main/Diretrizes%20FACIN_IA.txt
+    about: Consulte as diretrizes do metodo antes de abrir uma solicitacao.
