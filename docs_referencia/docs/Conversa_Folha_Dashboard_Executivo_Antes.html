@@ -76,8 +76,8 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <article class="card">
         <h3>Avaliação de Maturidade</h3>
         <p>FACIN_IA com MRO_RACI, LGPD, ANPD e risco algorítmico.</p>
-        <a href="Conversa_Folha_Avaliacao_Maturidade.html">Abrir avaliação v1</a> · <a href="../governanca/Reavaliacao_Maturidade_v2.md">Reavaliação v2</a>
-        <div class="pill ok">Nível 3 — Otimizado (3,00)</div>
+        <a href="Conversa_Folha_Avaliacao_Maturidade.html">Abrir avaliação</a>
+        <div class="pill warn">Nível 1 — Inicial</div>
     </article>
     <article class="card">
         <h3>Arquitetura da Solução</h3>
@@ -98,32 +98,32 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <div class="kpi-card kpi-green">
         <div class="kpi-label">Documentos Entregues</div>
         <div class="kpi-value">15</div>
-        <div class="kpi-detail">docs/ — 15 de 15</div>
+        <div class="kpi-detail">de 15 previstos</div>
     </div>
-    <div class="kpi-card kpi-green">
+    <div class="kpi-card kpi-red">
         <div class="kpi-label">Índice de Maturidade</div>
-        <div class="kpi-value">3,00</div>
-        <div class="kpi-detail">Nível 3 — Otimizado ✅</div>
-    </div>
-    <div class="kpi-card kpi-green">
-        <div class="kpi-label">Artefatos de Governança</div>
-        <div class="kpi-value">16</div>
-        <div class="kpi-detail">governanca/ — 27 ações executadas</div>
-    </div>
-    <div class="kpi-card kpi-green">
-        <div class="kpi-label">Testes Automatizados</div>
-        <div class="kpi-value">30</div>
-        <div class="kpi-detail">30 passando — 0 falhas</div>
+        <div class="kpi-value">1,32</div>
+        <div class="kpi-detail">Meta: ≥ 2,50</div>
     </div>
     <div class="kpi-card kpi-blue">
         <div class="kpi-label">Regras de Negócio</div>
         <div class="kpi-value">29</div>
         <div class="kpi-detail">Formalizadas</div>
     </div>
+    <div class="kpi-card kpi-yellow">
+        <div class="kpi-label">Riscos Algorítmicos</div>
+        <div class="kpi-value">10</div>
+        <div class="kpi-detail">1 crítico · 1 alto</div>
+    </div>
+    <div class="kpi-card kpi-accent">
+        <div class="kpi-label">Erros Documentados</div>
+        <div class="kpi-value">7</div>
+        <div class="kpi-detail">Código preservado</div>
+    </div>
     <div class="kpi-card kpi-green">
-        <div class="kpi-label">Riscos Mitigados</div>
-        <div class="kpi-value">10/10</div>
-        <div class="kpi-detail">0 crítico · 0 alto</div>
+        <div class="kpi-label">Bloqueios Ativos</div>
+        <div class="kpi-value">0</div>
+        <div class="kpi-detail">Nenhum impedimento</div>
     </div>
 </div>
 
@@ -132,29 +132,29 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <h2>Maturidade FACIN_IA por Dimensão</h2>
     <div class="bar-container">
         <span class="bar-label">EG — Estratégia</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
     </div>
     <div class="bar-container">
         <span class="bar-label">DI — Dados</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
     </div>
     <div class="bar-container">
         <span class="bar-label">TC — Talento</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:20%;background:var(--red);">1,00</div></div>
     </div>
     <div class="bar-container">
         <span class="bar-label">DO — DevOps</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:30%;background:var(--yellow);">1,50</div></div>
     </div>
     <div class="bar-container">
         <span class="bar-label">ER — Ética</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
     </div>
     <div class="bar-container">
         <span class="bar-label">IV — Valor</span>
-        <div class="bar-track"><div class="bar-fill" style="width:60%;background:var(--green);">3,00</div></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.6%;background:var(--red);">1,33</div></div>
     </div>
-    <p style="margin-top:14px;font-size:13px;color:#666;">Escala: 1 (Inicial) a 5 (Estabelecido) · Índice geral: <strong>3,00 — Nível 3 (Otimizado)</strong> · Anterior: 1,32 (Nível 1)</p>
+    <p style="margin-top:14px;font-size:13px;color:#666;">Escala: 1 (Inicial) a 5 (Estabelecido) · Índice geral: <strong>1,32 — Nível 1 (Inicial)</strong></p>
 </div>
 
 <div class="grid-2">
@@ -189,25 +189,25 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <table>
     <thead><tr><th>Indicador</th><th>Nota</th><th>Nível</th></tr></thead>
     <tbody>
-    <tr><td>EG1 — Política e estratégia de IA</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>EG2 — Portfólio de casos de uso</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>EG3 — Rastreabilidade de decisões</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DI1 — Catálogo e linhagem</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DI2 — Proteção de dados</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DI3 — Disponibilidade infra</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>TC1 — Papéis críticos</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>TC2 — Capacitação</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>TC3 — Segregação ideação/produção</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DO1 — Especificação antes de código</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DO2 — Testes e validações</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DO3 — Observabilidade</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>DO4 — MTTR</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>ER1 — Risco algorítmico</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>ER2 — Transparência</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>ER3 — Conformidade regulatória</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>IV1 — Metas de valor</td><td>2 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>IV2 — Acessibilidade</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
-    <tr><td>IV3 — Satisfação do usuário</td><td>1 → <strong>3</strong></td><td>Otimizado</td></tr>
+    <tr><td>EG1 — Política e estratégia de IA</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>EG2 — Portfólio de casos de uso</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>EG3 — Rastreabilidade de decisões</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DI1 — Catálogo e linhagem</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DI2 — Proteção de dados</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DI3 — Disponibilidade infra</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC1 — Papéis críticos</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC2 — Capacitação</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>TC3 — Segregação ideação/produção</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DO1 — Especificação antes de código</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DO2 — Testes e validações</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>DO3 — Observabilidade</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>DO4 — MTTR</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>ER1 — Risco algorítmico</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>ER2 — Transparência</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>ER3 — Conformidade regulatória</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>IV1 — Metas de valor</td><td>2</td><td>Em Desenvolvimento</td></tr>
+    <tr><td>IV2 — Acessibilidade</td><td>1</td><td>Inicial</td></tr>
+    <tr><td>IV3 — Satisfação do usuário</td><td>1</td><td>Inicial</td></tr>
     </tbody>
     </table>
 </div>
@@ -223,42 +223,42 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <tr>
         <td>RA-04</td>
         <td>Transferência de dados pessoais a APIs externas (Groq/OpenAI)</td>
-        <td>Muito baixa</td>
-        <td>Crítico</td>
-        <td><span class="risk-low">Mitigado</span></td>
-        <td>✅ Anonimização pré-envio (A-02) + RIPD publicado (A-13)</td>
+        <td>Alta</td>
+        <td>Alto</td>
+        <td><span class="risk-critical">Crítico</span></td>
+        <td>Anonimizar dados ou migrar para LLM local</td>
     </tr>
     <tr>
         <td>RA-02</td>
         <td>Exposição indevida de dados pessoais (CPF, remuneração)</td>
-        <td>Muito baixa</td>
+        <td>Alta</td>
         <td>Alto</td>
-        <td><span class="risk-low">Mitigado</span></td>
-        <td>✅ Mascaramento CPF (A-01) — formato ***.XXX.XXX-**</td>
+        <td><span class="risk-high">Alto</span></td>
+        <td>Implementar mascaramento de CPF</td>
     </tr>
     <tr>
         <td>RA-01</td>
         <td>Alucinação do LLM na geração de SQL</td>
-        <td>Baixa</td>
-        <td>Alto</td>
-        <td><span class="risk-low">Mitigado</span></td>
-        <td>✅ Validação de schema + whitelist de tabelas/colunas (A-06)</td>
+        <td>Média</td>
+        <td>Médio</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Validação de schema antes da execução</td>
     </tr>
     <tr>
         <td>RA-05</td>
         <td>Prompt injection via mensagem do usuário</td>
-        <td>Baixa</td>
+        <td>Média</td>
         <td>Médio</td>
-        <td><span class="risk-low">Mitigado</span></td>
-        <td>✅ Validação de schema bloqueia comandos perigosos (A-06)</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Sanitização de entrada e guardrails</td>
     </tr>
     <tr>
         <td>RA-09</td>
         <td>Falta de auditoria persistente de consultas SQL</td>
-        <td>Muito baixa</td>
+        <td>Alta</td>
         <td>Médio</td>
-        <td><span class="risk-low">Mitigado</span></td>
-        <td>✅ Logging persistente com rotação 30 dias (A-03)</td>
+        <td><span class="risk-medium">Médio</span></td>
+        <td>Implementar logging persistente</td>
     </tr>
     </tbody>
     </table>
@@ -272,16 +272,16 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <table>
     <thead><tr><th>Aspecto</th><th>Nota</th><th>Status</th></tr></thead>
     <tbody>
-    <tr><td>Base legal definida</td><td>3</td><td>✅ LGPD Art. 7º, II e III — documentada no RIPD</td></tr>
-    <tr><td>Finalidade e adequação</td><td>3</td><td>✅ Formalizada na Política de IA e RIPD</td></tr>
-    <tr><td>Necessidade e minimização</td><td>3</td><td>✅ Mascaramento CPF (A-01) + anonimização (A-02)</td></tr>
-    <tr><td>Transparência ao titular</td><td>3</td><td>✅ Disclaimer de IA (A-04) + identificação de agentes</td></tr>
-    <tr><td>Segurança técnica</td><td>3</td><td>✅ Autenticação (A-05) + validação schema (A-06) + logging (A-03)</td></tr>
-    <tr><td>DPO / Encarregado</td><td>3</td><td>✅ Ato de designação criado (A-10)</td></tr>
-    <tr><td>DPIA / RIPD</td><td>3</td><td>✅ RIPD-001 publicado (A-13)</td></tr>
-    <tr><td>Registro de tratamento</td><td>3</td><td>✅ Catálogo de dados + logging de auditoria (A-19, A-03)</td></tr>
+    <tr><td>Base legal definida</td><td>3</td><td>⚠️ Implícita</td></tr>
+    <tr><td>Finalidade e adequação</td><td>3</td><td>⚠️ Clara, não formal</td></tr>
+    <tr><td>Necessidade e minimização</td><td>1</td><td>❌ CPF sem máscara</td></tr>
+    <tr><td>Transparência ao titular</td><td>1</td><td>❌ Não implementada</td></tr>
+    <tr><td>Segurança técnica</td><td>2</td><td>⚠️ Proteção SQL</td></tr>
+    <tr><td>DPO / Encarregado</td><td>1</td><td>❌ Não designado</td></tr>
+    <tr><td>DPIA / RIPD</td><td>1</td><td>❌ Não realizado</td></tr>
+    <tr><td>Registro de tratamento</td><td>1</td><td>❌ Não documentado</td></tr>
     </tbody>
-    <tfoot><tr><th>Média</th><th>3,00</th><th>Otimizado</th></tr></tfoot>
+    <tfoot><tr><th>Média</th><th>1,63</th><th>Inicial</th></tr></tfoot>
     </table>
 </div>
 
@@ -291,86 +291,43 @@ code { background: #efe5d1; padding: 2px 4px; border-radius: 4px; }
     <table>
     <thead><tr><th>Código</th><th>Papel</th><th>Status</th></tr></thead>
     <tbody>
-    <tr><td>PAT</td><td>Patrocinador Executivo</td><td><span class="pill ok">Ato de designação criado (A-09)</span></td></tr>
-    <tr><td>GPR</td><td>Gestor do Projeto</td><td><span class="pill ok">Ativo</span></td></tr>
-    <tr><td>ARQ</td><td>Arquiteto de IA</td><td><span class="pill ok">Ativo</span></td></tr>
+    <tr><td>PAT</td><td>Patrocinador Executivo</td><td><span class="pill danger">Não designado</span></td></tr>
+    <tr><td>GPR</td><td>Gestor do Projeto</td><td><span class="pill info">Implícito</span></td></tr>
+    <tr><td>ARQ</td><td>Arquiteto de IA</td><td><span class="pill info">Implícito</span></td></tr>
     <tr><td>GOV</td><td>Analista de Governança</td><td><span class="pill ok">Ativo (FACIN_IA)</span></td></tr>
-    <tr><td>DEV</td><td>Desenvolvedor</td><td><span class="pill ok">Ativo — app_governado.py</span></td></tr>
-    <tr><td>AUD</td><td>Auditor</td><td><span class="pill ok">Ato de designação criado (A-11)</span></td></tr>
-    <tr><td>DPO</td><td>Encarregado de Dados</td><td><span class="pill ok">Ato de designação criado (A-10)</span></td></tr>
-    <tr><td>USR</td><td>Usuário Final</td><td><span class="pill ok">Pesquisa de satisfação ativa (A-25)</span></td></tr>
+    <tr><td>DEV</td><td>Desenvolvedor</td><td><span class="pill ok">Ativo</span></td></tr>
+    <tr><td>AUD</td><td>Auditor</td><td><span class="pill danger">Não ativado</span></td></tr>
+    <tr><td>DPO</td><td>Encarregado de Dados</td><td><span class="pill danger">Não designado</span></td></tr>
+    <tr><td>USR</td><td>Usuário Final</td><td><span class="pill warn">Sem feedback</span></td></tr>
     </tbody>
     </table>
 </div>
 
-</div>
-
-<!-- Artefatos de Governança -->
-<div class="section">
-    <h2>Artefatos de Governança — Plano de Ação Nível 3 (27 ações)</h2>
-    <table>
-    <thead><tr><th>Ação</th><th>Artefato</th><th>Tipo</th><th>Status</th></tr></thead>
-    <tbody>
-    <tr><td>A-01</td><td><code>app_governado.py</code> — mascara_cpf()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-02</td><td><code>app_governado.py</code> — anonimiza_para_api()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-03</td><td><code>app_governado.py</code> — sql_audit logger</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-04</td><td><code>app_governado.py</code> — st.warning()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-05</td><td><code>app_governado.py</code> — check_authentication()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-06</td><td><code>app_governado.py</code> — valida_schema_sql()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-07</td><td>POL_IA_001_Politica_Institucional_IA.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-08</td><td>POR_IA_001_Portfolio_Casos_Uso.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-09</td><td>ATO_PAT_001_Designacao_Patrocinador.md</td><td>Ato</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-10</td><td>ATO_DPO_001_Designacao_Encarregado.md</td><td>Ato</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-11</td><td>ATO_AUD_001_Designacao_Auditor.md</td><td>Ato</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-12</td><td>prompts/prompts_v1.0.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-13</td><td>RIPD_001_Relatorio_Impacto.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-14</td><td>PRC_INC_001_Processo_Incidentes.md</td><td>Processo</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-15</td><td>testes/test_app.py (30 testes)</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-16</td><td><code>app_governado.py</code> — check_api_health()</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-17</td><td><code>app_governado.py</code> — fallback bidirecional</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-18</td><td>PRC_GI_001_Gestao_Incidentes.md</td><td>Processo</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-19</td><td>CAT_DAD_001_Catalogo_Dados.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-20</td><td>PRC_AMB_001_Segregacao_Ambientes.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-21</td><td>PRC_CAP_001_Programa_Capacitacao.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-22</td><td><code>app_governado.py</code> — quota 50 req/sessão</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-23</td><td>IND_VAL_001_Metas_Valor.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-24</td><td>AUD_ACE_001_Auditoria_Acessibilidade.md</td><td>Documento</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-25</td><td><code>app_governado.py</code> — formulário satisfação</td><td>Código</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-26</td><td>AUD_GOV_001_Auditoria_Governanca.md</td><td>Template</td><td><span class="pill ok">✅</span></td></tr>
-    <tr><td>A-27</td><td>Reavaliacao_Maturidade_v2.md</td><td>Reavaliação</td><td><span class="pill ok">✅</span></td></tr>
-    </tbody>
-    </table>
 </div>
 
 <!-- Roadmap -->
 <div class="section">
-    <h2>Plano de Ação Nível 3 — Execução</h2>
+    <h2>Roadmap de Adequação</h2>
     <table>
     <thead><tr><th>Fase</th><th>Prazo</th><th>Ações Prioritárias</th><th>Riscos Mitigados</th></tr></thead>
     <tbody>
     <tr>
-        <td><strong>Fase 1</strong> — Proteção</td>
-        <td>Sem 1-4</td>
-        <td>✅ Mascaramento CPF (A-01) · Anonimização (A-02) · Logging (A-03) · Disclaimer (A-04) · Autenticação (A-05) · Validação schema (A-06)</td>
-        <td>RA-02, RA-04, RA-09, RA-01</td>
+        <td><strong>Fase 1</strong></td>
+        <td>Curto prazo</td>
+        <td>Mascarar CPF · Anonimizar envio às APIs · Logging persistente · Disclaimer de IA</td>
+        <td>RA-02, RA-04, RA-09, ER2</td>
     </tr>
     <tr>
-        <td><strong>Fase 2</strong> — Formalização</td>
-        <td>Sem 5-8</td>
-        <td>✅ Política IA (A-07) · Portfólio (A-08) · PAT/DPO/AUD (A-09~11) · Prompts (A-12) · RIPD (A-13) · Incidentes (A-14)</td>
-        <td>EG1, EG2, EG3, TC1, DI2, ER1, ER3</td>
+        <td><strong>Fase 2</strong></td>
+        <td>Médio prazo</td>
+        <td>Designar DPO e PAT · Autenticação · Testes pytest · DPIA · Validar schema SQL</td>
+        <td>DI2, DO2, LGPD, RA-01</td>
     </tr>
     <tr>
-        <td><strong>Fase 3</strong> — Qualidade</td>
-        <td>Sem 9-14</td>
-        <td>✅ Testes pytest (A-15) · Monitoramento (A-16) · Fallback (A-17) · Gestão incidentes (A-18) · Catálogo dados (A-19) · Ambientes (A-20) · Capacitação (A-21) · Quota (A-22)</td>
-        <td>DO2, DI3, DO4, DI1, TC2, TC3, DO3</td>
-    </tr>
-    <tr>
-        <td><strong>Fase 4</strong> — Valor</td>
-        <td>Sem 15-18</td>
-        <td>✅ Metas de valor (A-23) · Acessibilidade (A-24) · Satisfação (A-25) · Auditoria (A-26) · Reavaliação (A-27)</td>
-        <td>IV1, IV2, IV3, ER3</td>
+        <td><strong>Fase 3</strong></td>
+        <td>Longo prazo</td>
+        <td>Migrar para LLM local · Monitoramento · Auditoria · Pesquisa de satisfação · Política de IA</td>
+        <td>RA-04, RA-07, DI3, DO4, ER3, IV3, EG1</td>
     </tr>
     </tbody>
     </table>
@@ -416,13 +373,13 @@ flowchart TB
     <table>
     <thead><tr><th>ID</th><th>Achado</th><th>Impacto</th><th>Status</th></tr></thead>
     <tbody>
-    <tr><td>ERR-001</td><td>CPF armazenado em texto claro</td><td>Risco LGPD</td><td><span class="pill ok">✅ Mascaramento A-01</span></td></tr>
-    <tr><td>ERR-002</td><td>Dados pessoais enviados a APIs externas</td><td>Transferência internacional</td><td><span class="pill ok">✅ Anonimização A-02</span></td></tr>
-    <tr><td>ERR-003</td><td>Sem autenticação na interface</td><td>Acesso não autorizado</td><td><span class="pill ok">✅ Autenticação A-05</span></td></tr>
-    <tr><td>ERR-004</td><td>Sem testes automatizados</td><td>Risco de regressão</td><td><span class="pill ok">✅ 30 testes pytest A-15</span></td></tr>
-    <tr><td>ERR-005</td><td>Referência a "CRM" no código (inconsistência)</td><td>Nomenclatura</td><td><span class="pill info">Código original preservado</span></td></tr>
-    <tr><td>ERR-006</td><td>Logs via print() sem persistência</td><td>Sem auditoria</td><td><span class="pill ok">✅ Logging rotacionado A-03</span></td></tr>
-    <tr><td>ERR-007</td><td>Prompt OpenAI referencia colunas inexistentes</td><td>SQL com erro</td><td><span class="pill ok">✅ Prompts corrigidos A-12</span></td></tr>
+    <tr><td>ERR-001</td><td>CPF armazenado em texto claro</td><td>Risco LGPD</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-002</td><td>Dados pessoais enviados a APIs externas</td><td>Transferência internacional</td><td><span class="pill danger">Ação prioritária</span></td></tr>
+    <tr><td>ERR-003</td><td>Sem autenticação na interface</td><td>Acesso não autorizado</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-004</td><td>Sem testes automatizados</td><td>Risco de regressão</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-005</td><td>Referência a "CRM" no código (inconsistência)</td><td>Nomenclatura</td><td><span class="pill info">Código preservado</span></td></tr>
+    <tr><td>ERR-006</td><td>Logs via print() sem persistência</td><td>Sem auditoria</td><td><span class="pill warn">Ação pendente</span></td></tr>
+    <tr><td>ERR-007</td><td>Prompt OpenAI referencia colunas inexistentes</td><td>SQL com erro</td><td><span class="pill info">Código preservado</span></td></tr>
     </tbody>
     </table>
 </div>
