@@ -33,16 +33,32 @@
 <li><code>src/facin_ia/cli.py</code>;</li>
 <li><code>src/facin_ia/scaffold.py</code>;</li>
 <li><code>src/facin_ia/__main__.py</code>.</li>
+<li><code>.github/workflows/publish-python-package.yml</code>.</li>
 </ul>
 <p>Essa estrutura permite instalar o projeto localmente com <code>pip install .</code> e executar a CLI <code>facin-ia</code>.</p>
-<h3 id="22-perfis-de-scaffolding">2.2 Perfis de scaffolding</h3>
+<h3 id="22-workflow-de-publicacao">2.2 Workflow de publicacao</h3>
+<p>O repositório passa a incluir um workflow manual do GitHub Actions para publicar o pacote em TestPyPI ou PyPI.</p>
+<p>Arquivo:</p>
+<ul>
+<li><code>.github/workflows/publish-python-package.yml</code></li>
+</ul>
+<p>Fluxo implementado no workflow:</p>
+<ol>
+<li>checkout do repositorio;</li>
+<li>instalacao do Python e das ferramentas de build;</li>
+<li>geracao dos artefatos em <code>dist/</code> com <code>python -m build</code>;</li>
+<li>validacao com <code>python -m twine check dist/*</code>;</li>
+<li>publicacao manual para <code>testpypi</code> ou <code>pypi</code> via <code>workflow_dispatch</code>.</li>
+</ol>
+<p>O workflow foi preparado para uso com Trusted Publishing por meio dos environments <code>testpypi</code> e <code>pypi</code> no GitHub.</p>
+<h3 id="23-perfis-de-scaffolding">2.3 Perfis de scaffolding</h3>
 <p>A CLI foi preparada com tres perfis:</p>
 <ol>
 <li><code>customizacao</code>: instala agente, prompt e skill em <code>.github/</code>;</li>
 <li><code>plugin</code>: instala a customizacao e o plugin local em <code>plugins/facin-ia/</code>;</li>
 <li><code>template-base</code>: instala customizacao, plugin e arquivos auxiliares para repositórios criados a partir de template.</li>
 </ol>
-<h3 id="23-arquivos-de-template">2.3 Arquivos de template</h3>
+<h3 id="24-arquivos-de-template">2.4 Arquivos de template</h3>
 <p>O repositório tambem passa a incluir:</p>
 <ul>
 <li><code>TEMPLATE_SETUP.md</code>;</li>
@@ -62,7 +78,18 @@ facin-ia init --profile customizacao
 facin-ia init --profile customizacao
 </code></pre>
 <p>O usuario pode trocar o perfil para <code>plugin</code> ou <code>template-base</code> conforme a necessidade.</p>
-<h3 id="32-novos-projetos-via-github-template">3.2 Novos projetos via GitHub Template</h3>
+<h3 id="32-publicacao-do-pacote-pelo-github-actions">3.2 Publicacao do pacote pelo GitHub Actions</h3>
+<p>Fluxo previsto para o mantenedor:</p>
+<ol>
+<li>configurar o projeto <code>facin-ia</code> no PyPI e no TestPyPI;</li>
+<li>registrar o repositório como trusted publisher nas duas plataformas;</li>
+<li>criar os environments <code>testpypi</code> e <code>pypi</code> no GitHub;</li>
+<li>abrir a aba <code>Actions</code> do repositório;</li>
+<li>executar o workflow <code>Publish Python Package</code>;</li>
+<li>escolher o destino <code>testpypi</code> ou <code>pypi</code>;</li>
+<li>acompanhar a publicacao ate a conclusao.</li>
+</ol>
+<h3 id="33-novos-projetos-via-github-template">3.3 Novos projetos via GitHub Template</h3>
 <p>Fluxo previsto para o usuario:</p>
 <ol>
 <li>acessar o repositório no GitHub;</li>
@@ -83,11 +110,12 @@ facin-ia init --profile customizacao
 <li>padronizacao de estrutura entre equipes e repositórios;</li>
 <li>reducao de erro manual na copia de artefatos;</li>
 <li>base pronta para futura publicacao no PyPI;</li>
+<li>base pronta para publicacao manual controlada por GitHub Actions;</li>
 <li>base pronta para marcar o repositório como template oficial no GitHub.</li>
 </ol>
 <h2 id="6-limites-atuais">6. Limites atuais</h2>
 <ol>
-<li>o pacote ja esta estruturado, mas ainda nao foi publicado no PyPI;</li>
+<li>o pacote e o workflow ja estao estruturados, mas a publicacao ainda depende da configuracao de trusted publisher no PyPI e no TestPyPI;</li>
 <li>o repositório ja esta preparado como template, mas a marcacao como template depende da configuracao no GitHub;</li>
 <li>os artefatos gerados pela CLI sao uma base inicial e podem ser refinados por contexto institucional.</li>
 </ol>
@@ -96,6 +124,7 @@ facin-ia init --profile customizacao
 <ol>
 <li>o pacote puder ser instalado localmente com <code>pip install .</code>;</li>
 <li>a CLI <code>facin-ia</code> materializar corretamente os perfis previstos;</li>
+<li>o workflow de publicacao construir e validar o pacote antes do upload;</li>
 <li>o repositório contiver arquivos adequados para uso como template;</li>
 <li>a documentacao explicar claramente a experiencia do usuario em cada modo de distribuicao.</li>
 </ol>

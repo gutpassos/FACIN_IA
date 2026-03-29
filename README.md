@@ -129,6 +129,7 @@ Estrutura preparada:
 - `src/facin_ia/__init__.py`;
 - `src/facin_ia/cli.py`;
 - `src/facin_ia/scaffold.py`.
+- `.github/workflows/publish-python-package.yml`.
 
 Perfis disponíveis na CLI:
 
@@ -157,6 +158,15 @@ Fluxo de instalação:
 3. escolhe o perfil desejado, como `customizacao`, `plugin` ou `template-base`;
 4. a CLI materializa os arquivos `.github`, prompts, skills, agentes e, quando aplicável, a estrutura do plugin e dos arquivos de template;
 5. o usuário abre o projeto no VS Code e passa a utilizar o FACIN_IA com a configuração pronta.
+
+Fluxo de publicação preparado no GitHub Actions:
+
+1. abrir a aba `Actions` do repositório;
+2. executar o workflow `Publish Python Package` manualmente;
+3. escolher `testpypi` ou `pypi` como destino;
+4. deixar o workflow construir, validar e publicar os artefatos.
+
+Para esse fluxo funcionar com segurança, o repositório deve registrar trusted publishers no PyPI e no TestPyPI e manter os environments `testpypi` e `pypi` configurados no GitHub.
 
 Benefícios desta abordagem:
 
@@ -242,6 +252,7 @@ O fluxo agora fica assim:
 - [spec/FACIN_IA_Versao_Executiva.md](spec/FACIN_IA_Versao_Executiva.md): versão executiva em Markdown.
 - `pyproject.toml`: metadados do pacote Python `facin-ia`.
 - `src/facin_ia/`: pacote Python com CLI e motor de scaffolding para distribuição do FACIN_IA.
+- `.github/workflows/publish-python-package.yml`: workflow manual de build e publicação para TestPyPI ou PyPI.
 - [TEMPLATE_SETUP.md](TEMPLATE_SETUP.md): roteiro de parametrização para repositórios criados a partir do template.
 - [scripts/generate_artifacts.py](scripts/generate_artifacts.py): gerador dos artefatos Markdown, HTML, PDF e XLSX.
 - [errors/erro_weasyprint_pdf.txt](errors/erro_weasyprint_pdf.txt): registro do erro inicial de geração de PDF com WeasyPrint no Windows.
